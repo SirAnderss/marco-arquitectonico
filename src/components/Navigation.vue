@@ -2,7 +2,10 @@
   <nav :style="[position[1] > 150 ? { height: '100px' } : { height: '120px' }]">
     <div class="logo">
       <router-link to="/"
-        ><img src="@/assets/img/logo.webp" alt="Marco Arquitectónico" :style="[position[1] > 150 ? { width: '60px' } : { width: '80px' }]"
+        ><img
+          src="@/assets/img/logos/logo.webp"
+          alt="Marco Arquitectónico"
+          :style="[position[1] > 150 ? { width: '60px' } : { width: '80px' }]"
       /></router-link>
     </div>
     <div class="menu-items" :class="{ open: mainMenu }">
@@ -136,6 +139,7 @@ nav {
       li {
         cursor: pointer;
         list-style: none;
+        transition: 0.3s;
 
         &:hover {
           border-bottom: 5px rgba(226, 121, 0, 0.6) solid;
@@ -148,7 +152,7 @@ nav {
           display: flex;
           align-items: center;
           text-decoration: none;
-          color: $dark;
+          color: $secondary;
           font-weight: 550;
 
           i {
@@ -167,6 +171,7 @@ nav {
           transition: all 800ms ease;
           font-size: 15px;
           background: #fff;
+          transition: 0.3s;
 
           li {
             text-align: left;
@@ -174,6 +179,7 @@ nav {
             height: 50px;
             margin: 0;
             border-bottom: $secondary 1px solid;
+            transition: 0.5s;
 
             &:hover {
               border-top: #2c3e50 1px solid;
@@ -187,6 +193,7 @@ nav {
       .dropdown:hover {
         ul {
           display: block !important;
+          transition: 0.5s;
         }
       }
     }
@@ -203,6 +210,7 @@ nav {
 
 .open {
   display: block !important;
+  transition: 0.5s;
 }
 
 @media screen and (min-width: $large) {
@@ -220,10 +228,12 @@ nav {
     }
   }
 }
+
 @media screen and (max-width: $large) {
   nav {
     height: 100px !important;
     transition: all 1s;
+    position: absolute;
 
     .menu-items {
       display: none;
@@ -283,7 +293,7 @@ nav {
         position: absolute;
         display: block;
         content: "";
-        background: $dark;
+        background: $secondary;
       }
 
       :before {

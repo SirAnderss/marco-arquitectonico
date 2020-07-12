@@ -91,7 +91,7 @@ export default {
   methods: {
     scrollToFirst() {
       window.scrollTo({
-        top: 450,
+        top: 500,
         behavior: "smooth",
       });
     },

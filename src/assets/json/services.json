@@ -1,0 +1,25 @@
+{
+  "building": [
+    "Bodegas industriales",
+    "Adecuación de oficinas",
+    "Hoteles",
+    "Remodelación de locales comerciales",
+    "Vivienda"
+  ],
+  "project": [
+    "Gerencia de proyectos",
+    "Diseño, arquitectura, ingeniería",
+    "Dirección de obra"
+  ],
+  "maintenance": [
+    "Inpermeabilización de fachadas",
+    "Inpermeabilización de cubiertas",
+    "Inpermeabilización de tanques de agua potable",
+    "Construcción de porterias de acceso",
+    "Construcción de senderos peatonales"
+  ],
+  "architecture": [
+    "Estructuras metálicas",
+    "Fachadas flotantes"
+  ]
+}

@@ -2,7 +2,7 @@
   <div class="footer">
     <div class="social">
       <router-link to="/"
-        ><img src="@/assets/img/logo.webp" alt="Marco Arquitectónico " srcset=""
+        ><img src="@/assets/img/logos/logo.webp" alt="Marco Arquitectónico " srcset=""
       /></router-link>
       <div class="social-links">
         <a href="#!"><img src="@/assets/img/icons/fb.webp" alt="Facebook"/></a>
