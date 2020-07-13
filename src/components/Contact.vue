@@ -29,7 +29,7 @@ export default {
   width: 80%;
   margin: 0 auto;
   padding: 60px;
-  padding-bottom: 10px;
+  margin-bottom: 20px;
   color: $secondary;
   text-align: center;
 
