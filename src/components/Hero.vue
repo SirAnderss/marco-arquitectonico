@@ -121,7 +121,6 @@ export default {
   margin-top: 140px !important;
   .hooper {
     height: calc(100vh - 120px);
-    background: steelblue;
     .hooper-list {
       .hooper-track {
         .hooper-slide {
@@ -173,16 +172,6 @@ export default {
           }
         }
       }
-
-      // .hooper-navigation {
-
-      //   .hooper-next{
-      //     left: 50px !important;
-      //   }
-      //   .hooper-prev{
-      //     right: 50px !important;
-      //   }
-      // }
     }
   }
 
@@ -255,6 +244,36 @@ export default {
 
     .down {
       font-size: 20px;
+      font-weight: 900;
+    }
+  }
+}
+
+@media screen and (min-width: $xlarge) {
+  .hero {
+    .hooper {
+      .hooper-list {
+        .hooper-track {
+          .hooper-slide {
+            .track {
+              background-size: cover;
+              h2 {
+                font-size: 140px;
+              }
+
+              p {
+                font-size: 45px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .prev,
+    .next,
+    .down {
+      font-size: 40px;
       font-weight: 900;
     }
   }

@@ -164,8 +164,7 @@ export default {
 
 .services {
   background: $main;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding: 60px 0;
   position: relative;
   text-align: center;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
@@ -186,7 +185,7 @@ export default {
             margin: 60px;
             padding: 60px;
             height: 470px;
-            margin-top: 40px;
+            margin-top: 50px;
             display: flex;
             flex-flow: column;
             align-items: center;
@@ -279,7 +278,7 @@ export default {
     .service {
       border: 1px solid #fff;
       background: $main !important;
-      height: 500px !important;
+      height: 480px !important;
       margin-top: 25px !important;
 
       .white {
@@ -311,9 +310,6 @@ export default {
       }
     }
   }
-}
-
-@media screen and (max-width: $small) {
 }
 
 @media only screen and (max-width: $medium) {
@@ -396,6 +392,75 @@ export default {
     .prev,
     .next {
       display: none;
+    }
+  }
+}
+@media screen and (min-width: $xlarge) {
+  .services {
+
+    h2 {
+      font-size: 40px;
+    }
+
+    .hooper {
+      .hooper-list {
+        .hooper-track {
+          .hooper-slide {
+            .service {
+              height: 700px;
+              margin-top: 60px;
+
+              img {
+                width: 150px;
+              }
+              h3 {
+                font-weight: 800;
+              }
+
+              h3 {
+                font-size: 47px;
+              }
+
+              p {
+                font-size: 25px;
+              }
+
+              button {
+                width: 180px;
+                padding: 25px;
+                font-size: 20px;
+
+                &:hover {
+                  border-bottom: 15px solid $main;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .prev,
+    .next {
+      font-size: 45px;
+    }
+
+    .prev {
+      left: 32%;
+    }
+
+    .next {
+      right: 32%;
+    }
+
+    .is-current {
+      .service {
+        height: 780px !important;
+
+        button:hover {
+          border-bottom: 15px solid #fff !important;
+        }
+      }
     }
   }
 }

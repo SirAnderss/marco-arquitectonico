@@ -18,27 +18,27 @@
             :style="[position[1] > 150 ? { top: '100px' } : { top: '120px' }]"
           >
             <li @click="closeMenu">
-              <router-link to="/servicios"
+              <router-link to="/services"
                 >Consultoria en diseño y arquitectura</router-link
               >
             </li>
             <li @click="closeMenu">
-              <router-link to="/servicios"
+              <router-link to="/services"
                 >Proyectos de construcción</router-link
               >
             </li>
             <li @click="closeMenu">
-              <router-link to="/servicios">Mantenimiento P.H.</router-link>
+              <router-link to="/services">Mantenimiento P.H.</router-link>
             </li>
             <li @click="closeMenu">
-              <router-link to="/servicios"
+              <router-link to="/services"
                 >Recubrimientos arquitectónicos</router-link
               >
             </li>
           </ul>
         </li>
         <li @click="closeMenu" class="dropdown">
-          <router-link to="/servicios"
+          <router-link to="/services"
             >Servicios<i class="icon-arrow-down"></i
           ></router-link>
           <ul
@@ -46,27 +46,27 @@
             :style="[position[1] > 150 ? { top: '100px' } : { top: '120px' }]"
           >
             <li @click="closeMenu">
-              <router-link to="/servicios"
+              <router-link to="/services"
                 >Consultoria en diseño y arquitectura</router-link
               >
             </li>
             <li @click="closeMenu">
-              <router-link to="/servicios"
+              <router-link to="/services"
                 >Proyectos de construcción</router-link
               >
             </li>
             <li @click="closeMenu">
-              <router-link to="/servicios">Mantenimiento P.H.</router-link>
+              <router-link to="/services">Mantenimiento P.H.</router-link>
             </li>
             <li @click="closeMenu">
-              <router-link to="/servicios"
+              <router-link to="/services"
                 >Recubrimientos arquitectónicos</router-link
               >
             </li>
           </ul>
         </li>
         <li @click="closeMenu">
-          <router-link to="/contactanos">Contactanos</router-link>
+          <router-link to="/contact">Contactanos</router-link>
         </li>
       </ul>
     </div>

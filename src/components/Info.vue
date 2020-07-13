@@ -2,14 +2,15 @@
   <div class="info">
     <span class="email">
       Correo electrónico:
-      <a href="mailto:email@example.com">email@example.com</a>
+      <a href="mailto:ucconstruccion@gmail.com">ucconstruccion@gmail.com</a>
     </span>
     <span class="phone">
       Teléfono:
-      <a href="tel:+573177130574"> 317 713 0574</a>
+      <a href="tel:+570318052967"> 031 805 2967</a> -
+      <a href="tel:+573155597866"> 315 559 7866</a>
     </span>
     <span class="city">
-      Ciudad - Departamento
+      Bogotá DC
     </span>
   </div>
 </template>
@@ -44,6 +45,10 @@
   .info {
     .city {
       display: none;
+    }
+    span {
+      font-weight: 400;
+      font-size: 15px;
     }
   }
 }

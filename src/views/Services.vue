@@ -1,5 +1,15 @@
 <template>
   <div class="services">
-    <h1>This is an services page</h1>
+    <HeroName page="Servicios" />
   </div>
 </template>
+
+<script>
+import HeroName from "@/components/HeroName.vue";
+
+export default {
+  components: {
+    HeroName
+  },
+};
+</script>

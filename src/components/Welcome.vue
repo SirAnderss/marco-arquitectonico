@@ -24,7 +24,7 @@
       y el cumplimiento de los requisitos de ley que regulan nuestra actividad.
     </p>
     <p>Contáctenos ya para solicitar una cotización de nuestros servicios</p>
-    <button>Contactanos</button>
+    <router-link to="/contact"><button>Contactanos</button></router-link>
   </div>
 </template>
 

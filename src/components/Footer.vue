@@ -66,7 +66,9 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: 40% 60%;
-  margin: 30px auto;
+  margin: 0 auto;
+  background: $dark;
+  padding: 30px 0;
 
   a {
     color: $main;
@@ -76,6 +78,7 @@ export default {
     display: flex;
     flex-flow: column;
     align-items: center;
+    color: #fff;
 
     img {
       width: 100px;
@@ -100,6 +103,7 @@ export default {
     display: flex;
     flex-flow: row;
     justify-content: space-around;
+    color: #fff;
 
     .foo-services,
     .foo-menu {

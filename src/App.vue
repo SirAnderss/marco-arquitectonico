@@ -2,13 +2,6 @@
   <div id="app">
     <Info />
     <Navigation />
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">Nosotros</router-link> |
-      <router-link to="/services">Servicios</router-link> |
-      <router-link to="/contact">Contacto</router-link> |
-      <router-link to="/blog">Blog</router-link>
-    </div> -->
     <router-view />
     <Footer />
   </div>
@@ -23,11 +16,12 @@ export default {
   components: {
     Info,
     Navigation,
-    Footer
+    Footer,
   },
 };
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/app.scss';
+@import "@/assets/scss/app.scss";
+@import "toastr";
 </style>
