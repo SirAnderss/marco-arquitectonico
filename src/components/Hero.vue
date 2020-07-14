@@ -265,7 +265,7 @@ export default {
   .hero {
     .hero-message {
       h1 {
-        font-size: 140px;
+        font-size: 100px;
       }
 
       p {

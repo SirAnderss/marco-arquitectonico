@@ -53,6 +53,7 @@ export default {
     top: 250px;
     left: 50%;
     transform: translateX(-50%);
+    text-align: center;
     z-index: 10;
 
     h1 {
@@ -79,6 +80,26 @@ export default {
         top: 50%;
         left: 50%;
         transform: translateX(-50%);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $small) {
+  .hero-name {
+    .hero-bg {
+      h1 {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $xlarge) {
+  .hero-name {
+    .hero-bg {
+      h1 {
+        font-size: 65px;
       }
     }
   }

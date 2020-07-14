@@ -217,6 +217,22 @@ nav {
   transition: 0.5s;
 }
 
+@media screen and (min-width: $xlarge) {
+  nav {
+    .menu-items {
+      ul {
+        .dropdown {
+          display: block;
+        }
+
+        .services {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (min-width: $large) {
   nav {
     .menu-items {

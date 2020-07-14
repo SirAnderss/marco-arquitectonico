@@ -26,7 +26,9 @@
             listo para asesorar, orientar y acompañar el proceso de
             consolidación de sus proyectos.
           </p>
-          <button>Leer más...</button>
+          <router-link to="/services/consultancy">
+            <button>Leer más...</button></router-link
+          >
         </div>
       </slide>
       <slide>
@@ -49,7 +51,9 @@
             servicios de obra civil incluyendo, redes eléctricas, de voz y
             datos, hidráulicas y acabados.
           </p>
-          <button>Leer más...</button>
+          <router-link to="/services/building">
+            <button>Leer más...</button></router-link
+          >
         </div>
       </slide>
       <slide>
@@ -71,7 +75,9 @@
             Nos preocupamos por ayudarle a proteger su inversión y la salud de
             su familia, revalorice y proteja su inversión y su salud.
           </p>
-          <button>Leer más...</button>
+          <router-link to="/services/maintenance">
+            <button>Leer más...</button></router-link
+          >
         </div>
       </slide>
       <slide>
@@ -94,7 +100,9 @@
             recubrimiento con alto nivel de aislamiento, durabilidad y
             expresividad estética.
           </p>
-          <button>Leer más...</button>
+          <router-link to="/services/covering">
+            <button>Leer más...</button></router-link
+          >
         </div>
       </slide>
     </hooper>
@@ -397,7 +405,6 @@ export default {
 }
 @media screen and (min-width: $xlarge) {
   .services {
-
     h2 {
       font-size: 40px;
     }
