@@ -2,7 +2,7 @@
   <div id="services" class="services">
     <h2>Explora nuestros servicios</h2>
     <hooper
-      :settings="heroHooperSettings"
+      :settings="serviceHooperSettings"
       ref="service"
       @slide="updateCarousel"
     >
@@ -115,7 +115,7 @@ export default {
   },
   data() {
     return {
-      heroHooperSettings: {
+      serviceHooperSettings: {
         mouseDrag: false,
         playSpeed: 8000,
         transition: 800,

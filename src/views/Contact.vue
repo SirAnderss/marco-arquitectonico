@@ -15,7 +15,7 @@ export default {
   components: {
     HeroName,
     ContactForm,
-    ContactInfo
+    ContactInfo,
   },
 };
 </script>

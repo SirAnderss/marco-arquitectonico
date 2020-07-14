@@ -1,51 +1,31 @@
 <template>
   <div id="hero" class="hero">
+    <div class="hero-message">
+      <h1>
+        Bienvenidos a Marco Arquitectónico
+      </h1>
+      <p>
+        la magia de la Arquitectura y El Diseño que Transforma Espacios y
+        Construye Identidad
+      </p>
+    </div>
     <hooper
       :settings="heroHooperSettings"
       ref="carousel"
       @slide="updateCarousel"
     >
       <slide>
-        <div class="track architecture">
-          <h2>
-            Track 1
-          </h2>
-          <p>
-            De Pitalito para el mundo
-          </p>
-        </div>
+        <div class="track architecture"></div>
       </slide>
       <slide>
-        <div class="track proyect">
-          <h2>
-            Track 2
-          </h2>
-          <p>
-            De Pitalito para el mundo
-          </p>
-        </div>
+        <div class="track proyect"></div>
       </slide>
       <slide>
-        <div class="track maintenance">
-          <h2>
-            Track 3
-          </h2>
-          <p>
-            De Pitalito para el mundo
-          </p>
-        </div>
+        <div class="track maintenance"></div>
       </slide>
       <slide>
-        <div class="track covering">
-          <h2>
-            Track 4
-          </h2>
-          <p>
-            De Pitalito para el mundo
-          </p>
-        </div>
+        <div class="track covering"></div>
       </slide>
-      <!-- <hooper-navigation slot="hooper-addons"></hooper-navigation> -->
     </hooper>
     <i @click.prevent="slidePrev" class="prev icon-arrow-left"></i>
     <i @click.prevent="slideNext" class="next icon-arrow-right"></i>
@@ -115,10 +95,35 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
-@import "@/assets//scss/fonts.scss";
 
 .hero {
   margin-top: 140px !important;
+  .hero-message {
+    position: absolute;
+    padding: 0 10%;
+    width: 100%;
+    z-index: 999;
+    top: 50%;
+    transform: translateY(-25%);
+    text-align: center;
+    text-transform: uppercase;
+    h1,
+    p {
+      color: #fff;
+      z-index: 99;
+      text-shadow: 0px 0px 21px $dark;
+    }
+
+    h1 {
+      font-size: 57px;
+      margin-bottom: 40px;
+    }
+
+    p {
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
   .hooper {
     height: calc(100vh - 120px);
     .hooper-list {
@@ -141,34 +146,19 @@ export default {
               z-index: 1;
               position: absolute;
             }
-
-            h2,
-            p {
-              color: #fff;
-              z-index: 99;
-              text-shadow: 5px 7px 10px $dark;
-            }
-
-            h2 {
-              font-size: 80px;
-            }
-
-            p {
-              font-size: 40px;
-            }
           }
 
           .architecture {
-            background: url("../assets/img/marco1.jpeg") center;
+            background: url("../assets/img/hero-oficina.webp") center;
           }
           .proyect {
-            background: url("../assets/img/marco2.jpeg") center;
+            background: url("../assets/img/hero-supervision.webp") center;
           }
           .maintenance {
-            background: url("../assets/img/marco3.jpeg") center;
+            background: url("../assets/img/hero-metalica.webp") center;
           }
           .covering {
-            background: url("../assets/img/marco4.jpeg") center;
+            background: url("../assets/img/hero-bienestar.webp") center;
           }
         }
       }
@@ -215,26 +205,48 @@ export default {
   }
 }
 
-@media screen and (max-width: $large) {
+@media screen and (min-width: $medium) {
   .hero {
     margin-top: 100px !important;
+    .hero-message {
+      h1 {
+        font-size: 57px;
+      }
+
+      p {
+        font-size: 25px;
+      }
+    }
     .hooper {
       height: calc(100vh - 100px);
-      .hooper-list {
-        .hooper-track {
-          .hooper-slide {
-            .track {
-              h2 {
-                font-size: 60px;
-              }
+    }
 
-              p {
-                font-size: 25px;
-              }
-            }
-          }
-        }
+    .prev,
+    .next {
+      display: none;
+    }
+
+    .down {
+      font-size: 20px;
+      font-weight: 900;
+    }
+  }
+}
+
+@media screen and (max-width: $medium) {
+  .hero {
+    margin-top: 100px !important;
+    .hero-message {
+      h1 {
+        font-size: 35px;
       }
+
+      p {
+        font-size: 22px;
+      }
+    }
+    .hooper {
+      height: calc(100vh - 100px);
     }
 
     .prev,
@@ -251,19 +263,21 @@ export default {
 
 @media screen and (min-width: $xlarge) {
   .hero {
+    .hero-message {
+      h1 {
+        font-size: 140px;
+      }
+
+      p {
+        font-size: 45px;
+      }
+    }
     .hooper {
       .hooper-list {
         .hooper-track {
           .hooper-slide {
             .track {
               background-size: cover;
-              h2 {
-                font-size: 140px;
-              }
-
-              p {
-                font-size: 45px;
-              }
             }
           }
         }

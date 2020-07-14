@@ -18,10 +18,25 @@ export default {
     Navigation,
     Footer,
   },
+  watch: {
+    url: function() {
+      window.scrollTo({
+        top: 0,
+      });
+    },
+  },
+  computed: {
+    url: {
+      get() {
+        return this.$route.name;
+      },
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 @import "@/assets/scss/app.scss";
+@import "@/assets//scss/fonts.scss";
 @import "toastr";
 </style>

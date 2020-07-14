@@ -3,7 +3,10 @@
     <Hero />
     <Welcome />
     <Services />
-    <Contact />
+    <Quotation />
+    <Clients />
+    <Reviews />
+    <ContactUs />
   </div>
 </template>
 
@@ -11,14 +14,20 @@
 import Hero from "@/components/Hero.vue";
 import Welcome from "@/components/Welcome.vue";
 import Services from "@/components/Services.vue";
-import Contact from "@/components/Contact.vue";
+import Quotation from "@/components/Quotation.vue";
+import Clients from "@/components/Clients.vue";
+import Reviews from "@/components/Reviews.vue";
+import ContactUs from "@/components/ContactUs.vue";
 
 export default {
   components: {
     Hero,
     Welcome,
     Services,
-    Contact
+    Quotation,
+    Clients,
+    Reviews,
+    ContactUs
   },
 };
 </script>

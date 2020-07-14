@@ -222,12 +222,28 @@ export default {
 
 .contact-form {
   position: relative;
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   margin-bottom: 30px;
-  padding: 20px 60px;
+  padding: 20px 0;
   color: $secondary;
   text-align: center;
+  background: $main;
+  border: 1px solid $secondary;
+
+  &::before {
+    content: "";
+    margin: 0 auto;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url("../assets/img/hero-bg.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+  }
 
   h2 {
     font-size: 40px;
@@ -245,6 +261,7 @@ export default {
     position: relative;
     width: 80%;
     margin-bottom: 90px;
+    z-index: 2;
     input,
     select,
     textarea {
@@ -293,17 +310,18 @@ export default {
     text-transform: uppercase;
     font-size: 30px;
     font-weight: bold;
-    color: #fff;
-    background: $main;
+    color: $main;
+    background: #fff;
     transition: 0.5s;
     border: 0;
     border-radius: 5px;
+    z-index: 2;
 
     &:hover {
-      background: #fff;
-      color: $main;
-      border: 1px solid $main;
-      border-bottom: 5px solid $main;
+      background: $main;
+      color: #fff;
+      border: 1px solid #fff;
+      border-bottom: 5px solid #fff;
       padding-bottom: 10px;
     }
   }

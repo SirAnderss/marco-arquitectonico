@@ -1,11 +1,6 @@
 <template>
   <div class="welcome">
-    <h1>Bienvenidos a Marco Arquitectónico</h1>
-    <p>
-      <span>
-        Está a solo un click de entrar a la magia de la Arquitectura y El Diseño
-        que Transforma Espacios y Construye Identidad.
-      </span>
+      <p>
       Somos una empresa conformada por un equipo de profesionales especializados
       con más de 25 años de experiencia en el sector de la arquitectura y el
       diseño dirigido al bienestar de sus usuarios. Ofrecemos a nuestros
@@ -23,8 +18,9 @@
       aseguramiento y mantenimiento de nuestro Sistema de Gestión de la Calidad
       y el cumplimiento de los requisitos de ley que regulan nuestra actividad.
     </p>
-    <p>Contáctenos ya para solicitar una cotización de nuestros servicios</p>
-    <router-link to="/contact"><button>Contactanos</button></router-link>
+    <router-link to="/contact"
+      >Contáctenos ya para solicitar una cotización<br>de nuestros servicios</router-link
+    >
   </div>
 </template>
 
@@ -32,8 +28,7 @@
 @import "@/assets/scss/_variables.scss";
 
 .welcome {
-  margin: 50px 125px;
-  margin-bottom: 125px;
+  margin: 75px 125px;
   position: relative;
   display: flex;
   flex-flow: column;
@@ -57,6 +52,14 @@
       text-transform: uppercase;
       font-weight: 600;
     }
+  }
+
+  a {
+    margin-top: 25px;
+    color: $main;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-align: center;
   }
 
   button {

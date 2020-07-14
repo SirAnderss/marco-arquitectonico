@@ -1,37 +1,32 @@
 <template>
-  <div class="contact">
+  <div class="contact-us">
     <h2>Porque tú nos importas!</h2>
     <p>
       En Marco Arquitectónico SAS tenemos un amplio abanico de servicios en
       Asesoría, Diseño y Construcción orientado a materializar eso que sueña.
-      Complete los datos en el formulario y solicite una cotización gratuita ya.
     </p>
-    <router-link to="/contact"><button>Cotiza aqui</button></router-link>
+    <router-link to="/contact-us"
+      >Complete los datos en el formulario <br> y solicite una cotización gratuita
+      ya.</router-link
+    >
   </div>
 </template>
 
 <script>
-// import ContactForm from "@/components/ContactForm.vue";
 export default {
-  name: "Contact",
-  components: {
-    // ContactForm
-  },
+  name: "ContactUs",
 };
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
 
-.contact {
-  position: relative;
-  height: 300px;
-  width: 80%;
+.contact-us {
+  padding: 60px 0;
   margin: 0 auto;
-  padding: 60px;
-  margin-bottom: 20px;
-  color: $secondary;
+  color: #fff;
   text-align: center;
+  background: $main;
 
   h2 {
     font-size: 40px;
@@ -41,37 +36,21 @@ export default {
   p {
     font-size: 22px;
     margin-bottom: 24px;
+    padding: 0 60px;
   }
 
-  button {
-    position: absolute;
-    left: 50%;
-    bottom: 3%;
-    transform: translateX(-50%);
-    width: 320px;
-    padding: 15px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 30px;
+  a {
+    margin-top: 25px;
+    color: $secondary;
+    font-size: 25px;
     font-weight: bold;
-    color: #fff;
-    background: $main;
-    transition: 0.5s;
-    border: 0;
-    border-radius: 5px;
-
-    &:hover {
-      background: #fff;
-      color: $main;
-      border: 1px solid $main;
-      border-bottom: 5px solid $main;
-      padding-bottom: 10px;
-    }
+    text-transform: uppercase;
+    text-align: center;
   }
 }
 
 @media screen and (min-width: $small) and (max-width: $large) {
-  .contact {
+  .contact-us {
     width: 100%;
     padding: 30px 20px;
     padding-bottom: 10px;
@@ -92,7 +71,7 @@ export default {
 }
 
 @media screen and (max-width: $small) {
-  .contact {
+  .contact-us {
     width: 100%;
     padding: 30px 10px;
 
@@ -114,7 +93,7 @@ export default {
 }
 
 @media screen and (min-width: $xlarge) {
-  .contact {
+  .contact-us {
     h2 {
       font-size: 60px;
     }
