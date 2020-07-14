@@ -34,43 +34,64 @@
         class="form_field"
         placeholder="Correo electrónico"
       />
-      <select name="service" v-model="service" :class="{ error: errors }">
-        <option value="0">Selecciona el área que desea consultar</option>
-        <option value="1">Consultoria</option>
-        <option value="2">Construcción</option>
-        <option value="3">Mantenimiento P.H</option>
-        <option value="4">Recubrimiento Arquitectónico</option>
-      </select>
-      <div v-if="service == 1" class="services">
-        <div v-for="(item, index) in items.project" :key="index" class="items">
-          <input type="checkbox" :value="item" v-model="data.interests" />
-          <span v-text="item"></span>
+      <div class="service">
+        <div>
+          <input type="radio" v-model="service" value="1" />
+          <label for="male">Consultoria en arquitectura</label>
         </div>
-      </div>
-      <div v-else-if="service == 2" class="services">
-        <div v-for="(item, index) in items.building" :key="index" class="items">
-          <input type="checkbox" :value="item" v-model="data.interests" />
-          <span v-text="item"></span>
+        <div>
+          <input type="radio" v-model="service" value="2" />
+          <label for="female">Construcción</label>
         </div>
-      </div>
-      <div v-else-if="service == 3" class="services">
-        <div
-          v-for="(item, index) in items.maintenance"
-          :key="index"
-          class="items"
-        >
-          <input type="checkbox" :value="item" v-model="data.interests" />
-          <span v-text="item"></span>
+        <div>
+          <input type="radio" v-model="service" value="3" />
+          <label for="other">Mantenimiento P.H</label>
         </div>
-      </div>
-      <div v-else-if="service == 4" class="services">
-        <div
-          v-for="(item, index) in items.architecture"
-          :key="index"
-          class="items"
-        >
-          <input type="checkbox" :value="item" v-model="data.interests" />
-          <span v-text="item"></span>
+        <div>
+          <input type="radio" v-model="service" value="4" />
+          <label for="other">Revestimiento Arquitectónico</label>
+        </div>
+        <div :class="{ 'sub-service': service }">
+          <div v-if="service == 1" class="services">
+            <div
+              v-for="(item, index) in items.project"
+              :key="index"
+              class="items"
+            >
+              <input type="checkbox" :value="item" v-model="data.interests" />
+              <span v-text="item"></span>
+            </div>
+          </div>
+          <div v-else-if="service == 2" class="services">
+            <div
+              v-for="(item, index) in items.building"
+              :key="index"
+              class="items"
+            >
+              <input type="checkbox" :value="item" v-model="data.interests" />
+              <span v-text="item"></span>
+            </div>
+          </div>
+          <div v-else-if="service == 3" class="services">
+            <div
+              v-for="(item, index) in items.maintenance"
+              :key="index"
+              class="items"
+            >
+              <input type="checkbox" :value="item" v-model="data.interests" />
+              <span v-text="item"></span>
+            </div>
+          </div>
+          <div v-else-if="service == 4" class="services">
+            <div
+              v-for="(item, index) in items.architecture"
+              :key="index"
+              class="items"
+            >
+              <input type="checkbox" :value="item" v-model="data.interests" />
+              <span v-text="item"></span>
+            </div>
+          </div>
         </div>
       </div>
       <input
@@ -281,6 +302,27 @@ export default {
       border-bottom: solid 2px rgb(248, 103, 103);
     }
 
+    .service {
+      width: 100%;
+      color: #fff;
+      font-size: 22px;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-around;
+      // flex-wrap: wrap;
+
+      .sub-service {
+        border: 2px solid #fff;
+        padding: 25px;
+        .services {
+          display: flex;
+          flex-flow: row;
+          justify-content: space-around;
+          flex-wrap: wrap;
+        }
+      }
+    }
+
     select {
       color: $secondary;
       width: calc(100% - 30px);
@@ -332,6 +374,8 @@ export default {
       left: 50%;
       transform: translateX(-50%);
       bottom: 1%;
+      color: #fff;
+      z-index: 2;
     }
   }
 }
