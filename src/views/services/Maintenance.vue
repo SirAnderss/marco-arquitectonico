@@ -34,15 +34,18 @@
         servicios</router-link
       >
     </div>
+    <SubMaintenance />
   </div>
 </template>
 
 <script>
 import HeroName from "@/components/HeroName.vue";
+import SubMaintenance from "@/components/SubMaintenance.vue";
 
 export default {
   components: {
     HeroName,
+    SubMaintenance,
   },
 };
 </script>

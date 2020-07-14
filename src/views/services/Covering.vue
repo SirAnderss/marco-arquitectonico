@@ -44,15 +44,18 @@
         servicios</router-link
       >
     </div>
+    <SubCovering />
   </div>
 </template>
 
 <script>
 import HeroName from "@/components/HeroName.vue";
+import SubCovering from "@/components/SubCovering.vue";
 
 export default {
   components: {
     HeroName,
+    SubCovering,
   },
 };
 </script>
@@ -60,3 +63,4 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/services.scss";
 </style>
+

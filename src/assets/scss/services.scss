@@ -21,6 +21,7 @@
   a {
     text-transform: uppercase;
     color: $main;
+    font-weight: 600;
   }
 }
 
@@ -37,24 +38,30 @@
     font-size: 60px;
     margin: 15px 0;
   }
-  div {
+  .content {
     display: inherit;
     justify-content: space-between;
     align-items: center;
-    img,
-    p {
-      width: calc(50% - 15px);
-    }
 
     img {
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
       border-radius: 5px;
     }
+    div {
+      width: calc(50% - 15px);
+      p,
+      ul {
+        font-size: 22px;
+        text-align: justify;
+      }
 
-    p {
-      font-size: 22px;
-      left: 40px;
-      text-align: justify;
+      ul {
+        li {
+          ul {
+            margin-left: 20px;
+          }
+        }
+      }
     }
   }
 }
@@ -63,18 +70,59 @@
 .direction,
 .cellar,
 .hotel,
-.house {
-  color: $secondary;
-}
-
-.dai,
-.office,
-.commercial {
+.house,
+.facade,
+.tank,
+.park,
+.metallica {
   background: $main;
   color: #fff;
   div {
     img {
       order: 1;
+    }
+  }
+}
+
+.dai,
+.office,
+.commercial,
+.cover,
+.lobby,
+.float-facade {
+  color: $secondary;
+}
+
+@media screen and (max-width: $large) {
+  .sub-service {
+    padding-bottom: 40px;
+    .content {
+      flex-flow: column;
+
+      img {
+        width: 100%;
+      }
+      div {
+        width: 90%;
+        p{
+          margin-top: 40px;
+        }
+      }
+    }
+  }
+  .management,
+  .direction,
+  .cellar,
+  .hotel,
+  .house,
+  .facade,
+  .tank,
+  .park,
+  .metallica {
+    div {
+      img {
+        order: 0;
+      }
     }
   }
 }
@@ -92,6 +140,23 @@
 
     p {
       margin-bottom: 10px;
+    }
+  }
+  .sub-service {
+    h3 {
+      font-size: 30px;
+    }
+    .content {
+      div {
+        p{
+          margin-top: 20px;
+        }
+        p,
+        ul {
+          text-align: start;
+          font-size: 18px;
+        }
+      }
     }
   }
 }

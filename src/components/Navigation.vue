@@ -18,20 +18,22 @@
             :style="[position[1] > 150 ? { top: '100px' } : { top: '120px' }]"
           >
             <li @click="closeMenu">
-              <router-link to="/services"
+              <router-link to="/services/consultancy"
                 >Consultoria en diseño y arquitectura</router-link
               >
             </li>
             <li @click="closeMenu">
-              <router-link to="/services"
+              <router-link to="/services/building"
                 >Proyectos de construcción</router-link
               >
             </li>
             <li @click="closeMenu">
-              <router-link to="/services">Mantenimiento P.H.</router-link>
+              <router-link to="/services/maintenance"
+                >Mantenimiento P.H.</router-link
+              >
             </li>
             <li @click="closeMenu">
-              <router-link to="/services"
+              <router-link to="/services/covering"
                 >Recubrimientos arquitectónicos</router-link
               >
             </li>
@@ -56,7 +58,9 @@
               >
             </li>
             <li @click="closeMenu">
-              <router-link to="/services/maintenance">Mantenimiento P.H.</router-link>
+              <router-link to="/services/maintenance"
+                >Mantenimiento P.H.</router-link
+              >
             </li>
             <li @click="closeMenu">
               <router-link to="/services/covering"
