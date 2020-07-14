@@ -1,0 +1,97 @@
+@import "@/assets/scss/_variables.scss";
+.consultancy,
+.building,
+.mantenance,
+.covering {
+  width: 100%;
+  text-align: center;
+  padding: 30px 15%;
+  font-size: 25px;
+
+  img {
+    width: 400px;
+  }
+
+  p {
+    text-align: justify;
+    color: $secondary;
+    margin-bottom: 20px;
+  }
+
+  a {
+    text-transform: uppercase;
+    color: $main;
+  }
+}
+
+.sub-service {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0 10%;
+  padding-bottom: 80px;
+  display: flex;
+  flex-flow: column;
+
+  h3 {
+    font-size: 60px;
+    margin: 15px 0;
+  }
+  div {
+    display: inherit;
+    justify-content: space-between;
+    align-items: center;
+    img,
+    p {
+      width: calc(50% - 15px);
+    }
+
+    img {
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      border-radius: 5px;
+    }
+
+    p {
+      font-size: 22px;
+      left: 40px;
+      text-align: justify;
+    }
+  }
+}
+
+.management,
+.direction,
+.cellar,
+.hotel,
+.house {
+  color: $secondary;
+}
+
+.dai,
+.office,
+.commercial {
+  background: $main;
+  color: #fff;
+  div {
+    img {
+      order: 1;
+    }
+  }
+}
+
+@media screen and (max-width: $small) {
+  .consultancy,
+  .building,
+  .mantenance,
+  .covering {
+    font-size: 20px;
+
+    img {
+      width: 200px;
+    }
+
+    p {
+      margin-bottom: 10px;
+    }
+  }
+}
