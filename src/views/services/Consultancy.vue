@@ -7,10 +7,12 @@
         alt="Consultoria en construcción"
       />
       <p>
-        ¿Cuántas veces ha escuchado que un proyecto no consigue entregar los
-        beneficios estimados? ¿Es algo tan habitual? ¿A qué se debe? Nuestro
-        equipo de consultoría en arquitectura e ingeniería está listo para
-        asesorar, orientar y acompañar el proceso de consolidación de sus
+        <span>
+          ¿Cuántas veces ha escuchado que un proyecto no consigue entregar los
+          beneficios estimados? ¿Es algo tan habitual? ¿A qué se debe?
+        </span>
+        Nuestro equipo de consultoría en arquitectura e ingeniería está listo
+        para asesorar, orientar y acompañar el proceso de consolidación de sus
         proyectos, de acuerdo con la planificación estimada y acorde con su
         presupuesto, reduciendo el riesgo de imprevistos.
       </p>
@@ -31,7 +33,7 @@
         servicios</router-link
       >
     </div>
-    <SubConsultancy/>
+    <SubConsultancy />
   </div>
 </template>
 
@@ -42,7 +44,7 @@ import SubConsultancy from "@/components/SubConsultancy.vue";
 export default {
   components: {
     HeroName,
-    SubConsultancy
+    SubConsultancy,
   },
 };
 </script>

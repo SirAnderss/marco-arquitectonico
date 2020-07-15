@@ -64,7 +64,7 @@
             Conceptualizamos su proyecto para ofrecer una mejora en el retorno
             económico, reducir el impacto ecológico del proceso de construcción,
             sin descuidar el impacto visual de su infraestructura, dejando una
-            huella en cada huésped., incluye: <br />
+            huella en cada huésped, incluye: <br />
             <br />
           </p>
           <ul>

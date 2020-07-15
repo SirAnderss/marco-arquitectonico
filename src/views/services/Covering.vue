@@ -7,9 +7,11 @@
         alt="Recubrimiento Arquitectónico"
       />
       <p>
-        El impacto visual de su proyecto de inversión constructivo es un factor
-        clave para la identidad y valores corporativos que se quieren
-        transmitir.
+        <span>
+          El impacto visual de su proyecto de inversión constructivo es un
+          factor clave para la identidad y valores corporativos que se quieren
+          transmitir.
+        </span>
       </p>
       <p>
         La tendencia arquitectónica en fachada incluye el uso de recubrimiento
@@ -63,4 +65,3 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/services.scss";
 </style>
-

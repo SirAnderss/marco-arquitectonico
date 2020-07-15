@@ -4,12 +4,13 @@
     <div class="building">
       <img src="@/assets/img/services/construccion.webp" alt="Construcción" />
       <p>
-        ¿Pensando en la construcción, adecuación y/o remodelación de sus
-        espacios comercial o de vivienda? En Marco Arquitectónico SAS ofrecemos
-        un amplio portafolio de servicios de obra civil incluyendo, redes
-        eléctricas, de voz y datos, hidráulicas y acabados, siempre orientados
-        por los valores de calidad, control presupuestal, responsabilidad y
-        compromiso.
+        <span>
+          ¿Pensando en la construcción, adecuación y/o remodelación de sus
+          espacios comercial o de vivienda? </span
+        >En Marco Arquitectónico SAS ofrecemos un amplio portafolio de servicios
+        de obra civil incluyendo, redes eléctricas, de voz y datos, hidráulicas
+        y acabados, siempre orientados por los valores de calidad, control
+        presupuestal, responsabilidad y compromiso.
       </p>
       <p>
         Garantizamos una ejecución de excelentes terminados en el tiempo justo,
@@ -27,7 +28,7 @@
         servicios</router-link
       >
     </div>
-    <SubBuilding/>
+    <SubBuilding />
   </div>
 </template>
 
@@ -38,7 +39,7 @@ import SubBuilding from "@/components/SubBuilding.vue";
 export default {
   components: {
     HeroName,
-    SubBuilding
+    SubBuilding,
   },
 };
 </script>
@@ -46,7 +47,6 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/services.scss";
 </style>
-
 
 <style lang="scss" scoped>
 @import "@/assets/scss/services.scss";

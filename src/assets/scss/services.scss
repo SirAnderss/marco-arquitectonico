@@ -16,6 +16,10 @@
     text-align: justify;
     color: $secondary;
     margin-bottom: 20px;
+    span{
+      font-weight: bold;
+      color: $main;
+    }
   }
 
   a {
@@ -139,6 +143,8 @@
     }
 
     p {
+      text-align: left;
+      word-wrap: break-word;
       margin-bottom: 10px;
     }
   }

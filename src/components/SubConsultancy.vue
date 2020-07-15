@@ -11,24 +11,24 @@
           <p>
             Consolidamos proyectos que serán desarrollados de acuerdo con la
             planeación y acorde con su presupuesto de la mano de arquitectura y
-            la ingénieria
+            la ingeniería
           </p>
         </div>
       </div>
     </div>
     <div class="dai sub-service">
-      <h3>Diseño, Arquitectura, Ingénieria</h3>
+      <h3>Diseño, Arquitectura, ingeniería</h3>
       <div class="content">
         <img
           src="@/assets/img/consultoria.webp"
-          alt="Diseño, Arquitectura, Ingénieria"
+          alt="Diseño, Arquitectura, ingeniería"
           width="500px"
         />
         <div>
           <p>
             Consolidamos proyectos que serán desarrollados de acuerdo con la
             planeación y acorde con su presupuesto de la mano de arquitectura y
-            la ingénieria
+            la ingeniería
           </p>
         </div>
       </div>
@@ -44,7 +44,7 @@
           <p>
             Consolidamos proyectos que serán desarrollados de acuerdo con la
             planeación y acorde con su presupuesto de la mano de arquitectura y
-            la ingénieria
+            la ingeniería
           </p>
         </div>
       </div>

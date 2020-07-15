@@ -7,9 +7,11 @@
         alt="Mantenimiento P.H."
       />
       <p>
-        Factores climáticos y de contaminación como la alta polución en nuestras
-        principales ciudades contribuyen en el deterioro no sólo de los
-        materiales de la fachada, sino además de su estética.
+        <span>
+          Factores climáticos y de contaminación como la alta polución en
+          nuestras principales ciudades contribuyen en el deterioro no sólo de
+          los materiales de la fachada, sino además de su estética.
+        </span>
       </p>
       <p>
         Todo ello afecta la vida útil de la edificación y resta valor a su
