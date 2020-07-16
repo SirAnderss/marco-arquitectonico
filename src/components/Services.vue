@@ -234,7 +234,7 @@ export default {
               padding: 15px;
               cursor: pointer;
               text-transform: uppercase;
-              font-size: 15px;
+              font-size: 13px;
               font-weight: bold;
               color: #fff;
               background: $main;
@@ -350,7 +350,7 @@ export default {
                 font-size: 13px;
               }
               button {
-                font-size: 15px;
+                font-size: 12px;
               }
             }
           }
@@ -403,72 +403,72 @@ export default {
     }
   }
 }
-@media screen and (min-width: $xlarge) {
-  .services {
-    h2 {
-      font-size: 40px;
-    }
+// @media screen and (min-width: $xlarge) {
+//   .services {
+//     h2 {
+//       font-size: 40px;
+//     }
 
-    .hooper {
-      .hooper-list {
-        .hooper-track {
-          .hooper-slide {
-            .service {
-              height: 700px;
-              margin-top: 60px;
+//     .hooper {
+//       .hooper-list {
+//         .hooper-track {
+//           .hooper-slide {
+//             .service {
+//               height: 700px;
+//               margin-top: 60px;
 
-              img {
-                width: 150px;
-              }
-              h3 {
-                font-weight: 800;
-              }
+//               img {
+//                 width: 150px;
+//               }
+//               h3 {
+//                 font-weight: 800;
+//               }
 
-              h3 {
-                font-size: 47px;
-              }
+//               h3 {
+//                 font-size: 30px;
+//               }
 
-              p {
-                font-size: 25px;
-              }
+//               p {
+//                 font-size: 20px;
+//               }
 
-              button {
-                width: 180px;
-                padding: 25px;
-                font-size: 20px;
+//               button {
+//                 width: 180px;
+//                 padding: 25px;
+//                 font-size: 20px;
 
-                &:hover {
-                  border-bottom: 15px solid $main;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+//                 &:hover {
+//                   border-bottom: 15px solid $main;
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
 
-    .prev,
-    .next {
-      font-size: 45px;
-    }
+//     .prev,
+//     .next {
+//       font-size: 45px;
+//     }
 
-    .prev {
-      left: 32%;
-    }
+//     .prev {
+//       left: 32%;
+//     }
 
-    .next {
-      right: 32%;
-    }
+//     .next {
+//       right: 32%;
+//     }
 
-    .is-current {
-      .service {
-        height: 780px !important;
+//     .is-current {
+//       .service {
+//         height: 780px !important;
 
-        button:hover {
-          border-bottom: 15px solid #fff !important;
-        }
-      }
-    }
-  }
-}
+//         button:hover {
+//           border-bottom: 15px solid #fff !important;
+//         }
+//       }
+//     }
+//   }
+// }
 </style>

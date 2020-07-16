@@ -1,6 +1,10 @@
 <template>
   <div>
-    <HeroName page="Proyectos de consultoria" />
+    <HeroName
+      page="Proyectos de consultoria"
+      :images="projects"
+      :smImages="smProjects"
+    />
     <div class="consultancy">
       <img
         src="@/assets/img/services/consultoria.webp"
@@ -45,6 +49,22 @@ export default {
   components: {
     HeroName,
     SubConsultancy,
+  },
+  data() {
+    return {
+      projects: [
+        "office.webp",
+        "plaza.webp",
+        "serv-oficina.webp",
+        "commercial.webp",
+      ],
+      smProjects: [
+        "construccion-sm.webp",
+        "consultoria-sm.webp",
+        // "covertura-sm.webp",
+        // "mantenimiento-sm.webp",
+      ],
+    };
   },
 };
 </script>

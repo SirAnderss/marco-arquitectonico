@@ -1,5 +1,15 @@
 <template>
   <div class="hero-name">
+    <div class="slider">
+      <hooper :settings="subheroHooperSettings">
+        <slide v-for="(item, index) in pictures" :key="index">
+          <img
+            :src="require('@/assets/img/' + item)"
+            :alt="'Nuestro trabajo' + index"
+          />
+        </slide>
+      </hooper>
+    </div>
     <div class="hero-bg">
       <h1 v-text="page"></h1>
       <i @click="scrollToFirst" class="down icon-arrow-down"></i>
@@ -8,9 +18,32 @@
 </template>
 
 <script>
+import { Hooper, Slide } from "hooper";
+import "hooper/dist/hooper.css";
+
 export default {
   name: "HeroName",
-  props: ["page"],
+  props: ["page", "images", "smImages"],
+  components: {
+    Hooper,
+    Slide,
+  },
+  data() {
+    return {
+      subheroHooperSettings: {
+        mouseDrag: false,
+        playSpeed: 1000,
+        transition: 800,
+        centerMode: true,
+        autoPlay: true,
+        wheelControl: false,
+        infiniteScroll: true,
+      },
+      windowWidth: "",
+      mobile: false,
+      pictures: [],
+    };
+  },
   methods: {
     scrollToFirst() {
       window.scrollTo({
@@ -18,6 +51,27 @@ export default {
         behavior: "smooth",
       });
     },
+    onResize() {
+      this.windowWidth = window.screen.width;
+    },
+  },
+  watch: {
+    windowWidth: function() {
+      if (this.windowWidth < 576) {
+        this.pictures = this.smImages;
+      } else {
+        this.pictures = this.images;
+      }
+    },
+  },
+  mounted() {
+    this.onResize();
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
   },
 };
 </script>
@@ -39,13 +93,21 @@ export default {
 
   &::after {
     background: linear-gradient(-340deg, $main, $secondary);
-    opacity: 0.25;
+    opacity: 0.2;
     z-index: 2;
   }
 
-  &::before {
-    background: url("../assets/img/hero-bg.webp") center;
-    z-index: 1;
+  .slider {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    .hooper {
+      height: 400px;
+      img {
+        width: 100%;
+        height: 400px;
+      }
+    }
   }
 
   .hero-bg {
@@ -99,7 +161,7 @@ export default {
   .hero-name {
     .hero-bg {
       h1 {
-        font-size: 65px;
+        font-size: 50px;
       }
     }
   }

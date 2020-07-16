@@ -1,16 +1,19 @@
 <template>
   <div class="welcome">
-      <p>
-      Somos una empresa conformada por un equipo de profesionales especializados
-      con más de 25 años de experiencia en el sector de la arquitectura y el
-      diseño dirigido al bienestar de sus usuarios. Ofrecemos a nuestros
-      clientes los mejores servicios en Diseño y Construcción con estándares de
-      alta calidad, seguridad, compromiso y cumplimiento de nuestros servicios.
-      Buscamos la excelencia en la ejecución de todas las actividades de
-      construcción en proyectos de Consultoría en Arquitectura, Adecuaciones
-      Locativas Corporativas e Institucionales, Obras Civiles, Propiedad
-      Horizontal, Acabados y Estructuras Metálicas aplicadas a soluciones de
-      infraestructura.
+    <p>
+      <span>
+        Somos una empresa conformada por un equipo de profesionales
+        especializados con más de 25 años de experiencia en el sector de la
+        arquitectura y el diseño dirigido al bienestar de sus usuarios. </span
+      ><br />
+      <br />
+      Ofrecemos a nuestros clientes los mejores servicios en Diseño y
+      Construcción con estándares de alta calidad, seguridad, compromiso y
+      cumplimiento de nuestros servicios. Buscamos la excelencia en la ejecución
+      de todas las actividades de construcción en proyectos de Consultoría en
+      Arquitectura, Adecuaciones Locativas Corporativas e Institucionales, Obras
+      Civiles, Propiedad Horizontal, Acabados y Estructuras Metálicas aplicadas
+      a soluciones de infraestructura.
     </p>
     <p>
       Permítanos ser su empresa aliada y ofrecerle las mejores alternativas para
@@ -19,7 +22,8 @@
       y el cumplimiento de los requisitos de ley que regulan nuestra actividad.
     </p>
     <router-link to="/contact"
-      >Contáctenos ya para solicitar una cotización<br>de nuestros servicios</router-link
+      >Contáctenos ya para solicitar una cotización<br />de nuestros
+      servicios</router-link
     >
   </div>
 </template>
@@ -51,6 +55,7 @@
     span {
       text-transform: uppercase;
       font-weight: 600;
+      color: $main;
     }
   }
 
@@ -139,6 +144,7 @@
     p {
       margin-bottom: 7px;
       font-size: 15px;
+      text-align: left;
     }
   }
 }

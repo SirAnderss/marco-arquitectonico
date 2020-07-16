@@ -1,6 +1,6 @@
 <template>
   <div class="contact">
-    <HeroName page="Contacto" />
+    <HeroName page="Contacto" :images="projects" :smImages="smProjects" />
     <Quotation />
     <ContactInfo />
   </div>
@@ -16,6 +16,22 @@ export default {
     HeroName,
     Quotation,
     ContactInfo,
+  },
+  data() {
+    return {
+      projects: [
+        "office.webp",
+        "plaza.webp",
+        "serv-oficina.webp",
+        "commercial.webp",
+      ],
+      smProjects: [
+        "construccion-sm.webp",
+        "consultoria-sm.webp",
+        "covertura-sm.webp",
+        "mantenimiento-sm.webp",
+      ],
+    };
   },
 };
 </script>

@@ -3,10 +3,14 @@
     <div class="cellar sub-service">
       <h3>Bodegas industriales</h3>
       <div class="content">
-        <img
-          src="@/assets/img/services/bodega.webp"
-          alt="Bodegas industriales"
-        />
+        <hooper :settings="buildingHooperSettings">
+          <slide>
+            <img src="@/assets/img/bodega-1.webp" alt="Bodegas industriales" />
+          </slide>
+          <slide>
+            <img src="@/assets/img/bodega-2.webp" alt="Bodegas industriales" />
+          </slide>
+        </hooper>
         <div>
           <p>
             Mejorar la producción y el almacenamiento, para garantizar un
@@ -31,7 +35,14 @@
     <div class="office sub-service">
       <h3>Oficinas</h3>
       <div class="content">
-        <img src="@/assets/img/services/oficina.webp" alt="Oficinas" />
+        <hooper :settings="buildingHooperSettings">
+          <slide>
+            <img src="@/assets/img/consultoria-sm.webp" alt="Oficinas" />
+          </slide>
+          <slide>
+            <img src="@/assets/img/oficina-sm.webp" alt="Oficinas" />
+          </slide>
+        </hooper>
         <div>
           <p>
             Para Optimalizar el Rendimiento y garantizar el bienestar Laboral de
@@ -58,7 +69,14 @@
     <div class="hotel sub-service">
       <h3>Hoteles</h3>
       <div class="content">
-        <img src="@/assets/img/services/hotel.webp" alt="Hoteles" />
+        <hooper :settings="buildingHooperSettings">
+          <slide>
+            <img src="@/assets/img/hotel.webp" alt="Hoteles" />
+          </slide>
+          <slide>
+            <img src="@/assets/img/flotante.webp" alt="Hoteles" />
+          </slide>
+        </hooper>
         <div>
           <p>
             Conceptualizamos su proyecto para ofrecer una mejora en el retorno
@@ -87,7 +105,14 @@
     <div class="commercial sub-service">
       <h3>Locales comerciales</h3>
       <div class="content">
-        <img src="@/assets/img/services/local.webp" alt="Locales comerciales" />
+        <hooper :settings="buildingHooperSettings">
+          <slide>
+            <img src="@/assets/img/local.webp" alt="Locales comerciales" />
+          </slide>
+          <slide>
+            <img src="@/assets/img/construccion-sm.webp" alt="Locales comerciales" />
+          </slide>
+        </hooper>
         <div>
           <p>
             Diseñamos la base de tu legado patrimonial, resaltando tu identidad
@@ -114,7 +139,14 @@
     <div class="house sub-service">
       <h3>Vivienda</h3>
       <div class="content">
-        <img src="@/assets/img/services/casa.webp" alt="Vivienda" />
+        <hooper :settings="buildingHooperSettings">
+          <slide>
+            <img src="@/assets/img/casa.webp" alt="Vivienda" />
+          </slide>
+          <slide>
+            <img src="@/assets/img/casa-sm.webp" alt="Vivienda" />
+          </slide>
+        </hooper>
         <div>
           <p>
             La tranquilidad de nuestra libertad, garantiza una vida sin igual,
@@ -140,8 +172,27 @@
 </template>
 
 <script>
+import { Hooper, Slide } from "hooper";
+import "hooper/dist/hooper.css";
 export default {
-  components: {},
+  components: {
+    Hooper,
+    Slide,
+  },
+  data() {
+    return {
+      buildingHooperSettings: {
+        mouseDrag: false,
+        playSpeed: 10000,
+        transition: 500,
+        centerMode: true,
+        autoPlay: true,
+        wheelControl: false,
+        infiniteScroll: true,
+        itemsToShow: 1,
+      },
+    };
+  },
 };
 </script>
 

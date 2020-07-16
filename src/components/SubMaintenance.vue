@@ -3,10 +3,20 @@
     <div class="facade sub-service">
       <h3>Impermeabilizacion de fachadas</h3>
       <div class="content">
-        <img
-          src="@/assets/img/services/fachada.webp"
-          alt="Impermeabilizacion de fachadas"
-        />
+        <hooper :settings="maintenanceHooperSettings">
+          <slide>
+            <img
+              src="@/assets/img/mantenimiento-sm.webp"
+              alt="Impermeabilizacion de fachadas"
+            />
+          </slide>
+          <slide>
+            <img
+              src="@/assets/img/mantenimiento.webp"
+              alt="Impermeabilizacion de fachadas"
+            />
+          </slide>
+        </hooper>
         <div>
           <p>
             Protección hidrorepelente para fachadas o estructuras expuestas a la
@@ -30,10 +40,26 @@
     <div class="cover sub-service">
       <h3>Impermeabilizacion de cubiertas</h3>
       <div class="content">
-        <img
-          src="@/assets/img/services/cubierta.webp"
-          alt="Impermeabilizacion de cubiertas"
-        />
+        <hooper :settings="maintenanceHooperSettings">
+          <slide>
+            <img
+              src="@/assets/img/cubierta-2.webp"
+              alt="Impermeabilizacion de cubiertas"
+            />
+          </slide>
+          <slide>
+            <img
+              src="@/assets/img/cubierta-3.webp"
+              alt="Impermeabilizacion de cubiertas"
+            />
+          </slide>
+          <slide>
+            <img
+              src="@/assets/img/cubierta.webp"
+              alt="Impermeabilizacion de cubiertas"
+            />
+          </slide>
+        </hooper>
         <div>
           <p>
             Impermeabilización a base de asfaltos modificados y reforzados con
@@ -85,10 +111,20 @@
     <div class="tank sub-service">
       <h3>Impermeabilizacion de tanques de agua potable</h3>
       <div class="content">
-        <img
-          src="@/assets/img/services/tanque.webp"
+        <hooper :settings="maintenanceHooperSettings">
+          <slide>
+            <img
+              src="@/assets/img/tanque-2.webp"
           alt="Impermeabilizacion de tanques de agua potable"
-        />
+            />
+          </slide>
+          <slide>
+            <img
+              src="@/assets/img/tanque.webp"
+          alt="Impermeabilizacion de tanques de agua potable"
+            />
+          </slide>
+        </hooper>
         <div>
           <p>
             Garantizamos la estanquidad e higiene por años, evitando la
@@ -113,10 +149,20 @@
     <div class="lobby sub-service">
       <h3>Construcción de porterías de acceso</h3>
       <div class="content">
-        <img
-          src="@/assets/img/services/porteria.webp"
+        <hooper :settings="maintenanceHooperSettings">
+          <slide>
+            <img
+              src="@/assets/img/port-2.webp"
           alt="Construcción de porterías de acceso"
-        />
+            />
+          </slide>
+          <slide>
+            <img
+              src="@/assets/img/port.webp"
+          alt="Construcción de porterías de acceso"
+            />
+          </slide>
+        </hooper>
         <div>
           <p>
             Proyectos enfocados a mejorar el Bienestar y seguridad para tú
@@ -143,10 +189,20 @@
     <div class="park sub-service">
       <h3>Construcción de senderos peatonales</h3>
       <div class="content">
-        <img
-          src="@/assets/img/services/peaton.webp"
+        <hooper :settings="maintenanceHooperSettings">
+          <slide>
+            <img
+              src="@/assets/img/sendero.webp"
           alt="Construcción de senderos peatonales"
-        />
+            />
+          </slide>
+          <slide>
+            <img
+              src="@/assets/img/peaton.webp"
+          alt="Construcción de senderos peatonales"
+            />
+          </slide>
+        </hooper>
         <div>
           <p>
             Garantizar el Bienestar, reconstruyendo e impermeabilizando las
@@ -177,8 +233,27 @@
 </template>
 
 <script>
+import { Hooper, Slide } from "hooper";
+import "hooper/dist/hooper.css";
 export default {
-  components: {},
+  components: {
+    Hooper,
+    Slide,
+  },
+  data() {
+    return {
+      maintenanceHooperSettings: {
+        mouseDrag: false,
+        playSpeed: 10000,
+        transition: 500,
+        centerMode: true,
+        autoPlay: true,
+        wheelControl: false,
+        infiniteScroll: true,
+        itemsToShow: 1,
+      },
+    };
+  },
 };
 </script>
 

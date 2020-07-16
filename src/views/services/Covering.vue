@@ -1,6 +1,10 @@
 <template>
   <div>
-    <HeroName page="Recubrimiento Arquitectónico" />
+    <HeroName
+      page="Recubrimiento Arquitectónico"
+      :images="projects"
+      :smImages="smProjects"
+    />
     <div class="covering">
       <img
         src="@/assets/img/services/arquitectura.webp"
@@ -58,6 +62,21 @@ export default {
   components: {
     HeroName,
     SubCovering,
+  },
+  data() {
+    return {
+      projects: [
+        "san-3.webp",
+        "antes-1.webp",
+        "antes-2.webp"
+      ],
+      smProjects: [
+        "sa-5.webp",
+        "sa-6.webp",
+        "mtto-1.webp",
+        "mtto-2.webp"
+      ],
+    };
   },
 };
 </script>

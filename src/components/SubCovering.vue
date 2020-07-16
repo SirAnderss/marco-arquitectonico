@@ -3,10 +3,26 @@
     <div class="metallica sub-service">
       <h3>Estructuras metálicas</h3>
       <div class="content">
-        <img
-          src="@/assets/img/services/metalica.webp"
-          alt="Estructuras metálicas"
-        />
+        <hooper :settings="coveringHooperSettings">
+          <slide>
+            <img
+              src="@/assets/img/metalica-sm.webp"
+              alt="Estructuras metálicas"
+            />
+          </slide>
+          <slide>
+            <img
+              src="@/assets/img/metalica-2.webp"
+              alt="Estructuras metálicas"
+            />
+          </slide>
+          <slide>
+            <img
+              src="@/assets/img/metalica-3.webp"
+              alt="Estructuras metálicas"
+            />
+          </slide>
+        </hooper>
         <div>
           <p>
             Garantizar La estabilidad de Tú Legado, construyendo un espacio
@@ -32,10 +48,17 @@
     <div class="float-facade sub-service">
       <h3>Fachadas flotantes</h3>
       <div class="content">
-        <img
-          src="@/assets/img/services/flotante.webp"
-          alt="Fachadas flotantes"
-        />
+        <hooper :settings="coveringHooperSettings">
+          <slide>
+            <img src="@/assets/img/flotante.webp" alt="Fachadas flotantes" />
+          </slide>
+          <slide>
+            <img src="@/assets/img/flotante-2.webp" alt="Fachadas flotantes" />
+          </slide>
+          <slide>
+            <img src="@/assets/img/metalica-3.webp" alt="Fachadas flotantes" />
+          </slide>
+        </hooper>
         <div>
           <p>
             El éxito se presenta con la innovación y la calidad, que consolida
@@ -63,8 +86,27 @@
 </template>
 
 <script>
+import { Hooper, Slide } from "hooper";
+import "hooper/dist/hooper.css";
 export default {
-  components: {},
+  components: {
+    Hooper,
+    Slide,
+  },
+  data() {
+    return {
+      coveringHooperSettings: {
+        mouseDrag: false,
+        playSpeed: 10000,
+        transition: 500,
+        centerMode: true,
+        autoPlay: true,
+        wheelControl: false,
+        infiniteScroll: true,
+        itemsToShow: 1,
+      },
+    };
+  },
 };
 </script>
 

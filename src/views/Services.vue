@@ -1,6 +1,6 @@
 <template>
   <div class="services">
-    <HeroName page="Servicios" />
+    <HeroName page="Servicios" :images="projects" :smImages="smProjects" />
     <div class="consultancy">
       <h2>Proyectos de consultoria</h2>
       <div>
@@ -83,6 +83,22 @@ import HeroName from "@/components/HeroName.vue";
 export default {
   components: {
     HeroName,
+  },
+  data() {
+    return {
+      projects: [
+        "office.webp",
+        "plaza.webp",
+        "serv-oficina.webp",
+        "commercial.webp",
+      ],
+      smProjects: [
+        "construccion-sm.webp",
+        "consultoria-sm.webp",
+        "covertura-sm.webp",
+        "mantenimiento-sm.webp",
+      ],
+    };
   },
 };
 </script>

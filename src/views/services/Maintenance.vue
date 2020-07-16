@@ -1,6 +1,10 @@
 <template>
   <div>
-    <HeroName page="Mantenimiento P.H." />
+    <HeroName
+      page="Mantenimiento P.H."
+      :images="projects"
+      :smImages="smProjects"
+    />
     <div class="mantenance">
       <img
         src="@/assets/img/services/mantenimiento.webp"
@@ -48,6 +52,19 @@ export default {
   components: {
     HeroName,
     SubMaintenance,
+  },
+  data() {
+    return {
+      projects: [
+        "galas.webp",
+        "antes-3.webp",
+        "antes-4.webp"
+      ],
+      smProjects: [
+        "sa-5.webp",
+        "sa-6.webp"
+      ],
+    };
   },
 };
 </script>
