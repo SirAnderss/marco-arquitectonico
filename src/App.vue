@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Bot />
     <Info />
     <Navigation />
     <router-view />
@@ -11,12 +12,14 @@
 import Info from "@/components/Info.vue";
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
+import Bot from "@/components/Bot.vue";
 
 export default {
   components: {
     Info,
     Navigation,
     Footer,
+    Bot
   },
   watch: {
     url: function() {

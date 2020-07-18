@@ -102,7 +102,7 @@ export default {
     position: absolute;
     padding: 0 10%;
     width: 100%;
-    z-index: 999;
+    z-index: 20;
     top: 50%;
     transform: translateY(-25%);
     text-align: center;
@@ -110,7 +110,6 @@ export default {
     h1,
     p {
       color: #fff;
-      z-index: 99;
       text-shadow: 0px 0px 21px $dark;
     }
 
@@ -143,7 +142,7 @@ export default {
               height: 100%;
               background: linear-gradient(-340deg, $main, $secondary);
               opacity: 0.3;
-              z-index: 1;
+              z-index: 10;
               position: absolute;
             }
           }

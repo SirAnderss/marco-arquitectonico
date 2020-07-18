@@ -32,7 +32,7 @@ export default {
     return {
       subheroHooperSettings: {
         mouseDrag: false,
-        playSpeed: 1000,
+        playSpeed: 8000,
         transition: 800,
         centerMode: true,
         autoPlay: true,

@@ -22,7 +22,7 @@
   position: fixed;
   width: 100%;
   height: 30px;
-  z-index: 9999;
+  z-index: 99;
   background: #fff;
   top: 0;
   display: flex;

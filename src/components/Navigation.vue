@@ -11,6 +11,7 @@
     <div class="menu-items" :class="{ open: mainMenu }">
       <ul>
         <li @click="closeMenu"><router-link to="/">Inicio</router-link></li>
+        <li @click="closeMenu"><router-link to="/about">About</router-link></li>
         <li @click="openServices" class="services">
           <a href="#!">Servicios</a>
           <ul
@@ -69,9 +70,9 @@
             </li>
           </ul>
         </li>
-        <li @click="closeMenu">
+        <!-- <li @click="closeMenu">
           <router-link to="/contact">Contactanos</router-link>
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="nav-mobile" @click="openMenu"><span></span></div>
@@ -115,7 +116,7 @@ nav {
   grid-template-columns: 20% 80%;
   background: #fff;
   width: 100%;
-  z-index: 9999;
+  z-index: 99;
   transition: 0.5s;
   box-shadow: 0 7px 12px rgba(0, 0, 0, 0.35);
   top: 30px;
