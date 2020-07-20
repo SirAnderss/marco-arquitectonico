@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
     "emailjs-com": "^2.4.1",
+    "firebase": "^7.16.1",
     "hooper": "^0.3.4",
     "simple-line-icons": "^2.4.1",
     "toastr": "^2.1.4",

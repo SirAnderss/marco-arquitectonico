@@ -1,9 +1,9 @@
-export default function windowScrollPosition(propertyName) {
+export default function windowScrollPosition(position) {
   return {
     data() {
       return {
         // Initialize scroll position at [0, 0]
-        [propertyName]: [0, 0]
+        [position]: [0, 0]
       }
     },
     created() {
@@ -12,7 +12,7 @@ export default function windowScrollPosition(propertyName) {
         this._scrollListener = () => {
           // window.pageX/YOffset is equivalent to window.scrollX/Y, but works in IE
           // We round values because high-DPI devies can provide some really nasty subpixel values
-          this[propertyName] = [
+          this[position] = [
             Math.round(window.pageXOffset),
             Math.round(window.pageYOffset)
           ]

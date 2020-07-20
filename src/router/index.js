@@ -1,24 +1,29 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-// import About from '../views/About.vue'
-import Blog from '../views/Blog.vue'
-// import Services from '../views/Services.vue'
-// import Contact from '../views/Contact.vue'
+import firebase from "firebase";
 
 Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '*',
+    redirect: '/404'
+  },
+  {
+    path: '/404',
+    name: 'NotFound',
+    component: () => import('../views/404.vue')
+  },
+  {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import('../views/Home.vue')
   },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   component: () => import('../views/About.vue')
-  // },
+  {
+    path: '/panel',
+    name: 'Login',
+    component: () => import('../views/Login.vue')
+  },
   {
     path: '/services',
     name: 'Services',
@@ -27,7 +32,17 @@ const routes = [
   {
     path: '/blog',
     name: 'Blog',
-    component: Blog
+    component: () => import('../views/Blog.vue')
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: () => import('../views/Dashboard.vue'),
+    beforeEnter: (to, from, next) => {
+      let user = firebase.auth().currentUser;
+      if (to.name !== 'Login' && !user) next({ name: 'Login' })
+      else next()
+    }
   },
   {
     path: '/contact',
@@ -61,5 +76,18 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+// router.beforeEach((to, from, next) => {
+//   let user = firebase.auth().currentUser;
+//   let access = to.matched.some(record => record.meta.authenticated)
+
+//   if (access && !user) {
+//     next('/login');
+//   } else if (!access && user) {
+//     next('/dashboard');
+//   } else {
+//     next();
+//   }
+// })
 
 export default router
