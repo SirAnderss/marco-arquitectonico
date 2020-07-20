@@ -1,12 +1,36 @@
 <template>
   <div class="bot-manager">
     <div class="content-bot">
+      <div class="promo-img" :class="{ show: promo }">
+        <hooper :settings="promoHooperSettings" ref="promoCarousel">
+          <slide>
+            <div class="wide">
+              <img src="@/assets/img/hero-supervision.webp" alt="promo-wide" />
+            </div>
+            <div class="portrait">
+              <img src="@/assets/img/hero-oficina.webp" alt="promo-portrait" />
+            </div>
+          </slide>
+          <slide>
+            <div class="portrait">
+              <img src="@/assets/img/hero-supervision.webp" alt="promo-wide" />
+            </div>
+            <div class="wide">
+              <img src="@/assets/img/hero-oficina.webp" alt="promo-portrait" />
+            </div>
+          </slide>
+        </hooper>
+        <i @click="closePromo" class="icon-close close"></i>
+        <i @click.prevent="slidePrev" class="icon-arrow-left prev"></i>
+        <i @click.prevent="slideNext" class="icon-arrow-right next"></i>
+      </div>
       <div class="marco" @click="showMarco">
         <img
           class="bot-face"
-          src="@/assets/img/chat/chatbot.svg"
+          src="@/assets/img/chat/chatbot.webp"
           alt="Chat bot"
         />
+        <p>1</p>
       </div>
       <div class="text">
         <div class="talk">
@@ -25,7 +49,8 @@
               <i class="icon-close"></i>
             </div>
             <span>
-              Hola, un placer atenderle. Mi nombre es Marcos, su asistente
+              Hola, un placer atenderle. Mi nombre es Marcos
+              <img src="@/assets/img/face.png" alt=" &#128119;" /> su asistente
               virtual en Marco Arquitectónico, en qué puedo servirle?
             </span>
           </div>
@@ -42,7 +67,7 @@
             >
               <i class="icon-close"></i>
             </div>
-            <span>
+            <span @click="showPromo">
               ¿Conoce nuestras promociones y ofertas?
             </span>
           </div>
@@ -122,10 +147,8 @@
               <i class="icon-close"></i>
             </div>
             <span class="answers" :class="{ show: botSteps.answer.offer }"
-              >Puedes conocer nuestras promociones y ofertas visitandonos
-              <div @click="closeAll">
-                <router-link to="/services/maintenance">aquí</router-link>.
-              </div>
+              >Puedes conocer nuestras promociones y ofertas dando click
+              <strong @click="showPromo">aquí</strong>.
             </span>
             <span class="answers" :class="{ show: botSteps.answer.attention }"
               >Puede llamarnos al
@@ -167,7 +190,7 @@
                 >
               </div>
             </div>
-            <div v-if="day == 7">
+            <div v-if="day == 0">
               <span
                 class="answers"
                 :class="{
@@ -182,7 +205,7 @@
                 y te contactaremos en breve.</span
               >
             </div>
-            <div v-if="day < 6">
+            <div v-if="day != 0 && day < 6">
               <div v-if="hour >= 8 && hour <= 21">
                 <span
                   class="answers"
@@ -226,21 +249,50 @@
           </div>
         </div>
       </div>
+      <div class="chat" :class="{ 'chat-text': chat }">
+        <input
+          type="text"
+          v-model="chatme"
+          class="chatme"
+          placeholder="Escribenos"
+          @keyup.enter="waMe"
+        />
+        <img src="@/assets/img/send.svg" alt=" " class="send" @click="waMe" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { Hooper, Slide } from "hooper";
+import "hooper/dist/hooper.css";
 export default {
   name: "Bot",
+  components: {
+    Hooper,
+    Slide,
+  },
   data() {
     return {
+      promoHooperSettings: {
+        mouseDrag: false,
+        playSpeed: 8000,
+        transition: 800,
+        centerMode: true,
+        wheelControl: false,
+        infiniteScroll: true,
+        itemsToShow: 1,
+        touchDrag: true,
+      },
+      chatme: "",
       hour: 0,
       minutes: 0,
       day: 0,
       startCounter: 0,
       helpTime: 0,
       botLeave: 0,
+      chat: false,
+      promo: true,
       timer: {
         start: 0,
         help: 0,
@@ -280,6 +332,14 @@ export default {
       this.minutes = tempDate.getMinutes();
       this.day = tempDate.getDay();
     },
+    waMe() {
+      let url = "https://wa.me/3134810480?text="; // Cambiar numero
+      let text = this.chatme.replace(/ /g, "%20");
+      let link = url + text;
+
+      window.open(link, "_blank");
+      this.chatme = "";
+    },
     botStart() {
       this.timer.start = 0;
       this.startCounter = setInterval(() => {
@@ -306,6 +366,7 @@ export default {
       this.botSteps.answer.exit = false;
       this.botSteps.answers = false;
       this.botSteps.contact = false;
+      this.chat = !this.chat;
       this.botSteps.options = !this.botSteps.options;
     },
     showButtonPhrase() {
@@ -342,6 +403,7 @@ export default {
       this.close.options = false;
     },
     closeChatOptions() {
+      this.chat = false;
       this.botSteps.options = false;
     },
     showButtonAnswers() {
@@ -354,6 +416,10 @@ export default {
       this.botSteps.answers = false;
       this.botSteps.answer.help = false;
       this.botSteps.answer.exit = false;
+      this.chat = false;
+    },
+    showPromo() {
+      this.promo = true;
     },
     showOptions() {
       this.botSteps.answers = false;
@@ -424,6 +490,7 @@ export default {
       this.botSteps.answer.offer = false;
       this.botSteps.answer.help = false;
       this.botSteps.answer.exit = true;
+      this.chat = false;
       this.leaveBot();
     },
     closeAll() {
@@ -441,23 +508,36 @@ export default {
       this.botSteps.answer.offer = false;
       this.botSteps.answer.help = false;
       this.botSteps.answer.exit = false;
+      this.chat = false;
+    },
+    closePromo() {
+      this.promo = false;
+    },
+    slidePrev() {
+      this.$refs.promoCarousel.slidePrev();
+    },
+    slideNext() {
+      this.$refs.promoCarousel.slideNext();
+    },
+    updateCarousel(payload) {
+      this.myCarouselData = payload.currentSlide;
     },
   },
   watch: {
     "timer.start": function() {
-      if (this.timer.start == 5) {
+      if (this.timer.start == 60) {
         this.botSteps.phrase = true;
         this.botSteps.welcome = true;
         this.botSteps.waiting = true;
-      } else if (this.timer.start == 10) {
+      } else if (this.timer.start == 120) {
         this.botSteps.phrase = false;
         this.botSteps.promo = true;
         this.botSteps.quota = false;
-      } else if (this.timer.start == 15) {
+      } else if (this.timer.start == 180) {
         this.botSteps.phrase = false;
         this.botSteps.promo = false;
         this.botSteps.quota = true;
-      } else if (this.timer.start == 20) {
+      } else if (this.timer.start == 200) {
         this.botSteps.phrase = false;
         this.botSteps.promo = false;
         this.botSteps.quota = false;
@@ -465,13 +545,13 @@ export default {
       }
     },
     "timer.exit": function() {
-      if (this.timer.exit == 5) {
+      if (this.timer.exit == 8) {
         this.closeAll();
         clearInterval(this.botLeave);
       }
     },
     "timer.help": function() {
-      if (this.timer.help === 5) {
+      if (this.timer.help === 8) {
         this.botSteps.answer.help = true;
         clearInterval(this.helpTime);
       }
@@ -483,46 +563,63 @@ export default {
     clearInterval(this.helpTime);
   },
   mounted() {
+    this.promo = false;
     this.botStart();
     this.getDateTime();
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
 @import "@/assets//scss/fonts.scss";
 .bot-manager {
   .marco {
-    // text-align: end;
     position: fixed;
     top: 80%;
     left: 90%;
-    z-index: 9999;
+    z-index: 999;
     cursor: pointer;
 
     .bot-face {
       margin-top: 15px;
-      padding: 3px;
-      background: $main;
-      border: 1px solid #fff;
-      border-radius: 50%;
+      padding: 15px;
       width: 100px;
+      opacity: 0.9;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+    p{
+      position: absolute;
+      top: 25px;
+      right: 20px;
+      background: red;
+      color: #fff;
+      padding: 2px 4px;
+      font-size: 12px;
+      font-weight: 200;
+      border-radius: 50%;
     }
   }
   .text {
     position: fixed;
     bottom: 20%;
     left: 62%;
-    z-index: 9999;
+    z-index: 999;
 
     .talk {
       margin-right: 80px;
       span {
-        padding: 0 20px;
         font-weight: 300;
         line-height: 20px;
-        a {
+
+        img {
+          width: 20px;
+        }
+        a, strong {
+          cursor: pointer;
           color: $secondary;
           font-weight: 600;
           text-transform: uppercase;
@@ -564,6 +661,7 @@ export default {
         padding-top: 20px;
 
         span:nth-of-type(1n) {
+          padding: 0 20px;
           padding-bottom: 20px;
         }
         span {
@@ -588,6 +686,112 @@ export default {
       }
     }
   }
+  .chat {
+    position: fixed;
+    top: 87%;
+    right: 15%;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    opacity: 0.8;
+    display: none;
+    &:hover {
+      opacity: 1;
+    }
+    .chatme {
+      width: 300px;
+      height: 40px;
+      border-radius: 5px;
+      border: 0;
+      font-size: 22px;
+      padding-left: 10px;
+      color: $secondary;
+      border: 2px solid $main;
+
+      &:hover {
+        border: 2px solid $secondary;
+      }
+    }
+    .send {
+      right: -50px;
+      position: absolute;
+      background: $main;
+      padding: 10px;
+      border-radius: 50%;
+      border: 1px solid #fff;
+      cursor: pointer;
+
+      &:hover {
+        background: $secondary;
+      }
+    }
+  }
+  .promo-img {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1111;
+    background: rgba(0, 0, 0, 0.5);
+    .hooper {
+      width: 100%;
+      height: 100%;
+      .hooper-list {
+        .hooper-track {
+          .hooper-slide {
+            width: 100%;
+            .wide,
+            .portrait {
+              width: 70%;
+              margin: 70px auto;
+              img {
+                width: 100%;
+              }
+            }
+            .portrait {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+      &:hover {
+        color: $secondary;
+      }
+    }
+
+    .prev,
+    .next {
+      border: none;
+      position: absolute;
+      cursor: pointer;
+      color: rgb(255, 255, 255);
+      text-shadow: 5px 7px 5px $dark;
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .prev,
+    .next {
+      top: 50%;
+    }
+
+    .prev {
+      left: 70px;
+    }
+
+    .next {
+      right: 70px;
+    }
+  }
 }
 
 @media screen and (max-width: $medium) {
@@ -596,7 +800,7 @@ export default {
       left: 5%;
 
       .bot-face {
-        width: 60px;
+        width: 90px;
       }
     }
     .text {
@@ -604,8 +808,11 @@ export default {
 
       .talk {
         span {
-          padding: 0 10px;
           line-height: 15px;
+
+          img {
+            width: 15px;
+          }
           a {
             font-weight: 500;
           }
@@ -619,6 +826,51 @@ export default {
           border-radius: 15px 15px 15px 0;
           font-size: 13px;
         }
+      }
+    }
+    .chat {
+      top: 82%;
+      left: 100px;
+      .chatme {
+        width: 200px;
+        height: 30px;
+        font-size: 15px;
+      }
+      .send {
+        left: 210px;
+        width: 30px;
+        padding: 5px;
+      }
+    }
+    .promo-img {
+      display: none;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 1111;
+      background: rgba(0, 0, 0, 0.5);
+      .hooper {
+        width: 100%;
+        height: 100%;
+        .hooper-list {
+          .hooper-track {
+            .hooper-slide {
+              width: 100%;
+              .wide {
+                display: none;
+              }
+              .portrait {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+
+      .prev,
+      .next {
+        display: none;
       }
     }
   }
@@ -657,7 +909,11 @@ export default {
     box-shadow: 0 0 10px $dark;
   }
 }
-.show {
+.show,
+.show-promo {
   display: block !important;
+}
+.chat-text {
+  display: flex !important;
 }
 </style>

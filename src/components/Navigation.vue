@@ -11,7 +11,6 @@
     <div class="menu-items" :class="{ open: mainMenu }">
       <ul>
         <li @click="closeMenu"><router-link to="/">Inicio</router-link></li>
-        <li @click="closeMenu"><router-link to="/about">About</router-link></li>
         <li @click="openServices" class="services">
           <a href="#!">Servicios</a>
           <ul
@@ -70,9 +69,9 @@
             </li>
           </ul>
         </li>
-        <!-- <li @click="closeMenu">
+        <li @click="closeMenu">
           <router-link to="/contact">Contactanos</router-link>
-        </li> -->
+        </li>
       </ul>
     </div>
     <div class="nav-mobile" @click="openMenu"><span></span></div>
