@@ -1,5 +1,5 @@
 <template>
-  <nav :style="[position[1] > 150 ? { height: '100px' } : { height: '120px' }]">
+  <nav class="nav-bar" :style="[position[1] > 150 ? { height: '100px' } : { height: '120px' }]">
     <div class="logo">
       <router-link to="/"
         ><img
@@ -109,7 +109,7 @@ export default {
 @import "@/assets//scss/_variables.scss";
 @import "@/assets//scss/fonts.scss";
 
-nav {
+.nav-bar{
   display: grid;
   position: fixed;
   grid-template-columns: 20% 80%;
@@ -218,7 +218,7 @@ nav {
 }
 
 @media screen and (min-width: $xlarge) {
-  nav {
+  .nav-bar{
     .menu-items {
       ul {
         .dropdown {
@@ -234,7 +234,7 @@ nav {
 }
 
 @media screen and (min-width: $large) {
-  nav {
+  .nav-bar{
     .menu-items {
       ul {
         .dropdown {
@@ -250,7 +250,7 @@ nav {
 }
 
 @media screen and (max-width: $large) {
-  nav {
+  .nav-bar{
     height: 100px !important;
     transition: all 1s;
     position: absolute;
@@ -328,7 +328,7 @@ nav {
 }
 
 @media screen and (max-width: $small) {
-  nav {
+  .nav-bar{
     top: 0;
   }
 }
