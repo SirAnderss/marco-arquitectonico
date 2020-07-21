@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <Bot />
-    <Info />
-    <Navigation />
+    <Bot :class="{ 'hide': hide}" />
+    <Info :class="{ 'hide': hide}" />
+    <Navigation :class="{ 'hide': hide}" />
     <router-view />
-    <Footer />
+    <Footer :class="{ 'hide': hide}" />
   </div>
 </template>
 
@@ -19,13 +19,26 @@ export default {
     Info,
     Navigation,
     Footer,
-    Bot
+    Bot,
+  },
+  data() {
+    return {
+      hide: true,
+    };
+  },
+  methods: {
+    hideElements() {},
   },
   watch: {
     url: function() {
       window.scrollTo({
         top: 0,
       });
+      if (this.url === "Dashboard" || this.url === "Login") {
+        this.hide = true
+      } else {
+        this.hide = false
+      }
     },
   },
   computed: {
@@ -35,6 +48,7 @@ export default {
       },
     },
   },
+  mounted() {},
 };
 </script>
 
@@ -42,4 +56,8 @@ export default {
 @import "@/assets/scss/app.scss";
 @import "@/assets//scss/fonts.scss";
 @import "toastr";
+
+.hide{
+  display: none !important;
+}
 </style>

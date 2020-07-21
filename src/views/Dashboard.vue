@@ -4,13 +4,18 @@
       Dashboard
     </h1>
     <button @click="logout">Salir</button>
+    <EditorBlog />
   </div>
 </template>
 
 <script>
 import firebase from "firebase";
+import EditorBlog from "@/components/EditorBlog.vue";
 export default {
   name: "Dashboard",
+  components: {
+    EditorBlog,
+  },
   methods: {
     logout() {
       firebase
@@ -28,14 +33,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .dashboard {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-top: 50px;
 }
 </style>

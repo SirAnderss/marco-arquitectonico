@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import VueAnalytics from 'vue-analytics'
 import loadFirebase from '../firebase.config';
+import Editor from 'vue-editor-js'
 
 const firebase = loadFirebase();
 
@@ -13,16 +14,15 @@ Vue.use(VueAnalytics, {
   id: 'UA-XXX-X'
 })
 
+Vue.use(Editor)
+
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    console.info('Authenticated');
-  } else {
-    console.info('Guest');
+    console.info('Warning don´t use this tool, be carefull');
   }
   new Vue({
     router,
     store,
-    firebase,
     render: h => h(App)
   }).$mount('#app');
 })
