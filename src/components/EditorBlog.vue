@@ -1,34 +1,46 @@
 <template>
-  <div class="editor-blog">
-    <h1>Editor</h1>
-    <editor
-      autofocus
-      ref="editor"
-      holder-id="codex-editor"
-      save-button-id="save-button"
-      :init-data="initData"
-      :save="onSave"
-      :config="config"
-      class="editor-box"
-      :initialized="onInitialized"
-      header
-      list
-      code
-      inlineCode
-      personality
-      embed
-      linkTool
-      marker
-      table
-      raw
-      delimiter
-      quote
-      image
-      warning
-      paragraph
-      checklist
-    />
-    <button @click="save">Guardar</button>
+  <div>
+    <div class="editor-blog">
+      <h1>Editor</h1>
+      <button @click="showEditor = true">Abrir editor</button>
+      <div v-if="showEditor" class="editor-box">
+        <input
+          type="text"
+          v-model="data.title"
+          class="_input_field"
+          placeholder="Título"
+        />
+        <editor
+          autofocus
+          ref="editor"
+          :init-data="initData"
+          :config="config"
+          header
+          list
+          code
+          inlineCode
+          personality
+          embed
+          linkTool
+          marker
+          table
+          raw
+          delimiter
+          quote
+          image
+          warning
+          paragraph
+          checklist
+        />
+        <button @click="preview">
+          Vista previa
+        </button>
+        <button @click="save" :loading="isCreating" :disabled="isCreating">
+          {{ isCreating ? "Creando post..." : "Crear post" }}
+        </button>
+      </div>
+    </div>
+    <div class="blog-preview" ref="preview"></div>
   </div>
 </template>
 
@@ -53,6 +65,7 @@ export default {
   name: "EditorBlog",
   data() {
     return {
+      showEditor: true,
       config: {
         tools: {
           header: {
@@ -135,7 +148,6 @@ export default {
                     .then(async (snapshot) => {
                       try {
                         let imgUrl = await snapshot.ref.getDownloadURL();
-                        console.log(imgUrl);
                         return {
                           success: 1,
                           file: {
@@ -156,17 +168,103 @@ export default {
         },
       },
       initData: null,
+      data: {
+        title: "",
+        post: "",
+        slug: "",
+        jsonData: null,
+      },
+      articleHTML: "",
+      category: [],
+      tag: [],
+      isCreating: false,
     };
   },
   methods: {
-    onSave(response) {
-      console.log(response);
-    },
     async save() {
-      this.$refs.editor;
+      const response = await this.$refs.editor.state.editor
+        .save()
+        .then((res) => res);
+      let data = response;
+      await this.outputHtml(data.blocks);
+      this.data.post = this.articleHTML;
+      this.data.jsonData = JSON.stringify(data);
+      if (this.data.post.trim() == "") return "Post is required";
+      if (this.data.title.trim() == "") return "Title is required";
+
+      this.isCreating = true;
+
+      // Script guardar
+
+      this.isCreating = false;
     },
-    onInitialized(editor) {
-      console.log(editor);
+    outputHtml(articleObj) {
+      articleObj.map((obj) => {
+        switch (obj.type) {
+          case "paragraph":
+            this.articleHTML += this.makeParagraph(obj);
+            break;
+          case "image":
+            this.articleHTML += this.makeImage(obj);
+            break;
+          case "header":
+            this.articleHTML += this.makeHeader(obj);
+            break;
+          case "raw":
+            this.articleHTML += `<div class="ce-block">
+                                  <div class="ce-block__content">
+                                    <div class="ce-code">
+                                      <code>${obj.data.html}</code>
+                                    </div>
+                                  </div>
+                                </div>\n`;
+            break;
+          case "code":
+            this.articleHTML += this.makeCode(obj);
+            break;
+          case "list":
+            this.articleHTML += this.makeList(obj);
+            break;
+          case "quote":
+            this.articleHTML += this.makeQuote(obj);
+            break;
+          case "warning":
+            this.articleHTML += this.makeWarning(obj);
+            break;
+          case "checklist":
+            this.articleHTML += this.makeChecklist(obj);
+            break;
+          case "embed":
+            this.articleHTML += this.makeEmbed(obj);
+            break;
+          case "delimeter":
+            this.articleHTML += this.makeDelimeter(obj);
+            break;
+          default:
+            return "";
+        }
+      });
+    },
+    async preview() {
+      const response = await this.$refs.editor.state.editor
+        .save()
+        .then((res) => res);
+      let data = response;
+      await this.outputHtml(data.blocks);
+      this.$refs.preview.innerHTML = `<h1>${this.data.title}</h1><br/>`+this.articleHTML;
+      this.articleHTML = "";
+    },
+    clear() {
+      if (this.$refs.preview.innerHTML) {
+        this.articleHTML = "";
+        this.$refs.preview.innerHTML = "";
+      }
+    },
+  },
+  watch: {
+    "data.title": function() {
+      let tempSlug = this.data.title.toLowerCase().replace(/\s+/gi, " ");
+      this.data.slug = tempSlug.replace(/ /g, "-");
     },
   },
 };
@@ -178,6 +276,7 @@ export default {
   width: 70%;
   margin: 0 auto;
   padding: 4px 7px;
+  text-align: center;
   font-size: 14px;
   border: 1px solid #dcdee2;
   border-radius: 4px;
@@ -185,6 +284,12 @@ export default {
   background-color: #fff;
   background-image: none;
   z-index: -1;
+  ._input_field {
+    width: 60%;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+  }
 
   &:hover {
     border: 1px solid #57a3f3;
@@ -194,6 +299,7 @@ export default {
     padding-bottom: 70px !important;
     width: 80%;
     margin: 0 auto;
+    text-align: left;
 
     .ce-block {
       border-bottom: $secondary 1px solid;

@@ -4,8 +4,10 @@ import router from './router'
 import store from './store'
 import VueAnalytics from 'vue-analytics'
 import loadFirebase from '../firebase.config';
+import jsonToHtml from './jsonToHtml';
 import Editor from 'vue-editor-js'
 
+Vue.mixin(jsonToHtml)
 const firebase = loadFirebase();
 
 Vue.config.productionTip = false
