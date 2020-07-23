@@ -35,6 +35,12 @@ const routes = [
     component: () => import('../views/Blog.vue')
   },
   {
+    path: '/blog/:slug',
+    name: 'BlogView',
+    props: true,
+    component: () => import('../views/BlogView.vue')
+  },
+  {
     path: '/dashboard',
     name: 'Dashboard',
     component: () => import('../views/Dashboard.vue'),
@@ -76,18 +82,5 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-
-// router.beforeEach((to, from, next) => {
-//   let user = firebase.auth().currentUser;
-//   let access = to.matched.some(record => record.meta.authenticated)
-
-//   if (access && !user) {
-//     next('/login');
-//   } else if (!access && user) {
-//     next('/dashboard');
-//   } else {
-//     next();
-//   }
-// })
 
 export default router

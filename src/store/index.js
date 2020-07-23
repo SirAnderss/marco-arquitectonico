@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     services: false,
-    mainMenu: false
+    mainMenu: false,
+    imgUrl: null
   },
   mutations: {
     openServices(state){
@@ -26,7 +27,10 @@ export default new Vuex.Store({
         top: 0,
         behavior: 'smooth'
       });
-    }
+    },
+    SET_IMGURL(state, imgUrl) {
+      state.imgUrl = imgUrl
+    },
   },
   actions: {
   },

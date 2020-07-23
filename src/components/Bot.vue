@@ -30,7 +30,7 @@
           src="@/assets/img/chat/chatbot.webp"
           alt="Chat bot"
         />
-        <p>1</p>
+        <!-- <p>1</p> -->
       </div>
       <div class="text">
         <div class="talk">

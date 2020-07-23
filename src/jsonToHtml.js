@@ -1,11 +1,13 @@
 export default {
   methods: {
     makeParagraph(obj) {
+      console.log(obj);
       return `<p class="blog_post_text">
                 ${obj.data.text}
               </p>`
     },
     makeImage(obj) {
+      this.imgUrl = obj.data.file.url;
       const caption = obj.data.caption ? `<div class="blog_caption">
                                             <p>${obj.data.caption}</p>
                                           </div>` : ''
@@ -67,9 +69,9 @@ export default {
       }
     },
     makeQuote(obj) {
-      return `<div class="spcl_line mar_b30">
+      return `<div class="post_qoute">
                 <blockquote>
-                  <p class="spcl_line_p">
+                  <p class="text_quote">
                     ${obj.data.text}
                   </p>
                 </blockquote>
@@ -77,14 +79,10 @@ export default {
               </div>`
     },
     makeWarning(obj) {
-      return `<section class="nws3_sec4">
-                <div class="row justify-content-center">
-                  <div class="col-12 col-md-10 col-lg-8">
-                    <div class="table_warning">
-                      <h3><span><i class="fas fa-exclamation"></i></span>${obj.data.title}</h3>
-                      <p>${obj.data.message}</p>
-                    </div>
-                  </div>
+      return `<section class="blog_warning">
+                <div class="table_warning">
+                  <h3><span><i class="icon-exclamation"></i></span>${obj.data.title}</h3>
+                  <p>${obj.data.message}</p>
                 </div>
               </section>`
     },
@@ -113,5 +111,31 @@ export default {
                 </div>
               </div>\n`
     },
-  }
+    makeTable(obj) {
+      console.log(obj.data.content);
+      let table = `<table class="blog_table">`
+      for (let i = 0; i < obj.data.content.length; i++) {
+        table += `<tr>`;
+        const x = obj.data.content[i];
+        for (let j = 0; j < x.length; j++) {
+          const y = x[j];
+          table += `<td>${y}</td>`
+        }
+        table += `</tr>`;
+      }
+      table += `</table>`
+
+      return table;
+    }
+  },
+  computed: {
+    imgUrl: {
+      get() {
+        return this.$store.state.imgUrl;
+      },
+      set(imgUrl) {
+        this.$store.commit("SET_IMGURL", imgUrl);
+      }
+    },
+  },
 }

@@ -17,13 +17,11 @@
           :config="config"
           header
           list
-          code
           inlineCode
           personality
           embed
           linkTool
           marker
-          table
           raw
           delimiter
           quote
@@ -40,23 +38,21 @@
         </button>
       </div>
     </div>
-    <div class="blog-preview" ref="preview"></div>
+    <div class="blog-view" ref="preview"></div>
   </div>
 </template>
 
 <script>
 import firebase from "firebase";
 import { v4 as uuidv4 } from "uuid";
+import toastr from "toastr";
 import Header from "@editorjs/header";
 import List from "@editorjs/list";
-import CodeTool from "@editorjs/code";
 import Paragraph from "@editorjs/paragraph";
 import Embed from "@editorjs/embed";
 import Table from "@editorjs/table";
-import Checklist from "@editorjs/checklist";
 import Marker from "@editorjs/marker";
 import Warning from "@editorjs/warning";
-import RawTool from "@editorjs/raw";
 import Quote from "@editorjs/quote";
 import InlineCode from "@editorjs/inline-code";
 import Delimiter from "@editorjs/delimiter";
@@ -65,6 +61,19 @@ export default {
   name: "EditorBlog",
   data() {
     return {
+      toastOptions: {
+        timeOut: 5000,
+        closeButton: true,
+        progressBar: true,
+        positionClass: "toast-bottom-right",
+        showDuration: 300,
+        hideDuration: 1000,
+        extendedTimeOut: 1000,
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut",
+      },
       showEditor: true,
       config: {
         tools: {
@@ -79,9 +88,6 @@ export default {
           list: {
             class: List,
             inlineToolbar: true,
-          },
-          code: {
-            class: CodeTool,
           },
           paragraph: {
             class: Paragraph,
@@ -104,9 +110,6 @@ export default {
               cols: 3,
             },
           },
-          checklist: {
-            class: Checklist,
-          },
           Marker: {
             class: Marker,
             shortcut: "CMD+SHIFT+M",
@@ -120,7 +123,6 @@ export default {
               messagePlaceholder: "Message",
             },
           },
-          raw: RawTool,
           quote: {
             class: Quote,
             inlineToolbar: true,
@@ -174,14 +176,14 @@ export default {
         slug: "",
         jsonData: null,
       },
+      image: null,
       articleHTML: "",
-      category: [],
-      tag: [],
       isCreating: false,
     };
   },
   methods: {
     async save() {
+      const db = firebase.firestore();
       const response = await this.$refs.editor.state.editor
         .save()
         .then((res) => res);
@@ -189,14 +191,82 @@ export default {
       await this.outputHtml(data.blocks);
       this.data.post = this.articleHTML;
       this.data.jsonData = JSON.stringify(data);
-      if (this.data.post.trim() == "") return "Post is required";
-      if (this.data.title.trim() == "") return "Title is required";
+      if (this.data.title.trim() === "") {
+        toastr.error(
+          "Para crear el post debe agregar un título",
+          "Error!",
+          this.toastOptions
+        );
+        return;
+      }
+      if (this.data.post.trim() === "") {
+        toastr.error(
+          "Para crear el post debe agregar el contenido",
+          "Error!",
+          this.toastOptions
+        );
+        return;
+      }
 
       this.isCreating = true;
 
-      // Script guardar
+      let checkPost = db.collection("marco-arquitectonico").doc(this.data.slug);
 
-      this.isCreating = false;
+      await checkPost
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            toastr.warning(
+              "Ya existe un post con el título : " +
+                this.data.title.toUpperCase(),
+              "Advertencia!",
+              this.toastOptions
+            );
+          } else {
+            let title = this.data.title;
+            let post = this.data.post.replace(/\s+/gi, " ");
+            let slug = this.data.slug;
+            let img = this.$store.state.imgUrl;
+            let toastOptions;
+
+            db.collection("marco-arquitectonico")
+              .doc(slug)
+              .set({
+                title: title,
+                post: post,
+                img: img,
+                create: firebase.firestore.FieldValue.serverTimestamp(), //Cambiar a created
+              })
+              .then(() => {
+                toastr.success(
+                  "El post ha sido crado exitosamente",
+                  "Éxito!",
+                  toastOptions
+                );
+
+                this.clearInputs();
+              })
+              .catch((error) => {
+                toastr.error(
+                  "Hubo un problema creando el post, intente nuevamente",
+                  "Error!",
+                  toastOptions
+                );
+                console.error("Error writing document: ", error);
+              });
+          }
+        })
+        .catch(function(error) {
+          toastr.error(
+            "Hubo un problema de comunicación con el servidor, intente nuevamente}",
+            "Error!",
+            this.toastOptions
+          );
+          console.log("Error getting document:", error);
+        });
+    },
+    getImage(imgUrl){
+      this.image = imgUrl
     },
     outputHtml(articleObj) {
       articleObj.map((obj) => {
@@ -240,10 +310,20 @@ export default {
           case "delimeter":
             this.articleHTML += this.makeDelimeter(obj);
             break;
+          case "table":
+            this.articleHTML += this.makeTable(obj);
+            break;
           default:
             return "";
         }
       });
+    },
+    async clearInputs() {
+      this.isCreating = false;
+      this.articleHTML = "";
+      await this.$refs.editor.state.editor.clear();
+      this.data.title = "";
+      console.log("Inputs cleared");
     },
     async preview() {
       const response = await this.$refs.editor.state.editor
@@ -251,14 +331,10 @@ export default {
         .then((res) => res);
       let data = response;
       await this.outputHtml(data.blocks);
-      this.$refs.preview.innerHTML = `<h1>${this.data.title}</h1><br/>`+this.articleHTML;
+      this.$refs.preview.innerHTML =
+        `<h1 class="blog_post_h1">${this.data.title}</h1><br/>` +
+        this.articleHTML;
       this.articleHTML = "";
-    },
-    clear() {
-      if (this.$refs.preview.innerHTML) {
-        this.articleHTML = "";
-        this.$refs.preview.innerHTML = "";
-      }
     },
   },
   watch: {
@@ -270,7 +346,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
 .editor-box {
   width: 70%;
@@ -289,6 +365,10 @@ export default {
     padding: 10px;
     font-weight: bold;
     font-size: 20px;
+
+    &:hover {
+      border: 1px solid $main;
+    }
   }
 
   &:hover {
@@ -305,7 +385,7 @@ export default {
       border-bottom: $secondary 1px solid;
     }
     .ce-block--focused {
-      border-bottom: chocolate 1px solid;
+      border-bottom: $main 1px solid;
     }
   }
 }

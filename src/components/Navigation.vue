@@ -1,5 +1,8 @@
 <template>
-  <nav class="nav-bar" :style="[position[1] > 150 ? { height: '100px' } : { height: '120px' }]">
+  <nav
+    class="nav-bar"
+    :style="[position[1] > 150 ? { height: '100px' } : { height: '120px' }]"
+  >
     <div class="logo">
       <router-link to="/"
         ><img
@@ -37,6 +40,9 @@
                 >Recubrimientos arquitectónicos</router-link
               >
             </li>
+            <li @click="closeMenu">
+              <router-link to="/blog">Blog</router-link>
+            </li>
           </ul>
         </li>
         <li @click="closeMenu" class="dropdown">
@@ -72,6 +78,7 @@
         <li @click="closeMenu">
           <router-link to="/contact">Contactanos</router-link>
         </li>
+        <li @click="closeMenu"><router-link to="/blog">Blog</router-link></li>
       </ul>
     </div>
     <div class="nav-mobile" @click="openMenu"><span></span></div>
@@ -109,7 +116,7 @@ export default {
 @import "@/assets//scss/_variables.scss";
 @import "@/assets//scss/fonts.scss";
 
-.nav-bar{
+.nav-bar {
   display: grid;
   position: fixed;
   grid-template-columns: 20% 80%;
@@ -218,7 +225,7 @@ export default {
 }
 
 @media screen and (min-width: $xlarge) {
-  .nav-bar{
+  .nav-bar {
     .menu-items {
       ul {
         .dropdown {
@@ -234,7 +241,7 @@ export default {
 }
 
 @media screen and (min-width: $large) {
-  .nav-bar{
+  .nav-bar {
     .menu-items {
       ul {
         .dropdown {
@@ -250,7 +257,7 @@ export default {
 }
 
 @media screen and (max-width: $large) {
-  .nav-bar{
+  .nav-bar {
     height: 100px !important;
     transition: all 1s;
     position: absolute;
@@ -328,7 +335,7 @@ export default {
 }
 
 @media screen and (max-width: $small) {
-  .nav-bar{
+  .nav-bar {
     top: 0;
   }
 }
