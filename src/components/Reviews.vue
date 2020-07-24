@@ -137,7 +137,7 @@ export default {
 @import "@/assets/scss/_variables.scss";
 
 .review {
-  margin-top: 25px;
+  margin-top: 60px;
   display: flex;
   flex-direction: row;
   .img {

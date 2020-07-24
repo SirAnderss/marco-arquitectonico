@@ -2,13 +2,10 @@
   <div class="login">
     <h2>Login</h2>
     <form @submit.prevent="login">
-      <input type="email" v-model="user" placeholder="Usuario" />
+      <input type="email" v-model="user" placeholder="Correo electrónico" />
       <input type="password" v-model="password" placeholder="Contraseña" />
       <input type="submit" value="Ingresar" />
     </form>
-    <pre>
-      {{ $data }}
-    </pre>
   </div>
 </template>
 
@@ -39,6 +36,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/_variables.scss";
 .login {
   position: absolute;
   top: 50%;
@@ -47,9 +45,50 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: $secondary;
+  h2 {
+    text-transform: uppercase;
+    font-size: 35px;
+    margin-bottom: 30px;
+  }
   form {
     display: inherit;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 300px;
+    background: $main;
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    input {
+      margin: 20px;
+      border: 0;
+      padding: 10px;
+      font-size: 18px;
+    }
+
+    input:nth-of-type(1n) {
+      width: 80%;
+    }
+
+    input:last-of-type {
+      width: 50%;
+      text-transform: uppercase;
+      font-weight: bold;
+      background: #fff;
+      border: 2px solid transparent;
+      border-radius: 5px;
+      color: $secondary;
+      cursor: pointer;
+
+      &:hover {
+        background: $main;
+        border: 2px solid #fff;
+        color: #fff;
+      }
+    }
   }
 }
 </style>

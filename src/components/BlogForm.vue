@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="editor-blog">
-      <h1>Editor</h1>
-      <button @click="showEditor = true">Abrir editor</button>
+      <button @click="showEditor = !showEditor" class="add">+</button>
       <div v-if="showEditor" class="editor-box">
         <input
           type="text"
@@ -38,7 +37,7 @@
         </button>
       </div>
     </div>
-    <div class="blog-view" ref="preview"></div>
+    <div class="blog-view content" v-if="showEditor" ref="preview"></div>
   </div>
 </template>
 
@@ -58,7 +57,7 @@ import InlineCode from "@editorjs/inline-code";
 import Delimiter from "@editorjs/delimiter";
 import ImageTool from "@editorjs/image";
 export default {
-  name: "EditorBlog",
+  name: "BlogForm",
   data() {
     return {
       toastOptions: {
@@ -74,7 +73,7 @@ export default {
         showMethod: "fadeIn",
         hideMethod: "fadeOut",
       },
-      showEditor: true,
+      showEditor: false,
       config: {
         tools: {
           header: {
@@ -235,7 +234,8 @@ export default {
                 title: title,
                 post: post,
                 img: img,
-                create: firebase.firestore.FieldValue.serverTimestamp(), //Cambiar a created
+                slug: slug,
+                created: firebase.firestore.FieldValue.serverTimestamp(),
               })
               .then(() => {
                 toastr.success(
@@ -265,8 +265,8 @@ export default {
           console.log("Error getting document:", error);
         });
     },
-    getImage(imgUrl){
-      this.image = imgUrl
+    getImage(imgUrl) {
+      this.image = imgUrl;
     },
     outputHtml(articleObj) {
       articleObj.map((obj) => {
@@ -339,8 +339,9 @@ export default {
   },
   watch: {
     "data.title": function() {
-      let tempSlug = this.data.title.toLowerCase().replace(/\s+/gi, " ");
-      this.data.slug = tempSlug.replace(/ /g, "-");
+      let cleanSlug = this.data.title.toLowerCase().replace(/\s+/gi, " ");
+      let tempSlug = cleanSlug.replace(/ /g, "-");
+      this.data.slug = tempSlug.replace(/ñ/gi, "n");
     },
   },
 };
@@ -348,11 +349,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/_variables.scss";
+@import "../assets/css/blog.css";
 .editor-box {
   width: 70%;
   margin: 0 auto;
-  padding: 4px 7px;
-  text-align: center;
+  padding: 10px 20px;
   font-size: 14px;
   border: 1px solid #dcdee2;
   border-radius: 4px;
@@ -360,11 +361,16 @@ export default {
   background-color: #fff;
   background-image: none;
   z-index: -1;
+
   ._input_field {
+    position: relative;
+    transform: translateX(-50%);
     width: 60%;
     padding: 10px;
     font-weight: bold;
     font-size: 20px;
+    margin: 5px auto;
+    left: 50%;
 
     &:hover {
       border: 1px solid $main;
@@ -375,18 +381,53 @@ export default {
     border: 1px solid #57a3f3;
   }
 
-  .codex-editor__redactor {
-    padding-bottom: 70px !important;
-    width: 80%;
-    margin: 0 auto;
-    text-align: left;
+  button {
+    width: 120px;
+    padding: 12px;
+    margin-right: 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    background: $main;
+    transition: 0.5s;
+    border: 1px solid #fff;
+    border-radius: 5px;
 
-    .ce-block {
-      border-bottom: $secondary 1px solid;
+    &:hover {
+      background: #fff;
+      color: $main;
+      border: 1px solid $main;
+      border-bottom: 5px solid $main;
+      padding-bottom: 10px;
     }
-    .ce-block--focused {
-      border-bottom: $main 1px solid;
-    }
+  }
+}
+
+.content {
+  border: 1px solid #dcdee2;
+  margin: 60px auto !important;
+}
+
+.add {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  color: #fff;
+  background: $main;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0.8;
+  box-shadow: 5px 5px 10px $secondary;
+
+  &:hover{
+    opacity: 1;
   }
 }
 </style>

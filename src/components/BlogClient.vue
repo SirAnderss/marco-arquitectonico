@@ -2,8 +2,17 @@
   <div class="blogs">
     <div class="blog-list">
       <div class="blog-items" v-for="(item, index) in blogs" :key="index">
-        <div class="blog-item">
-          <img :src="item.img" alt="Marco arquitectónico" />
+        <div v-if="noItems">No hay posts disponibles.</div>
+        <div v-else class="blog-item">
+          <div v-if="item.img">
+            <img :src="item.img" alt="Marco arquitectónico" />
+          </div>
+          <div v-else>
+            <img
+              :src="require('@/assets/img/marco.webp')"
+              :alt="'Marco arquitectónico' + index"
+            />
+          </div>
           <router-link
             :to="{
               name: 'BlogView',
@@ -30,8 +39,8 @@ export default {
     return {
       blogs: [],
       last: null,
+      noItems: false,
       empty: true,
-      query: null,
     };
   },
   methods: {
@@ -42,11 +51,15 @@ export default {
         .orderBy("created", "desc")
         .get()
         .then((query) => {
-          this.last = query.docs[query.docs.length - 1];
-          query.forEach((item) => {
-            this.blogs.push(item.data());
-          });
-          this.empty = false;
+          if (query.empty) {
+            this.noItems = true;
+          } else {
+            this.last = query.docs[query.docs.length - 1];
+            query.forEach((item) => {
+              this.blogs.push(item.data());
+            });
+            this.empty = false;
+          }
         })
         .catch((error) => {
           console.log("Error getting document:", error);
@@ -73,12 +86,6 @@ export default {
         .catch((error) => {
           console.log("Error getting document:", error);
         });
-    },
-  },
-  watch: {
-    query: function() {
-      let tempSlug = this.data.title.toLowerCase().replace(/\s+/gi, " ");
-      this.data.slug = tempSlug.replace(/ /g, "-");
     },
   },
   mounted() {
@@ -119,9 +126,13 @@ export default {
             font-weight: bold;
           }
         }
-
-        img {
-          max-height: 280px;
+        div {
+          width: 100%;
+          margin: auto 0;
+          img {
+            width: 100%;
+            max-height: 290px;
+          }
         }
         a {
           white-space: nowrap;

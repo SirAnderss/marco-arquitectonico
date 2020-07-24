@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <Bot :class="{ 'hide': hide}" />
-    <Info :class="{ 'hide': hide}" />
-    <Navigation :class="{ 'hide': hide}" />
+    <Bot :class="{ hide: hide }" />
+    <Info :class="{ hide: hide }" />
+    <Navigation :class="{ hide: hide }" />
     <router-view />
-    <Footer :class="{ 'hide': hide}" />
+    <Footer :class="{ hide: hide }" />
   </div>
 </template>
 
@@ -34,10 +34,14 @@ export default {
       window.scrollTo({
         top: 0,
       });
-      if (this.url === "Dashboard" || this.url === "Login") {
-        this.hide = true
+      if (
+        this.url === "Dashboard" ||
+        this.url === "Login" ||
+        this.url === "EditBlog"
+      ) {
+        this.hide = true;
       } else {
-        this.hide = false
+        this.hide = false;
       }
     },
   },
@@ -57,7 +61,7 @@ export default {
 @import "@/assets//scss/fonts.scss";
 @import "toastr";
 
-.hide{
+.hide {
   display: none !important;
 }
 </style>

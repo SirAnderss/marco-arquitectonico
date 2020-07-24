@@ -164,13 +164,13 @@
                     show: botSteps.answer.professional,
                   }"
                   >Para programar una visita profesional gratuita y conocer sus
-                  requerimientos por favor contacte a uno de nuestros agentes.
-                  <br />
-                  <a href="#!">Sofia</a><br /><a href="#!">Eduardo</a><br /><a
-                    href="#!"
-                    >Ana</a
-                  ></span
-                >
+                  requerimientos por favor contacte a uno de nuestros agentes
+                  dando click
+                  <a
+                    href="https://wa.me/573155597866?text=%20Hola,%20me%20interesa%20conocer%20sobre%20sus%20productos"
+                    >Aquí.</a
+                  >
+                </span>
               </div>
               <div v-else>
                 <span
@@ -213,13 +213,13 @@
                     show: botSteps.answer.professional,
                   }"
                   >Para programar una visita profesional gratuita y conocer sus
-                  requerimientos por favor contacte a uno de nuestros agentes.
-                  <br />
-                  <a href="#!">Sofia</a><br /><a href="#!">Eduardo</a><br /><a
-                    href="#!"
-                    >Ana</a
-                  ></span
-                >
+                  requerimientos por favor contacte a uno de nuestros agentes
+                  dando click
+                  <a
+                    href="https://wa.me/573155597866?text=%20Hola,%20me%20interesa%20conocer%20sobre%20sus%20productos"
+                    >Aquí.</a
+                  >
+                </span>
               </div>
               <div v-else>
                 <span
@@ -333,7 +333,7 @@ export default {
       this.day = tempDate.getDay();
     },
     waMe() {
-      let url = "https://wa.me/3134810480?text="; // Cambiar numero
+      let url = "https://wa.me/573155597866?text="; // Cambiar numero
       let text = this.chatme.replace(/ /g, "%20");
       let link = url + text;
 
@@ -591,7 +591,7 @@ export default {
         opacity: 1;
       }
     }
-    p{
+    p {
       position: absolute;
       top: 25px;
       right: 20px;
@@ -618,7 +618,8 @@ export default {
         img {
           width: 20px;
         }
-        a, strong {
+        a,
+        strong {
           cursor: pointer;
           color: $secondary;
           font-weight: 600;

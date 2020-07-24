@@ -4,8 +4,8 @@
     <Welcome />
     <Services />
     <Quotation />
-    <Clients />
     <Reviews />
+    <Clients />
     <ContactUs />
   </div>
 </template>
