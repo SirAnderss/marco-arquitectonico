@@ -24,7 +24,12 @@
         </div>
       </div>
     </div>
-    <div class="no-items" ref="notFound"></div>
+    <div class="no-items" ref="notFound" :class="{ show: show }">
+      <router-link to="/contact"
+        >Contáctenos ya para solicitar una cotización de nuestros
+        servicios</router-link
+      >
+    </div>
     <button @click="nextLoad" :class="{ hide: empty }" :disabled="empty">
       Siguiente
     </button>
@@ -41,6 +46,7 @@ export default {
       last: null,
       noItems: false,
       empty: true,
+      show: false,
     };
   },
   methods: {
@@ -79,7 +85,8 @@ export default {
               this.blogs.push(item.data());
             });
           } else {
-            this.$refs.notFound.innerHTML = `<span class="not_found">No se encontraron mas posts.</span>`;
+            // this.$refs.notFound.innerHTML = `<span class="not_found">No se encontraron mas posts.</span>`;
+            this.show = true;
             this.empty = true;
           }
         })
@@ -100,7 +107,7 @@ export default {
   width: 70%;
   margin: 60px auto;
   position: relative;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   .blog-list {
     display: flex;
     flex-wrap: wrap;
@@ -147,11 +154,10 @@ export default {
       }
     }
   }
-  button,
-  .no-items {
+  button {
     position: absolute;
     left: 50%;
-    bottom: 10px;
+    bottom: 20px;
     transform: translate(-50%, 80px);
   }
   button {
@@ -176,9 +182,12 @@ export default {
     }
   }
   .no-items {
-    padding: 15px;
+    display: none;
+    width: 100%;
+    text-align: center;
     color: $main;
-    font-size: 22px;
+    text-transform: uppercase;
+    font-size: 23px;
     font-weight: bold;
   }
 }

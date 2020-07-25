@@ -11,7 +11,7 @@
           src="@/assets/img/profile.webp"
           alt="perfil"
           @click="show = !show"
-        /><i class="icon-arrow-down" @click="show = !show"></i>
+        /><i class="icon-circle-down" @click="show = !show"></i>
         <div class="exit" :class="{ show: show }">
           <ul>
             <!-- <router-link to="/new"><li>Nuevo</li></router-link>

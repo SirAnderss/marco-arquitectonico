@@ -47,7 +47,7 @@
         </li>
         <li @click="closeMenu" class="dropdown">
           <router-link to="/services"
-            >Servicios<i class="icon-arrow-down"></i
+            >Servicios<i class="icon-circle-down"></i
           ></router-link>
           <ul
             :class="{ open: services }"
@@ -122,7 +122,7 @@ export default {
   grid-template-columns: 20% 80%;
   background: #fff;
   width: 100%;
-  z-index: 99;
+  z-index: 999;
   transition: 0.5s;
   box-shadow: 0 7px 12px rgba(0, 0, 0, 0.35);
   top: 30px;

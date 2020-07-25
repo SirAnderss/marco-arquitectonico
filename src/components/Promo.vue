@@ -3,24 +3,24 @@
     <hooper :settings="promoHooperSettings" ref="promoCarousel">
       <slide>
         <div class="wide">
-          <img src="@/assets/img/hero-supervision.webp" alt="promo-wide" />
+          <img :src="require('@/assets/img/hero-supervision.webp')" alt="promo-wide" />
         </div>
         <div class="portrait">
-          <img src="@/assets/img/hero-oficina.webp" alt="promo-portrait" />
+          <img :src="require('@/assets/img/hero-oficina.webp')" alt="promo-portrait" />
         </div>
       </slide>
       <slide>
         <div class="portrait">
-          <img src="@/assets/img/hero-supervision.webp" alt="promo-wide" />
+          <img :src="require('@/assets/img/hero-supervision.webp')" alt="promo-wide" />
         </div>
         <div class="wide">
-          <img src="@/assets/img/hero-oficina.webp" alt="promo-portrait" />
+          <img :src="require('@/assets/img/hero-oficina.webp')" alt="promo-portrait" />
         </div>
       </slide>
     </hooper>
-    <i @click="closePromo" class="icon-close close"></i>
-    <i @click.prevent="slidePrev" class="icon-arrow-left prev"></i>
-    <i @click.prevent="slideNext" class="icon-arrow-right next"></i>
+    <i @click="closePromo" class="icon-cancel-circle close"></i>
+    <i @click.prevent="slidePrev" class="icon-circle-left prev"></i>
+    <i @click.prevent="slideNext" class="icon-circle-right next"></i>
   </div>
 </template>
 
@@ -41,13 +41,12 @@ export default {
         playSpeed: 8000,
         transition: 800,
         centerMode: true,
-        // autoPlay: true,
         wheelControl: false,
         infiniteScroll: true,
         itemsToShow: 1,
         touchDrag: true,
       },
-      hide: false,
+      hide: true,
       carouselData: 0,
     };
   },
@@ -73,6 +72,9 @@ export default {
   beforeDestroy(){
     this.hide = false;
   },
+  mounted(){
+    this.hide = false;
+  }
 };
 </script>
 
@@ -80,7 +82,7 @@ export default {
 @import "@/assets/scss/_variables.scss";
 
 .promo-img {
-  display: none;
+  display: block;
   position: fixed;
   top: 0;
   width: 100%;

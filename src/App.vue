@@ -5,6 +5,7 @@
     <Navigation :class="{ hide: hide }" />
     <router-view />
     <Footer :class="{ hide: hide }" />
+    <Social :class="{ hide: hide }" />
   </div>
 </template>
 
@@ -13,6 +14,7 @@ import Info from "@/components/Info.vue";
 import Navigation from "@/components/Navigation.vue";
 import Footer from "@/components/Footer.vue";
 import Bot from "@/components/Bot.vue";
+import Social from "@/components/Social.vue";
 
 export default {
   components: {
@@ -20,6 +22,7 @@ export default {
     Navigation,
     Footer,
     Bot,
+    Social,
   },
   data() {
     return {
@@ -58,7 +61,6 @@ export default {
 
 <style lang="scss">
 @import "@/assets/scss/app.scss";
-@import "@/assets//scss/fonts.scss";
 @import "toastr";
 
 .hide {

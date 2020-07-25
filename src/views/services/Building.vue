@@ -47,17 +47,8 @@ export default {
   },
   data() {
     return {
-      projects: [
-        "office.webp",
-        "plaza.webp",
-        "serv-oficina.webp",
-        "commercial.webp",
-      ],
-      smProjects: [
-        "construccion-sm.webp",
-        "monitoreo.webp",
-        "sa-6.webp"
-      ],
+      projects: ["hero-metalica.webp", "casa-sm.webp"],
+      smProjects: ["hero-metalica.webp", "casa-sm.webp"],
     };
   },
 };

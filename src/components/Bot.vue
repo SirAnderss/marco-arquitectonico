@@ -1,8 +1,15 @@
 <template>
   <div class="bot-manager">
     <div class="content-bot">
-      <div class="promo-img" :class="{ show: promo }">
-        <hooper :settings="promoHooperSettings" ref="promoCarousel">
+      <div class="promo-img" :class="{ hide: promo }">
+        <div class="wide">
+          <img src="@/assets/img/promo-2.webp" alt="promo-wide" />
+        </div>
+        <div class="mobile">
+          <img src="@/assets/img/mobile.webp" alt="promo-mobile" />
+        </div>
+
+        <!-- <hooper :settings="promoHooperSettings" ref="promoCarousel">
           <slide>
             <div class="wide">
               <img src="@/assets/img/hero-supervision.webp" alt="promo-wide" />
@@ -19,10 +26,10 @@
               <img src="@/assets/img/hero-oficina.webp" alt="promo-portrait" />
             </div>
           </slide>
-        </hooper>
-        <i @click="closePromo" class="icon-close close"></i>
-        <i @click.prevent="slidePrev" class="icon-arrow-left prev"></i>
-        <i @click.prevent="slideNext" class="icon-arrow-right next"></i>
+        </hooper> -->
+        <i @click="closePromo" class="icon-cancel-circle close"></i>
+        <!-- <i @click.prevent="slidePrev" class="icon-circle-left prev"></i>
+        <i @click.prevent="slideNext" class="icon-circle-right next"></i> -->
       </div>
       <div class="marco" @click="showMarco">
         <img
@@ -30,7 +37,6 @@
           src="@/assets/img/chat/chatbot.webp"
           alt="Chat bot"
         />
-        <!-- <p>1</p> -->
       </div>
       <div class="text">
         <div class="talk">
@@ -46,7 +52,7 @@
               class="close-chat"
               @click="closeChatPhrase"
             >
-              <i class="icon-close"></i>
+              <i class="icon-cancel-circle"></i>
             </div>
             <span>
               Hola, un placer atenderle. Mi nombre es Marcos
@@ -65,7 +71,7 @@
               class="close-chat"
               @click="closeChatPromo"
             >
-              <i class="icon-close"></i>
+              <i class="icon-cancel-circle"></i>
             </div>
             <span @click="showPromo">
               ¿Conoce nuestras promociones y ofertas?
@@ -83,7 +89,7 @@
               class="close-chat"
               @click="closeChatQuota"
             >
-              <i class="icon-close"></i>
+              <i class="icon-cancel-circle"></i>
             </div>
             <span>
               También puede solicitar información sobre nuestros servicios
@@ -103,7 +109,7 @@
               class="close-chat"
               @click="closeChatOptions"
             >
-              <i class="icon-close"></i>
+              <i class="icon-cancel-circle"></i>
             </div>
             <span
               @click="showOffer"
@@ -144,7 +150,7 @@
               class="close-chat"
               @click="closeChatAnswers"
             >
-              <i class="icon-close"></i>
+              <i class="icon-cancel-circle"></i>
             </div>
             <span class="answers" :class="{ show: botSteps.answer.offer }"
               >Puedes conocer nuestras promociones y ofertas dando click
@@ -164,11 +170,10 @@
                     show: botSteps.answer.professional,
                   }"
                   >Para programar una visita profesional gratuita y conocer sus
-                  requerimientos por favor contacte a uno de nuestros agentes
-                  dando click
-                  <a
-                    href="https://wa.me/573155597866?text=%20Hola,%20me%20interesa%20conocer%20sobre%20sus%20productos"
-                    >Aquí.</a
+                  requerimientos por favor contacte a uno de nuestros
+                  diligenciando nuestro
+                  <router-link to="/contact"
+                    >formulario de cotizaciones</router-link
                   >
                 </span>
               </div>
@@ -213,11 +218,10 @@
                     show: botSteps.answer.professional,
                   }"
                   >Para programar una visita profesional gratuita y conocer sus
-                  requerimientos por favor contacte a uno de nuestros agentes
-                  dando click
-                  <a
-                    href="https://wa.me/573155597866?text=%20Hola,%20me%20interesa%20conocer%20sobre%20sus%20productos"
-                    >Aquí.</a
+                  requerimientos por favor contacte a uno de nuestros
+                  diligenciando nuestro
+                  <router-link to="/contact"
+                    >formulario de cotizaciones</router-link
                   >
                 </span>
               </div>
@@ -254,7 +258,7 @@
           type="text"
           v-model="chatme"
           class="chatme"
-          placeholder="Escribenos"
+          placeholder="Contacta a un asesor"
           @keyup.enter="waMe"
         />
         <img src="@/assets/img/send.svg" alt=" " class="send" @click="waMe" />
@@ -264,13 +268,13 @@
 </template>
 
 <script>
-import { Hooper, Slide } from "hooper";
+// import { Hooper, Slide } from "hooper";
 import "hooper/dist/hooper.css";
 export default {
   name: "Bot",
   components: {
-    Hooper,
-    Slide,
+    // Hooper,
+    // Slide,
   },
   data() {
     return {
@@ -292,7 +296,7 @@ export default {
       helpTime: 0,
       botLeave: 0,
       chat: false,
-      promo: true,
+      promo: false,
       timer: {
         start: 0,
         help: 0,
@@ -333,7 +337,7 @@ export default {
       this.day = tempDate.getDay();
     },
     waMe() {
-      let url = "https://wa.me/573155597866?text="; // Cambiar numero
+      let url = "https://wa.me/573155597866?text=";
       let text = this.chatme.replace(/ /g, "%20");
       let link = url + text;
 
@@ -419,7 +423,7 @@ export default {
       this.chat = false;
     },
     showPromo() {
-      this.promo = true;
+      this.promo = false;
     },
     showOptions() {
       this.botSteps.answers = false;
@@ -511,7 +515,7 @@ export default {
       this.chat = false;
     },
     closePromo() {
-      this.promo = false;
+      this.promo = true;
     },
     slidePrev() {
       this.$refs.promoCarousel.slidePrev();
@@ -563,7 +567,7 @@ export default {
     clearInterval(this.helpTime);
   },
   mounted() {
-    this.promo = false;
+    this.promo = true;
     this.botStart();
     this.getDateTime();
   },
@@ -704,7 +708,7 @@ export default {
       height: 40px;
       border-radius: 5px;
       border: 0;
-      font-size: 22px;
+      font-size: 15px;
       padding-left: 10px;
       color: $secondary;
       border: 2px solid $main;
@@ -728,35 +732,53 @@ export default {
     }
   }
   .promo-img {
-    display: none;
+    display: block;
     position: fixed;
     top: 0;
     width: 100%;
     height: 100vh;
     z-index: 1111;
     background: rgba(0, 0, 0, 0.5);
-    .hooper {
-      width: 100%;
-      height: 100%;
-      .hooper-list {
-        .hooper-track {
-          .hooper-slide {
-            width: 100%;
-            .wide,
-            .portrait {
-              width: 70%;
-              margin: 70px auto;
-              img {
-                width: 100%;
-              }
-            }
-            .portrait {
-              display: none;
-            }
-          }
-        }
+    text-align: center;
+
+    .wide,
+    .mobile {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .wide {
+      img {
+        height: 580px;
       }
     }
+
+    .mobile {
+      display: none;
+    }
+    // .hooper {
+    //   width: 100%;
+    //   height: 100%;
+    //   .hooper-list {
+    //     .hooper-track {
+    //       .hooper-slide {
+    //         width: 100%;
+    //         .wide,
+    //         .portrait {
+    //           width: 70%;
+    //           margin: 70px auto;
+    //           img {
+    //             width: 100%;
+    //           }
+    //         }
+    //         .portrait {
+    //           display: none;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
     .close {
       position: absolute;
       top: 10px;
@@ -835,7 +857,7 @@ export default {
       .chatme {
         width: 200px;
         height: 30px;
-        font-size: 15px;
+        font-size: 12px;
       }
       .send {
         left: 210px;
@@ -844,30 +866,41 @@ export default {
       }
     }
     .promo-img {
-      display: none;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      height: 100vh;
-      z-index: 1111;
-      background: rgba(0, 0, 0, 0.5);
-      .hooper {
-        width: 100%;
-        height: 100%;
-        .hooper-list {
-          .hooper-track {
-            .hooper-slide {
-              width: 100%;
-              .wide {
-                display: none;
-              }
-              .portrait {
-                display: block;
-              }
-            }
-          }
+      .wide,
+      .mobile {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .wide {
+        display: none;
+      }
+
+      .mobile {
+        display: block;
+        img {
+          max-width: 90%;
+          max-height: 80%;
         }
       }
+      // .hooper {
+      //   width: 100%;
+      //   height: 100%;
+      //   .hooper-list {
+      //     .hooper-track {
+      //       .hooper-slide {
+      //         width: 100%;
+      //         .wide {
+      //           display: none;
+      //         }
+      //         .portrait {
+      //           display: block;
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
 
       .prev,
       .next {
@@ -913,6 +946,10 @@ export default {
 .show,
 .show-promo {
   display: block !important;
+}
+
+.hide {
+  display: none !important;
 }
 .chat-text {
   display: flex !important;

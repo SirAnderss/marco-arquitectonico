@@ -12,7 +12,7 @@
     </div>
     <div class="hero-bg">
       <h1 v-text="page"></h1>
-      <i @click="scrollToFirst" class="down icon-arrow-down"></i>
+      <i @click="scrollToFirst" class="down icon-circle-down"></i>
     </div>
   </div>
 </template>
@@ -135,14 +135,6 @@ export default {
       top: 100%;
       left: 50%;
       transform: translateX(-50%);
-
-      &:after {
-        content: "\e604";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
     }
   }
 }

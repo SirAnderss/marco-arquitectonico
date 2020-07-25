@@ -82,6 +82,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/css/fonts.css";
 @import "@/assets/scss/_variables.scss";
 .dashboard {
   width: 100%;

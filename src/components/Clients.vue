@@ -1,11 +1,11 @@
 <template>
   <div id="client" class="client">
-    <h2>NUESTROS CLIENTES OPINAN</h2>
+    <!-- <h2>NUESTROS CLIENTES OPINAN</h2>
     <p>
       Nos esforzamos en construir relaciones duraderas con nuestros clientes y
       garantizar su satisfacción. Ellos confiaron en nosotros y nos comparten su
       experiencia
-    </p>
+    </p> -->
     <hooper :settings="clientHooperSettings">
       <slide>
         <img

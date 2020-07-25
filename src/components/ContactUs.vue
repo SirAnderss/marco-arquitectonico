@@ -5,7 +5,7 @@
       En Marco Arquitectónico SAS tenemos un amplio abanico de servicios en
       Asesoría, Diseño y Construcción orientado a materializar eso que sueña.
     </p>
-    <router-link to="/contact-us"
+    <router-link to="/contact"
       >Complete los datos en el formulario <br> y solicite una cotización gratuita
       ya.</router-link
     >

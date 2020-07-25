@@ -2,14 +2,27 @@
   <div class="footer">
     <div class="social">
       <router-link to="/"
-        ><img src="@/assets/img/logos/logo.webp" alt="Marco Arquitectónico " srcset=""
+        ><img
+          src="@/assets/img/logos/logo.webp"
+          alt="Marco Arquitectónico "
+          srcset=""
       /></router-link>
       <div class="social-links">
-        <a href="#!"><img src="@/assets/img/icons/fb.webp" alt="Facebook"/></a>
-        <a href="#!"><img src="@/assets/img/icons/tw.webp" alt="Twitter"/></a>
-        <a href="#!"><img src="@/assets/img/icons/li.webp" alt="LinkedIn"/></a>
-        <a href="#!"><img src="@/assets/img/icons/in.webp" alt="Instagram"/></a>
-        <a href="#!"><img src="@/assets/img/icons/rss.webp" alt="RSS"/></a>
+        <a href="https://www.facebook.com/usecheDyC" target="_blank"
+          ><i class="icon-facebook"></i
+        ></a>
+        <a href="https://twitter.com/@UsecheDyC" target="_blank"
+          ><i class="icon-twitter"></i
+        ></a>
+        <a href="https://www.instagram.com/usechedyc/" target="_blank"
+          ><i class="icon-instagram"></i
+        ></a>
+        <a
+          href="https://empresas.habitissimo.com.co/pro/useche-diseno-y-construcciones-s-a-s"
+          target="_blank"
+          ><img src="@/assets/img/icons/hb.webp" alt="Habitissimo"
+        /></a>
+        <a href="mailto:ucconstruccion@gmail.com"><i class="icon-rss"></i></a>
       </div>
       <p class="copy">
         Copyright © {{ thisYear }} Todos los derechos reservados |
@@ -19,21 +32,23 @@
     <div class="navigation">
       <div class="foo-services">
         <h3>Servicios</h3>
-        <router-link to="/servicios"
+        <router-link to="/services/consultancy"
           >Consultoria en diseño y arquitectura</router-link
         >
-        <router-link to="/servicios">Proyectos de construcción</router-link>
-        <router-link to="/servicios">Mantenimiento P.H.</router-link>
-        <router-link to="/servicios"
+        <router-link to="/services/building"
+          >Proyectos de construcción</router-link
+        >
+        <router-link to="/services/maintenance">Mantenimiento P.H.</router-link>
+        <router-link to="/services/covering"
           >Recubrimientos arquitectónicos</router-link
         >
       </div>
       <div class="foo-menu">
         <h3>Menú</h3>
         <router-link to="/">Inicio</router-link>
-        <router-link to="/nosotros">Nosotros</router-link>
-        <router-link to="/servicios">Servicios</router-link>
-        <router-link to="/contacto">Contactanos</router-link>
+        <router-link to="/services">Servicios</router-link>
+        <router-link to="/contact">Contactanos</router-link>
+        <router-link to="/blog">Blog</router-link>
       </div>
     </div>
   </div>
@@ -60,6 +75,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../assets/css/fonts.css";
 @import "@/assets/scss/_variables.scss";
 
 .footer {
@@ -87,14 +103,17 @@ export default {
     .social-links {
       margin: 10px auto;
       a {
+        font-size: 25px;
+        margin-left: 10px;
+        color: #fff;
+
         img {
-          width: 30px;
-          margin: 5px;
+          width: 25px;
         }
       }
     }
 
-    .copy{
+    .copy {
       margin: auto 20px;
     }
   }
@@ -137,7 +156,7 @@ export default {
   .footer {
     .navigation {
       flex-flow: column;
-      .foo-services{
+      .foo-services {
         margin-bottom: 20px;
       }
     }

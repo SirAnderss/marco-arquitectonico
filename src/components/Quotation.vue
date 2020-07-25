@@ -2,6 +2,14 @@
   <div class="quotation">
     <h2>Pide tu cotización <strong>GRATIS!!</strong></h2>
     <ContactForm />
+    <div class="opinion">
+      <h2>NUESTROS CLIENTES OPINAN</h2>
+      <p>
+        Nos esforzamos en construir relaciones duraderas con nuestros clientes y
+        garantizar su satisfacción. Ellos confiaron en nosotros y nos comparten
+        su experiencia
+      </p>
+    </div>
   </div>
 </template>
 
@@ -41,6 +49,10 @@ export default {
     font-size: 25px;
     text-transform: uppercase;
     text-align: center;
+  }
+
+  .opinion{
+    margin: 40px auto
   }
 }
 

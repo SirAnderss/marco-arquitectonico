@@ -81,7 +81,7 @@ export default {
     makeWarning(obj) {
       return `<section class="blog_warning">
                 <div class="table_warning">
-                  <h3><span><i class="icon-exclamation"></i></span>${obj.data.title}</h3>
+                  <h3><span><i class="icon-notification"></i></span>${obj.data.title}</h3>
                   <p>${obj.data.message}</p>
                 </div>
               </section>`

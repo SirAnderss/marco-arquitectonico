@@ -51,7 +51,11 @@
           <input type="radio" v-model="service" value="4" />
           <label for="other">Revestimiento Arquitectónico</label>
         </div>
-        <div :class="{ 'sub-service': service }">
+        <div>
+          <input type="radio" v-model="service" value="5" />
+          <label for="visit">Solicita una visita profesional gratuita</label>
+        </div>
+        <div v-if="service != 5" :class="{ 'sub-service': service }">
           <div v-if="service == 1" class="services">
             <div
               v-for="(item, index) in items.project"
@@ -93,6 +97,7 @@
             </div>
           </div>
         </div>
+        <span class="note">** Puede seleccionar múltiples opciones</span>
       </div>
       <input
         type="text"
@@ -289,7 +294,7 @@ export default {
       margin: 10px 20px;
       border: none;
       border-bottom: solid 1px $secondary;
-      font-size: 22px;
+      font-size: 20px;
       overflow: visible;
 
       &:focus {
@@ -303,22 +308,25 @@ export default {
     }
 
     .service {
-      width: 100%;
+      width: 70%;
+      margin: 10px auto;
+      padding: auto 40px;
       color: #fff;
-      font-size: 22px;
+      font-size: 20px;
       display: flex;
       flex-flow: column;
-      justify-content: space-around;
-      // flex-wrap: wrap;
+      align-items: flex-start;
 
       .sub-service {
         border: 2px solid #fff;
-        padding: 25px;
+        padding: 25px 10px;
+        width: 100%;
         .services {
-          display: flex;
-          flex-flow: row;
-          justify-content: space-around;
-          flex-wrap: wrap;
+          text-align: left;
+          // display: flex;
+          // flex-flow: row;
+          // justify-content: space-around;
+          // flex-wrap: wrap;
         }
       }
     }
@@ -380,6 +388,11 @@ export default {
   }
 }
 
+.note{
+  font-size: 10px;
+  font-style: italic;
+}
+
 @media screen and (min-width: $small) and (max-width: $large) {
   .contact-form {
     width: 100%;
@@ -402,7 +415,6 @@ export default {
         margin: 15px 0;
         font-size: 18px;
       }
-
       .form_field {
         width: 100%;
       }
@@ -441,6 +453,22 @@ export default {
       textarea {
         margin: 15px 0;
         font-size: 15px;
+      }
+
+      .service {
+        width: 100%;
+        text-align: start;
+        font-size: 15px;
+
+        input {
+          margin-right: 5px;
+        }
+
+        .sub-service {
+          .services {
+            text-align: start;
+          }
+        }
       }
 
       .form_field {

@@ -106,8 +106,8 @@
         </div>
       </slide>
     </hooper>
-    <i @click.prevent="slidePrev" class="prev icon-arrow-left"></i>
-    <i @click.prevent="slideNext" class="next icon-arrow-right"></i>
+    <i @click.prevent="slidePrev" class="prev icon-circle-left"></i>
+    <i @click.prevent="slideNext" class="next icon-circle-right"></i>
   </div>
 </template>
 

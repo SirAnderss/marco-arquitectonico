@@ -27,9 +27,9 @@
         <div class="track covering"></div>
       </slide>
     </hooper>
-    <i @click.prevent="slidePrev" class="prev icon-arrow-left"></i>
-    <i @click.prevent="slideNext" class="next icon-arrow-right"></i>
-    <i @click="scrollToFirst" class="down icon-arrow-down"></i>
+    <i @click.prevent="slidePrev" class="prev icon-circle-left"></i>
+    <i @click.prevent="slideNext" class="next icon-circle-right"></i>
+    <i @click="scrollToFirst" class="down icon-circle-down"></i>
   </div>
 </template>
 
@@ -185,14 +185,6 @@ export default {
     top: 90%;
     left: 50%;
     transform: translateX(-50%);
-
-    &:after {
-      content: "\e604";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
   }
 
   .prev {

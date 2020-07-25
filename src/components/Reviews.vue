@@ -119,7 +119,7 @@ export default {
     return {
       reviewHooperSettings: {
         mouseDrag: false,
-        playSpeed: 10000,
+        playSpeed: 45000,
         transition: 500,
         centerMode: true,
         autoPlay: true,
