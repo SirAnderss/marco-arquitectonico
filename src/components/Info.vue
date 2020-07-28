@@ -2,12 +2,14 @@
   <div class="info">
     <span class="email">
       Correo electrónico:
-      <a href="mailto:ucconstruccion@gmail.com">ucconstruccion@gmail.com</a>
+      <a href="mailto:contacto@marcoarquitectonico.com.co"
+        >contacto@marcoarquitectonico.com.co</a
+      >
     </span>
     <span class="phone">
       Teléfono:
       <a href="tel:+570318052967"> 031 805 2967</a> -
-      <a href="tel:+573155597866"> 315 559 7866</a>
+      <a href="tel:+573187993331"> 318 799 3331</a>
     </span>
     <span class="city">
       Bogotá DC

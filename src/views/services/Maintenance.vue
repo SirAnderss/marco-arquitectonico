@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeroName
-      page="Mantenimiento P.H."
+      page="Mantener es Cuidar Nuestro Entorno y Calidad de Vida"
       :images="projects"
       :smImages="smProjects"
     />

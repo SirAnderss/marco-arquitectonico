@@ -100,11 +100,11 @@ export default {
   margin-top: 140px !important;
   .hero-message {
     position: absolute;
-    padding: 0 10%;
+    padding: 0 1%;
     width: 100%;
     z-index: 20;
     top: 50%;
-    transform: translateY(-25%);
+    transform: translateY(-35%);
     text-align: center;
     text-transform: uppercase;
     h1,
@@ -260,7 +260,7 @@ export default {
       }
 
       p {
-        font-size: 45px;
+        font-size: 35px;
       }
     }
     .hooper {

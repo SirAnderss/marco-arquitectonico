@@ -8,7 +8,7 @@
         ><img
           src="@/assets/img/logos/logo.webp"
           alt="Marco Arquitectónico"
-          :style="[position[1] > 150 ? { width: '60px' } : { width: '80px' }]"
+          :style="[position[1] > 150 ? { width: '80px' } : { width: '100px' }]"
       /></router-link>
     </div>
     <div class="menu-items" :class="{ open: mainMenu }">
@@ -123,7 +123,7 @@ export default {
   background: #fff;
   width: 100%;
   z-index: 999;
-  transition: 0.5s;
+  transition: all 0.5s ease-in-out;
   box-shadow: 0 7px 12px rgba(0, 0, 0, 0.35);
   top: 30px;
 
@@ -133,6 +133,11 @@ export default {
     align-items: center;
     justify-content: center;
     margin: auto 15px;
+    a {
+      img {
+        transition: all 0.5s ease-in-out;
+      }
+    }
   }
 
   .menu-items {
@@ -221,7 +226,7 @@ export default {
 
 .open {
   display: block !important;
-  transition: 0.5s;
+  transition: all 0.5s ease-in-out;
 }
 
 @media screen and (min-width: $xlarge) {
@@ -258,7 +263,7 @@ export default {
 
 @media screen and (max-width: $large) {
   .nav-bar {
-    height: 100px !important;
+    height: 110px !important;
     transition: all 1s;
     position: absolute;
 

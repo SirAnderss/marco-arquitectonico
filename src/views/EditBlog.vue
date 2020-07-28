@@ -11,7 +11,8 @@
 </template>
 
 <script>
-// import firebase from "firebase";
+// import firebase from "firebase/app";
+// import 'firebase/firestore';
 import AdminNav from "@/components/AdminNav.vue";
 import BlogForm from "@/components/BlogForm.vue";
 export default {

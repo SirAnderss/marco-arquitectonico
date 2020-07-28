@@ -12,8 +12,8 @@
     </div>
     <div class="hero-bg">
       <h1 v-text="page"></h1>
-      <i @click="scrollToFirst" class="down icon-circle-down"></i>
     </div>
+    <i @click="scrollToFirst" class="down icon-circle-down"></i>
   </div>
 </template>
 
@@ -112,7 +112,7 @@ export default {
 
   .hero-bg {
     position: absolute;
-    top: 250px;
+    top: 180px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -123,19 +123,20 @@ export default {
       font-size: 40px;
       text-shadow: 5px 7px 10px $dark;
     }
+  }
 
-    .down {
-      border: none;
-      position: absolute;
-      cursor: pointer;
-      color: rgb(255, 255, 255);
-      text-shadow: 5px 7px 5px $dark;
-      font-size: 25px;
-      font-weight: 900;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+  .down {
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    text-shadow: 5px 7px 5px $dark;
+    font-size: 25px;
+    font-weight: 900;
+    top: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
   }
 }
 

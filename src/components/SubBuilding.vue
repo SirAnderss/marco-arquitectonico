@@ -14,13 +14,13 @@
         <div>
           <p>
             Mejorar la producción y el almacenamiento, para garantizar un
-            bienestar humano con una óptima entre el obrero y las máquinas,
-            incluye: <br />
+            bienestar humano con una óptima integración entre el obrero y las
+            máquinas, incluye: <br />
             <br />
           </p>
           <ul>
             <li>Excavación y cimentación</li>
-            <li>Estructura mtálica</li>
+            <li>Estructura metálica</li>
             <li>Concreto</li>
             <li>Cubiertas</li>
             <li>Redes contra incendios</li>
@@ -103,14 +103,17 @@
       </div>
     </div>
     <div class="commercial sub-service">
-      <h3>Locales comerciales</h3>
+      <h3>Locales Comerciales</h3>
       <div class="content">
         <hooper :settings="buildingHooperSettings">
           <slide>
             <img src="@/assets/img/local.webp" alt="Locales comerciales" />
           </slide>
           <slide>
-            <img src="@/assets/img/construccion-sm.webp" alt="Locales comerciales" />
+            <img
+              src="@/assets/img/construccion-sm.webp"
+              alt="Locales comerciales"
+            />
           </slide>
         </hooper>
         <div>

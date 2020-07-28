@@ -18,7 +18,7 @@ Vue.use(VueAnalytics, {
 
 Vue.use(Editor)
 
-firebase.auth().onAuthStateChanged(function (user) {
+firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.info('Warning don´t use this tool, be carefull');
   }

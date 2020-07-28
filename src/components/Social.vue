@@ -44,8 +44,8 @@
   .in,
   .hb,
   .ph {
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 45px;
     font-size: 25px;
     padding: 10px;
     transition: all 0.3s ease-in-out;

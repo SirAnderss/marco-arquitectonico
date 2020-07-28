@@ -1,7 +1,7 @@
 <template>
   <div class="sub-maintenance">
     <div class="facade sub-service">
-      <h3>Impermeabilizacion de fachadas</h3>
+      <h3>Impermeabilizacion de Fachadas</h3>
       <div class="content">
         <hooper :settings="maintenanceHooperSettings">
           <slide>
@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="cover sub-service">
-      <h3>Impermeabilizacion de cubiertas</h3>
+      <h3>Impermeabilizacion de Cubiertas</h3>
       <div class="content">
         <hooper :settings="maintenanceHooperSettings">
           <slide>
@@ -109,7 +109,7 @@
       </div>
     </div>
     <div class="tank sub-service">
-      <h3>Impermeabilizacion de tanques de agua potable</h3>
+      <h3>Impermeabilizacion de Tanques de Agua Potable</h3>
       <div class="content">
         <hooper :settings="maintenanceHooperSettings">
           <slide>
@@ -147,7 +147,7 @@
       </div>
     </div>
     <div class="lobby sub-service">
-      <h3>Construcción de porterías de acceso</h3>
+      <h3>Construcción de Porterías de Acceso</h3>
       <div class="content">
         <hooper :settings="maintenanceHooperSettings">
           <slide>
@@ -187,7 +187,7 @@
       </div>
     </div>
     <div class="park sub-service">
-      <h3>Construcción de senderos peatonales</h3>
+      <h3>Construcción de Senderos Peatonales</h3>
       <div class="content">
         <hooper :settings="maintenanceHooperSettings">
           <slide>

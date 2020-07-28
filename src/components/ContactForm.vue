@@ -255,21 +255,6 @@ export default {
   color: $secondary;
   text-align: center;
   background: $main;
-  border: 1px solid $secondary;
-
-  &::before {
-    content: "";
-    margin: 0 auto;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: url("../assets/img/hero-bg.webp");
-    background-size: cover;
-    background-repeat: no-repeat;
-    z-index: 1;
-  }
 
   h2 {
     font-size: 40px;

@@ -2,12 +2,10 @@
   <div class="quotation">
     <h2>Pide tu cotización <strong>GRATIS!!</strong></h2>
     <ContactForm />
-    <div class="opinion">
+    <div class="opinion" v-if="$route.name !== 'Contact'">
       <h2>NUESTROS CLIENTES OPINAN</h2>
       <p>
-        Nos esforzamos en construir relaciones duraderas con nuestros clientes y
-        garantizar su satisfacción. Ellos confiaron en nosotros y nos comparten
-        su experiencia
+        Nos esforzamos en construir relaciones duraderas con nuestros clientes y garantizar su satisfacción. Ellos confiaron en nosotros y nos comparten su experiencia
       </p>
     </div>
   </div>

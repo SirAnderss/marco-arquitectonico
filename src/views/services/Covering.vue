@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeroName
-      page="Recubrimiento Arquitectónico"
+      page="Impacto Visual que Deja Huella"
       :images="projects"
       :smImages="smProjects"
     />

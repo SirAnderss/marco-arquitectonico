@@ -1,8 +1,8 @@
 <template>
   <div id="review" class="review">
-    <div class="img">
+    <!-- <div class="img">
       <img src="@/assets/img/facade.webp" alt="Fachada en ladrillo" />
-    </div>
+    </div> -->
     <div class="slider">
       <hooper :settings="reviewHooperSettings">
         <slide>
@@ -127,6 +127,7 @@ export default {
         infiniteScroll: true,
         itemsToShow: 1,
         vertical: true,
+        hoverPause: false
       },
     };
   },
@@ -150,7 +151,11 @@ export default {
     }
   }
   .slider {
-    width: 50%;
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    box-shadow: 5px 7px 25px $dark;
     .hooper {
       .hooper-list {
         .hooper-track {
@@ -213,7 +218,7 @@ export default {
       }
     }
     .slider {
-      width: 100%;
+      width: 95%;
       margin: 0 auto;
       .hooper {
         .hooper-list {

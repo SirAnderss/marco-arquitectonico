@@ -2,7 +2,7 @@
   <div class="services">
     <HeroName page="Servicios" :images="projects" :smImages="smProjects" />
     <div class="consultancy">
-      <h2>Proyectos de consultoria</h2>
+      <h2>Proyectos de Consultoria</h2>
       <div>
         <img
           src="@/assets/img/consultoria.webp"

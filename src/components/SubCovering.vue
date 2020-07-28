@@ -1,7 +1,7 @@
 <template>
   <div class="sub-covering">
     <div class="metallica sub-service">
-      <h3>Estructuras metálicas</h3>
+      <h3>Estructuras Metálicas</h3>
       <div class="content">
         <hooper :settings="coveringHooperSettings">
           <slide>
@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="float-facade sub-service">
-      <h3>Fachadas flotantes</h3>
+      <h3>Fachadas Flotantes</h3>
       <div class="content">
         <hooper :settings="coveringHooperSettings">
           <slide>

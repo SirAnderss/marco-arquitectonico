@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import firebase from "firebase/app";
+import 'firebase/firestore';
 import Back from "@/components/Back.vue";
 export default {
   name: "Blogview",

@@ -1,7 +1,7 @@
 <template>
   <div class="sub-consultancy">
     <div class="management sub-service">
-      <h3>Gerencia de proyectos</h3>
+      <h3>Gerencia de Proyectos</h3>
       <div class="content">
         <hooper :settings="consultancyHooperSettings">
           <slide>
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="dai sub-service">
-      <h3>Diseño, Arquitectura, ingeniería</h3>
+      <h3>Diseño, Arquitectura, Ingeniería</h3>
       <div class="content">
         <hooper :settings="consultancyHooperSettings">
           <slide>
@@ -45,15 +45,17 @@
         </hooper>
         <div>
           <p>
-            Consolidamos proyectos que serán desarrollados de acuerdo con la
-            planeación y acorde con su presupuesto de la mano de arquitectura y
-            la ingeniería
+            El Diseño debe satisfacer las necesidades de espacios habitables
+            para Tú Proyecto, tanto en lo Estético como en lo tecnológico,
+            nosotros lo hacemos realidad. Diseñamos entornos urbanos desde
+            edificios de vivienda o comercial, hasta sistema de alcantarillado y
+            acueducto, vialidad y estudios de vulnerabilidad sísmica.
           </p>
         </div>
       </div>
     </div>
     <div class="direction sub-service">
-      <h3>Dirección de obra</h3>
+      <h3>Dirección de Obra</h3>
       <div class="content">
         <hooper :settings="consultancyHooperSettings">
           <slide>

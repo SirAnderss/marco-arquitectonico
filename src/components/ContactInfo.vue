@@ -23,14 +23,14 @@
         Bogotá DC
       </p>
       <p class="phone">
-        Teléfono: <span>031 805 2967</span> <br />
-        Celular: <span>315 559 7866</span>
+        Teléfono: <span><a href="tel:+570318052967"> 031 805 2967</a></span> <br />
+        Celular: <span><a href="tel:+573155597866"> 315 559 7866</a></span>
       </p>
       <p class="email">
         Correo electrónico:
         <span
-          ><a href="mailto:ucconstruccion@gmail.com"
-            >ucconstruccion@gmail.com</a
+          ><a href="mailto:contacto@marcoarquitectonico.com.co"
+            >contacto@marcoarquitectonico.com.co</a
           ></span
         >
       </p>

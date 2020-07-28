@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeroName
-      page="Proyectos de construcción"
+      page="Hacemos Realidad Eso que Sueñas"
       :images="projects"
       :smImages="smProjects"
     />

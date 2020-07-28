@@ -3,6 +3,7 @@
     <div class="social">
       <router-link to="/"
         ><img
+          class="logo"
           src="@/assets/img/logos/logo.webp"
           alt="Marco Arquitectónico "
           srcset=""
@@ -22,7 +23,9 @@
           target="_blank"
           ><img src="@/assets/img/icons/hb.webp" alt="Habitissimo"
         /></a>
-        <a href="mailto:ucconstruccion@gmail.com"><i class="icon-rss"></i></a>
+        <a href="mailto:contacto@marcoarquitectonico.com.co"
+          ><i class="icon-rss"></i
+        ></a>
       </div>
       <p class="copy">
         Copyright © {{ thisYear }} Todos los derechos reservados |
@@ -83,7 +86,7 @@ export default {
   display: grid;
   grid-template-columns: 40% 60%;
   margin: 0 auto;
-  background: $dark;
+  background: #333;
   padding: 30px 0;
 
   a {
@@ -96,8 +99,11 @@ export default {
     align-items: center;
     color: #fff;
 
-    img {
+    .logo {
       width: 100px;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      background: #fff;
     }
 
     .social-links {
@@ -144,6 +150,7 @@ export default {
 @media screen and (max-width: $medium) {
   .footer {
     grid-template-columns: 100%;
+    padding: 40px;
 
     .social {
       order: 1;
