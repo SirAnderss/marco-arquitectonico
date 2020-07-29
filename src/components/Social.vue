@@ -4,17 +4,17 @@
       <a href="tel:+573155597866"><i class="icon-phone-call"></i></a>
     </div>
     <div class="fb">
-      <a href="https://www.facebook.com/usecheDyC" target="_blank"
+      <a href="https://www.facebook.com/markoarkitecto" target="_blank"
         ><i class="icon-facebook"></i
       ></a>
     </div>
     <div class="tw">
-      <a href="https://twitter.com/@UsecheDyC" target="_blank"
+      <a href="https://twitter.com/@markoarkitecto" target="_blank"
         ><i class="icon-twitter"></i
       ></a>
     </div>
     <div class="in">
-      <a href="https://www.instagram.com/usechedyc/" target="_blank"
+      <a href="https://www.instagram.com/markoarkitecto/" target="_blank"
         ><i class="icon-instagram"></i
       ></a>
     </div>

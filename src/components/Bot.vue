@@ -3,10 +3,10 @@
     <div class="content-bot">
       <div class="promo-img" :class="{ hide: promo }">
         <div class="wide">
-          <img src="@/assets/img/promo-2.webp" alt="promo-wide" />
+          <img src="@/assets/img/wide.webp" alt="promo-wide" />
         </div>
         <div class="mobile">
-          <img src="@/assets/img/mobile.webp" alt="promo-mobile" />
+          <img src="@/assets/img/portrait.webp" alt="promo-mobile" />
         </div>
 
         <!-- <hooper :settings="promoHooperSettings" ref="promoCarousel">
@@ -746,6 +746,11 @@ export default {
       position: relative;
       top: 50%;
       transform: translateY(-50%);
+
+      img {
+        border: 1px solid transparent;
+        border-radius: 5px;
+      }
     }
 
     .wide {
@@ -756,6 +761,9 @@ export default {
 
     .mobile {
       display: none;
+      img {
+        border-radius: 15px 15px 5px 5px;
+      }
     }
     // .hooper {
     //   width: 100%;

@@ -9,13 +9,13 @@
           srcset=""
       /></router-link>
       <div class="social-links">
-        <a href="https://www.facebook.com/usecheDyC" target="_blank"
+        <a href="https://www.facebook.com/markoarkitecto" target="_blank"
           ><i class="icon-facebook"></i
         ></a>
-        <a href="https://twitter.com/@UsecheDyC" target="_blank"
+        <a href="https://twitter.com/@markoarkitecto" target="_blank"
           ><i class="icon-twitter"></i
         ></a>
-        <a href="https://www.instagram.com/usechedyc/" target="_blank"
+        <a href="https://www.instagram.com/markoarkitecto/" target="_blank"
           ><i class="icon-instagram"></i
         ></a>
         <a
