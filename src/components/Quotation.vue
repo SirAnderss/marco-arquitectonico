@@ -5,7 +5,9 @@
     <div class="opinion" v-if="$route.name !== 'Contact'">
       <h2>NUESTROS CLIENTES OPINAN</h2>
       <p>
-        Nos esforzamos en construir relaciones duraderas con nuestros clientes y garantizar su satisfacción. Ellos confiaron en nosotros y nos comparten su experiencia
+        Nos esforzamos en construir relaciones duraderas con nuestros clientes y
+        garantizar su satisfacción. <br />
+        Ellos confiaron en nosotros y nos comparten su experiencia
       </p>
     </div>
   </div>
@@ -49,8 +51,8 @@ export default {
     text-align: center;
   }
 
-  .opinion{
-    margin: 40px auto
+  .opinion {
+    margin: 40px auto;
   }
 }
 
@@ -78,7 +80,7 @@ export default {
 @media screen and (max-width: $small) {
   .quotation {
     width: 100%;
-    padding: 30px 10px;
+    padding: 20px 10px 0 10px;
 
     h2 {
       font-size: 30px;
@@ -88,6 +90,7 @@ export default {
     p {
       font-size: 18px;
       margin-bottom: 24px;
+      padding: 0 20px;
     }
     button {
       bottom: 4%;

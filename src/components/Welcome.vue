@@ -144,7 +144,7 @@
     p {
       margin-bottom: 7px;
       font-size: 15px;
-      text-align: left;
+      // text-align: left;
     }
   }
 }

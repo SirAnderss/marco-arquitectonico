@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import "firebase/analytics";
 
 const firebaseConfig = () => {
   try {
@@ -15,6 +16,7 @@ const firebaseConfig = () => {
     };
 
     firebase.initializeApp(conf);
+    firebase.analytics();
   } catch (error) {
     if (!/already exist/.test(error.message)) {
       console.log('Firebase error: ', error.stack);

@@ -67,9 +67,9 @@
         </hooper>
         <div>
           <p>
-            Consolidamos proyectos que serán desarrollados de acuerdo con la
-            planeación y acorde con su presupuesto de la mano de arquitectura y
-            la ingeniería
+            Nos encargamos de Coordinar y Controlar que el Proceso Constructivo
+            se edifique en concordancia con los planos y especificaciones
+            determinadas, reduciendo imprevistos y retrasos
           </p>
         </div>
       </div>

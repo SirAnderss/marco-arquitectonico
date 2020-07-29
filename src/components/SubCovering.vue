@@ -31,12 +31,12 @@
             <br />
           </p>
           <ul>
-            <li>Estructura metálica</li>
+            <li>Estructura Metálica</li>
             <li>
-              Mezanine metálico
+              Mezanine Metálico
             </li>
             <li>
-              Cubiertas metálicas
+              Cubiertas Metálicas
             </li>
             <li>
               Estructuras IPE y HAE
@@ -67,17 +67,17 @@
             <br />
           </p>
           <ul>
-            <li>Panel compuesto de aluminio</li>
+            <li>Panel Compuesto de Aluminio</li>
             <li>
-              Panel fenólico fundermax
+              Panel Fenólico Fundermax
             </li>
             <li>
-              Panel de fibrocemento
+              Panel de Fibrocemento
             </li>
             <li>
-              Paneles metálicos y microperforados
+              Paneles Metálicos y Microperforados
             </li>
-            <li>Persianas metálicas</li>
+            <li>Persianas Metálicas</li>
           </ul>
         </div>
       </div>

@@ -97,20 +97,21 @@ export default {
 @import "@/assets/scss/_variables.scss";
 
 .hero {
-  margin-top: 140px !important;
+  margin-top: 140px;
   .hero-message {
     position: absolute;
     padding: 0 1%;
-    width: 100%;
+    width: 80%;
     z-index: 20;
     top: 50%;
-    transform: translateY(-35%);
+    left: 50%;
+    transform: translate(-50%, -35%);
     text-align: center;
     text-transform: uppercase;
     h1,
     p {
       color: #fff;
-      text-shadow: 0px 0px 21px $dark;
+      text-shadow: 0 0 25px $dark;
     }
 
     h1 {

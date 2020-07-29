@@ -19,15 +19,15 @@
             <br />
           </p>
           <ul>
-            <li>Excavación y cimentación</li>
-            <li>Estructura metálica</li>
+            <li>Excavación y Cimentación</li>
+            <li>Estructura Metálica</li>
             <li>Concreto</li>
             <li>Cubiertas</li>
-            <li>Redes contra incendios</li>
-            <li>Acondicionamiento e instalaciones</li>
-            <li>Remodelación y rehabilitación</li>
-            <li>Desmantelamiento y demolición</li>
-            <li>Trabajos de pintura</li>
+            <li>Redes Contra Incendios</li>
+            <li>Acondicionamiento e Instalaciones</li>
+            <li>Remodelación y Rehabilitación</li>
+            <li>Desmantelamiento y Demolición</li>
+            <li>Trabajos de Pintura</li>
           </ul>
         </div>
       </div>
@@ -51,17 +51,17 @@
           </p>
           <ul>
             <li>
-              Diseño y distribucion arquitectónica
+              Diseño y Distribucion Arquitectónica
             </li>
-            <li>Remodelacion y adecuación</li>
-            <li>Mobiliario de oficina</li>
-            <li>Obras locativas</li>
-            <li>Divisiones de oficina</li>
-            <li>Redes contra incendios</li>
-            <li>Red eléctrica e iluminación</li>
-            <li>Red de voz y datos (Cableado estructucturado)</li>
+            <li>Remodelacion y Adecuación</li>
+            <li>Mobiliario de Oficina</li>
+            <li>Obras Locativas</li>
+            <li>Divisiones de Oficina</li>
+            <li>Redes Contra Incendios</li>
+            <li>Red Eléctrica e Iluminación</li>
+            <li>Red de Voz y Datos (Cableado Estructucturado)</li>
             <li>CCTV</li>
-            <li>Control de acceso</li>
+            <li>Control de Acceso</li>
           </ul>
         </div>
       </div>
@@ -87,17 +87,17 @@
           </p>
           <ul>
             <li>
-              Diseño y distribución arquitectónico
+              Diseño y Distribución Arquitectónico
             </li>
-            <li>Excavación y cimentación</li>
-            <li>Estructura metálica y concreto</li>
+            <li>Excavación y Cimentación</li>
+            <li>Estructura Metálica y Concreto</li>
             <li>Cubiertas</li>
-            <li>Recubrimiento de fachada</li>
-            <li>Redes contra incendios</li>
-            <li>Remodelación y rehabilitación</li>
-            <li>Red eléctrica e iluminación</li>
-            <li>Red de voz y datos (cableado estructurado – Rack)</li>
-            <li>Diseño y distribucion arquitectónica</li>
+            <li>Recubrimiento de Fachada</li>
+            <li>Redes Contra Incendios</li>
+            <li>Remodelación y Rehabilitación</li>
+            <li>Red Eléctrica e Iluminación</li>
+            <li>Red de Voz y Datos (Cableado Estructurado – Rack)</li>
+            <li>Diseño y Distribucion Arquitectónica</li>
           </ul>
         </div>
       </div>
@@ -126,15 +126,15 @@
           </p>
           <ul>
             <li>Diseño y Distribución Arquitectónico</li>
-            <li>Excavación y cimentación</li>
-            <li>Estructura metálica y concreto</li>
+            <li>Excavación y Cimentación</li>
+            <li>Estructura Metálica y concreto</li>
             <li>Cubiertas</li>
-            <li>Recubrimiento de fachada</li>
-            <li>Redes contra incendios</li>
-            <li>Acondicionamiento e instalaciones</li>
-            <li>Remodelación y rehabilitación</li>
+            <li>Recubrimiento de Fachada</li>
+            <li>Redes Contra Incendios</li>
+            <li>Acondicionamiento e Instalaciones</li>
+            <li>Remodelación y Rehabilitación</li>
             <li>CCTV</li>
-            <li>Control de acceso.</li>
+            <li>Control de Acceso.</li>
           </ul>
         </div>
       </div>
@@ -158,15 +158,15 @@
             <br />
           </p>
           <ul>
-            <li>Diseño y distribución arquitectónico</li>
-            <li>Excavación y cimentación</li>
+            <li>Diseño y Distribución Arquitectónico</li>
+            <li>Excavación y Cimentación</li>
             <li>Estructura</li>
             <li>Cubiertas</li>
-            <li>Recubrimiento de fachada</li>
-            <li>Acondicionamiento e instalaciones</li>
-            <li>Remodelación y rehabilitación</li>
+            <li>Recubrimiento de Fachada</li>
+            <li>Acondicionamiento e Instalaciones</li>
+            <li>Remodelación y Rehabilitación</li>
             <li>CCTV</li>
-            <li>Control de acceso</li>
+            <li>Control de Acceso</li>
           </ul>
         </div>
       </div>

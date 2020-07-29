@@ -181,6 +181,7 @@ export default {
     color: #fff;
     text-transform: uppercase;
     font-size: 40px;
+    text-shadow: 0 5px 10px $dark;
   }
 
   .hooper {
@@ -190,8 +191,8 @@ export default {
         .hooper-slide {
           .service {
             position: relative;
-            margin: 60px;
-            padding: 60px;
+            margin: 40px 60px;
+            padding: 60px 50px;
             height: 470px;
             margin-top: 50px;
             display: flex;
@@ -220,15 +221,15 @@ export default {
             }
 
             p {
-              text-align: start;
-              font-size: 15px;
+              text-align: justify;
+              font-size: 16px;
               margin-bottom: 25px;
             }
 
             button {
               position: absolute;
               left: 50%;
-              bottom: 15%;
+              bottom: 8%;
               transform: translateX(-50%);
               width: 120px;
               padding: 15px;
@@ -303,7 +304,6 @@ export default {
       }
 
       button {
-        bottom: 15% !important;
         color: $main !important;
         background: #fff !important;
         border: 1px solid #fff !important;
@@ -346,7 +346,6 @@ export default {
                 margin-bottom: 20px;
               }
               p {
-                text-align: start;
                 font-size: 13px;
               }
               button {

@@ -30,9 +30,9 @@
             <li>
               Fachadas en Ladrillo
             </li>
-            <li>Reparación de piezas afectadas</li>
-            <li>Pintura de fachadas</li>
-            <li>Limpieza de vidrios</li>
+            <li>Reparación de Piezas Afectadas</li>
+            <li>Pintura de Fachadas</li>
+            <li>Limpieza de Vidrios</li>
           </ul>
         </div>
       </div>
@@ -69,38 +69,38 @@
             <br />
           </p>
           <ul>
-            <li>Preserva y mantiene tú propiedad</li>
+            <li>Preserva y Mantiene Tú propiedad</li>
             <li>
-              Terraza en concreto ladrillo
+              Terraza en Concreto Ladrillo
               <ul>
-                <li>Reparación de piezas afectadas</li>
+                <li>Reparación de Piezas Afectadas</li>
                 <li>
-                  Pintura de fachadas
+                  Pintura de Fachadas
                 </li>
                 <li>
-                  Limpieza de vidrios
+                  Limpieza de Vidrios
                 </li>
               </ul>
             </li>
             <li>
-              Cubiertas en teja
+              Cubiertas en Teja
               <ul>
-                <li>Reparación de piezas afectadas</li>
+                <li>Reparación de Piezas Afectadas</li>
                 <li>
-                  Pintura de fachadas
+                  Pintura de Fachadas
                 </li>
-                <li>Limpieza de vidrios</li>
+                <li>Limpieza de Vidrios</li>
               </ul>
             </li>
             <li>
               Parqueaderos
               <ul>
-                <li>Reparación de piezas afectadas</li>
+                <li>Reparación de Piezas Afectadas</li>
                 <li>
-                  Pintura de fachadas
+                  Pintura de Fachadas
                 </li>
                 <li>
-                  Limpieza de vidrios
+                  Limpieza de Vidrios
                 </li>
               </ul>
             </li>
@@ -136,11 +136,11 @@
           </p>
           <ul>
             <li>
-              Tanques de agua potable
+              Tanques de Agua Potable
             </li>
-            <li>Automatización de equipos de bombeo</li>
+            <li>Automatización de Equipos de Bombeo</li>
             <li>
-              Redes contra incendio
+              Redes Contra Incendio
             </li>
           </ul>
         </div>
@@ -173,9 +173,9 @@
           </p>
           <ul>
             <li>
-              Protege tú Comunidad
+              Protege Tú Comunidad
             </li>
-            <li>Construcción de obra Civil y Arquitectónica</li>
+            <li>Construcción de Obra Civil y Arquitectónica</li>
             <li>
               Control de Acceso
             </li>
@@ -214,16 +214,16 @@
           </p>
           <ul>
             <li>
-              Construcción de senderos peatonales
+              Construcción de Senderos Peatonales
             </li>
             <li>
-              Impermeabilización de jardineras
+              Impermeabilización de Jardineras
             </li>
             <li>
-              Construcción de plazoletas
+              Construcción de Plazoletas
             </li>
             <li>
-              Impermeabilización de parqueaderos
+              Impermeabilización de Parqueaderos
             </li>
           </ul>
         </div>
