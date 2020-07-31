@@ -1,9 +1,9 @@
 <template>
-  <div class="dashboard">
+  <div class="edit">
     <AdminNav />
     <div class="content">
       <h1>
-        Dashboard
+        Edit
       </h1>
       <BlogForm />
     </div>
@@ -11,32 +11,21 @@
 </template>
 
 <script>
-// import firebase from "firebase/app";
-// import 'firebase/firestore';
 import AdminNav from "@/components/AdminNav.vue";
 import BlogForm from "@/components/BlogForm.vue";
 export default {
-  name: "Dashboard",
+  name: "Edit",
   components: {
     BlogForm,
     AdminNav,
-  },
-  data() {
-    return {
-      noItems: null,
-      posts: [],
-    };
-  },
-  methods: {
-  },
-  mounted() {
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import "../assets/css/fonts.css";
 @import "@/assets/scss/_variables.scss";
-.dashboard {
+.edit {
   width: 100%;
   color: $secondary;
   .content {

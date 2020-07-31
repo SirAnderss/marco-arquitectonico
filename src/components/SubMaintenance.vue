@@ -69,41 +69,9 @@
             <br />
           </p>
           <ul>
-            <li>Preserva y Mantiene Tú propiedad</li>
-            <li>
-              Terraza en Concreto Ladrillo
-              <ul>
-                <li>Reparación de Piezas Afectadas</li>
-                <li>
-                  Pintura de Fachadas
-                </li>
-                <li>
-                  Limpieza de Vidrios
-                </li>
-              </ul>
-            </li>
-            <li>
-              Cubiertas en Teja
-              <ul>
-                <li>Reparación de Piezas Afectadas</li>
-                <li>
-                  Pintura de Fachadas
-                </li>
-                <li>Limpieza de Vidrios</li>
-              </ul>
-            </li>
-            <li>
-              Parqueaderos
-              <ul>
-                <li>Reparación de Piezas Afectadas</li>
-                <li>
-                  Pintura de Fachadas
-                </li>
-                <li>
-                  Limpieza de Vidrios
-                </li>
-              </ul>
-            </li>
+            <li>Terraza en Concreto</li>
+            <li>Cubiertas en Teja</li>
+            <li>Parqueaderos</li>
           </ul>
         </div>
       </div>

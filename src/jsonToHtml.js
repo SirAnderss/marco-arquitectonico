@@ -105,10 +105,8 @@ export default {
     },
     makeDelimeter(obj) {
       console.log(obj);
-      return `<div class="ce-block">
-                <div class="ce-block__content">
-                  <div class="ce-delimiter cdx-block"></div>
-                </div>
+      return `<div class="blog_delimiter">
+                <p>***</p>
               </div>\n`
     },
     makeTable(obj) {

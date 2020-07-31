@@ -1,4 +1,4 @@
-@import url('./fonts.css');
+@import url("./fonts.css");
 a {
   color: #e27900;
 }
@@ -129,6 +129,17 @@ td {
   width: 100%;
 }
 
+.blog_delimiter {
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.blog_delimiter > p {
+  font-size: 40px !important;
+  letter-spacing: 0.2em;
+}
+
 @media screen and (max-width: 992px) {
   .blog-view {
     margin: 140px auto;
@@ -140,10 +151,6 @@ td {
 
   .blog-view > div > p:first-of-type {
     font-size: 19px;
-  }
-
-  .blog_post_text {
-    text-align: left;
   }
 
   .blog_table {

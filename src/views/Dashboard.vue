@@ -1,12 +1,28 @@
 <template>
   <div class="dashboard">
     <AdminNav />
+    <button
+      @click="showEditor = !showEditor"
+      v-if="this.$route.name === 'Dashboard'"
+      :class="{ rotate: showEditor }"
+      class="add"
+    >
+      +
+    </button>
     <div class="content">
       <h1>
         Dashboard
       </h1>
-      <BlogForm />
-      <div class="blogs">
+      <BlogForm v-if="showEditor" newEditor="true" />
+      <div v-if="!showEditor" class="search">
+        <input
+          type="text"
+          v-model="search"
+          placeholder="Ingrese la URL del post"
+        />
+        <button @click="searchPost">Buscar</button>
+      </div>
+      <div v-if="!showEditor" class="blogs">
         <div class="blog-list">
           <div class="blog-items" v-for="(item, index) in posts" :key="index">
             <div v-if="noItems">No hay posts disponibles.</div>
@@ -22,7 +38,7 @@
               </div>
               <router-link
                 :to="{
-                  name: 'BlogView',
+                  name: 'Edit',
                   params: { slug: item.slug },
                   props: { search: item.slug },
                 }"
@@ -38,7 +54,7 @@
 
 <script>
 import firebase from "firebase/app";
-import 'firebase/firestore';
+import "firebase/firestore";
 import AdminNav from "@/components/AdminNav.vue";
 import BlogForm from "@/components/BlogForm.vue";
 export default {
@@ -49,25 +65,24 @@ export default {
   },
   data() {
     return {
-      noItems: null,
+      search: "",
+      noItems: false,
       posts: [],
+      empty: false,
+      showEditor: false,
     };
   },
   methods: {
-    getPosts() {
+    getPost(param) {
       const db = firebase.firestore();
       db.collection("marco-arquitectonico")
-        .limit(1)
-        .orderBy("created", "desc")
+        .doc(param)
         .get()
         .then((query) => {
           if (query.empty) {
             this.noItems = true;
           } else {
-            this.last = query.docs[query.docs.length - 1];
-            query.forEach((item) => {
-              this.posts.push(item.data());
-            });
+            this.posts.push(query.data());
             this.empty = false;
           }
         })
@@ -75,9 +90,15 @@ export default {
           console.log("Error getting document:", error);
         });
     },
-  },
-  mounted() {
-    this.getPosts();
+    searchPost() {
+      const search = this.search.split("/");
+
+      for (let i = 0; i < search.length; i++) {
+        if (i == 4) {
+          this.getPost(search[i]);
+        }
+      }
+    },
   },
 };
 </script>
@@ -91,9 +112,47 @@ export default {
   .content {
     width: 80%;
     margin: 0 auto;
-    h1 {
+    h1,
+    .search {
       margin: 20px auto;
       text-align: center;
+    }
+
+    .search {
+      width: 60%;
+      margin: 0 auto;
+
+      input {
+        width: 100%;
+        height: 50px;
+        border: 2px double $secondary;
+        border-radius: 10px;
+        padding-left: 10px;
+        font-size: 20px;
+        color: $secondary;
+        transition: all 0.5s ease;
+
+        &:hover {
+          border: 2px double $main;
+        }
+      }
+
+      button {
+        margin-top: 20px;
+        border: 2px solid $main;
+        border-radius: 5px;
+        padding: 15px 40px;
+        font-size: 20px;
+        background: #fff;
+        color: $main;
+        transition: all 0.3s ease;
+
+        &:hover {
+          border: 2px solid #fff;
+          background: $main;
+          color: #fff;
+        }
+      }
     }
     .blogs {
       width: 70%;
@@ -182,5 +241,31 @@ export default {
       }
     }
   }
+}
+
+.add {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  color: #fff;
+  background: $main;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0.8;
+  box-shadow: 5px 5px 10px $secondary;
+  transition: all 0.5s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.rotate {
+  transform: rotate(45deg);
 }
 </style>

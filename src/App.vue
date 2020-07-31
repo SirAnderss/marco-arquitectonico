@@ -40,7 +40,8 @@ export default {
       if (
         this.url === "Dashboard" ||
         this.url === "Login" ||
-        this.url === "EditBlog"
+        this.url === "Edit" ||
+        this.url === "404"
       ) {
         this.hide = true;
       } else {

@@ -1,11 +1,18 @@
 <template>
-  <div>
+  <div class="not-found">
     <h1>404</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'NotFound'
-}
+  name: "NotFound",
+};
 </script>
+
+<style lang="scss" scoped>
+.not-found {
+  height: 100vh;
+  background: burlywood;
+}
+</style>

@@ -4,9 +4,9 @@
       >Contáctenos ya para solicitar una cotización<br />de nuestros
       servicios</router-link
     ><br><br>
-    <button @click="back">
+    <!--<button @click="back">
       Volver
-    </button>
+    </button>-->
   </div>
 </template>
 

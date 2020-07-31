@@ -1,65 +1,85 @@
 <template>
   <div>
-    <div class="editor-blog">
-      <button @click="showEditor = !showEditor" class="add">+</button>
-      <div v-if="showEditor" class="editor-box">
-        <input
-          type="text"
-          v-model="data.title"
-          class="_input_field"
-          placeholder="Título"
-        />
-        <editor
-          autofocus
-          ref="editor"
-          :init-data="initData"
-          :config="config"
-          header
-          list
-          inlineCode
-          personality
-          embed
-          linkTool
-          marker
-          raw
-          delimiter
-          quote
-          image
-          warning
-          paragraph
-          checklist
-        />
-        <button @click="preview">
-          Vista previa
-        </button>
-        <button @click="save" :loading="isCreating" :disabled="isCreating">
-          {{ isCreating ? "Creando post..." : "Crear post" }}
-        </button>
+    <div v-if="!noItems">
+      <div class="editor-blog">
+        <div class="editor-box">
+          <input
+            type="text"
+            v-model="data.title"
+            class="_input_field"
+            placeholder="Título"
+          />
+          <editor
+            v-if="openEditor || newEditor"
+            ref="editor"
+            :init-data="initData"
+            :config="config"
+            header
+            list
+            inlineCode
+            personality
+            embed
+            linkTool
+            marker
+            raw
+            delimiter
+            quote
+            image
+            warning
+            paragraph
+            checklist
+          />
+          <button @click="preview">
+            Vista previa
+          </button>
+          <button
+            v-if="$route.name === 'Dashboard'"
+            @click="save"
+            :loading="isCreating"
+            :disabled="isCreating"
+          >
+            {{ isCreating ? "Creando post..." : "Crear post" }}
+          </button>
+          <button
+            v-if="$route.name === 'Edit'"
+            @click="update"
+            :loading="isCreating"
+            :disabled="isCreating"
+          >
+            {{ isCreating ? "Actualizando post..." : "Actualizar post" }}
+          </button>
+        </div>
       </div>
+      <div class="blog-view content" ref="preview"></div>
     </div>
-    <div class="blog-view content" v-if="showEditor" ref="preview"></div>
+    <div v-else class="back">
+      <h3>No se han encontrado posts con los criterios de busqueda</h3>
+      <router-link to="/dashboard">Volver</router-link>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 import firebase from "firebase/app";
-import 'firebase/firestore';
-import 'firebase/storage';
+import "firebase/firestore";
+import "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import toastr from "toastr";
-import Header from "@editorjs/header";
-import List from "@editorjs/list";
-import Paragraph from "@editorjs/paragraph";
-import Embed from "@editorjs/embed";
-import Table from "@editorjs/table";
-import Marker from "@editorjs/marker";
-import Warning from "@editorjs/warning";
-import Quote from "@editorjs/quote";
-import InlineCode from "@editorjs/inline-code";
-import Delimiter from "@editorjs/delimiter";
-import ImageTool from "@editorjs/image";
+import header from "@editorjs/header";
+import list from "@editorjs/list";
+import paragraph from "@editorjs/paragraph";
+import embed from "@editorjs/embed";
+import table from "@editorjs/table";
+import marker from "@editorjs/marker";
+import warning from "@editorjs/warning";
+import quote from "@editorjs/quote";
+import inlineCode from "@editorjs/inline-code";
+import delimiter from "@editorjs/delimiter";
+import image from "@editorjs/image";
 export default {
   name: "BlogForm",
+  props: ["newEditor"],
   data() {
     return {
       toastOptions: {
@@ -75,26 +95,37 @@ export default {
         showMethod: "fadeIn",
         hideMethod: "fadeOut",
       },
-      showEditor: false,
       config: {
+        autofocus: true,
+        i18n: {
+          messages: {
+            ui: {},
+            toolNames: {},
+            tools: {},
+            blockTunes: {},
+          },
+        },
         tools: {
           header: {
-            class: Header,
+            class: header,
             config: {
-              placeholder: "Enter a header",
+              placeholder: "Ingrese un texto de encabezado",
               levels: [2, 3, 4],
               defaultLevel: 2,
             },
           },
           list: {
-            class: List,
+            class: list,
             inlineToolbar: true,
           },
           paragraph: {
-            class: Paragraph,
+            class: paragraph,
+            config: {
+              placeholder: "Ingrese el texto",
+            },
           },
           embed: {
-            class: Embed,
+            class: embed,
             config: {
               services: {
                 youtube: true,
@@ -104,19 +135,19 @@ export default {
             },
           },
           table: {
-            class: Table,
+            class: table,
             inlineToolbar: true,
             config: {
               rows: 2,
               cols: 3,
             },
           },
-          Marker: {
-            class: Marker,
+          marker: {
+            class: marker,
             shortcut: "CMD+SHIFT+M",
           },
           warning: {
-            class: Warning,
+            class: warning,
             inlineToolbar: true,
             shortcut: "CMD+SHIFT+W",
             config: {
@@ -125,21 +156,21 @@ export default {
             },
           },
           quote: {
-            class: Quote,
+            class: quote,
             inlineToolbar: true,
             shortcut: "CMD+SHIFT+O",
             config: {
-              quotePlaceholder: "Enter a quote",
-              captionPlaceholder: "Quote's author",
+              quotePlaceholder: "Ingrese una cita",
+              captionPlaceholder: "Autor de la cita",
             },
           },
           inlineCode: {
-            class: InlineCode,
+            class: inlineCode,
             shortcut: "CMD+SHIFT+M",
           },
-          delimiter: Delimiter,
+          delimiter: delimiter,
           image: {
-            class: ImageTool,
+            class: image,
             config: {
               uploader: {
                 uploadByFile(file) {
@@ -169,7 +200,10 @@ export default {
             },
           },
         },
+        data: {},
       },
+      noItems: false,
+      openEditor: false,
       initData: null,
       data: {
         title: "",
@@ -177,6 +211,7 @@ export default {
         slug: "",
         jsonData: null,
       },
+      // searchPost: "",
       image: null,
       articleHTML: "",
       isCreating: false,
@@ -227,6 +262,7 @@ export default {
             let title = this.data.title;
             let post = this.data.post.replace(/\s+/gi, " ");
             let slug = this.data.slug;
+            let jsonData = this.data.jsonData;
             let img = this.$store.state.imgUrl;
             let toastOptions;
 
@@ -237,6 +273,7 @@ export default {
                 post: post,
                 img: img,
                 slug: slug,
+                jsonData: jsonData,
                 created: firebase.firestore.FieldValue.serverTimestamp(),
               })
               .then(() => {
@@ -265,6 +302,68 @@ export default {
             this.toastOptions
           );
           console.log("Error getting document:", error);
+        });
+    },
+    async update() {
+      const db = firebase.firestore();
+      const response = await this.$refs.editor.state.editor
+        .save()
+        .then((res) => res);
+      let data = response;
+      await this.outputHtml(data.blocks);
+      this.data.post = this.articleHTML;
+      this.data.jsonData = JSON.stringify(data);
+      if (this.data.title.trim() === "") {
+        toastr.error(
+          "Para crear el post debe agregar un título",
+          "Error!",
+          this.toastOptions
+        );
+        return;
+      }
+      if (this.data.post.trim() === "") {
+        toastr.error(
+          "Para crear el post debe agregar el contenido",
+          "Error!",
+          this.toastOptions
+        );
+        return;
+      }
+
+      this.isCreating = true;
+      let title = this.data.title;
+      let post = this.data.post.replace(/\s+/gi, " ");
+      let slug = this.data.slug;
+      let jsonData = this.data.jsonData;
+      let img = this.$store.state.imgUrl;
+      let toastOptions;
+
+      db.collection("marco-arquitectonico")
+        .doc(slug)
+        .set({
+          title: title,
+          post: post,
+          img: img,
+          slug: slug,
+          jsonData: jsonData,
+          created: firebase.firestore.FieldValue.serverTimestamp(),
+        })
+        .then(() => {
+          toastr.success(
+            "El post ha sido crado exitosamente",
+            "Éxito!",
+            toastOptions
+          );
+          this.clearInputs();
+          this.$router.push("/dashboard");
+        })
+        .catch((error) => {
+          toastr.error(
+            "Hubo un problema actualizando el post, intente nuevamente",
+            "Error!",
+            toastOptions
+          );
+          console.error("Error writing document: ", error);
         });
     },
     getImage(imgUrl) {
@@ -309,7 +408,7 @@ export default {
           case "embed":
             this.articleHTML += this.makeEmbed(obj);
             break;
-          case "delimeter":
+          case "delimiter":
             this.articleHTML += this.makeDelimeter(obj);
             break;
           case "table":
@@ -338,13 +437,51 @@ export default {
         this.articleHTML;
       this.articleHTML = "";
     },
+    async search() {
+      const db = firebase.firestore();
+      await db
+        .collection("marco-arquitectonico")
+        .doc(this.$route.params.slug)
+        .get()
+        .then((query) => {
+          if (query.empty) {
+            this.noItems = true;
+          } else {
+            let data = query.data();
+            this.config.data = JSON.parse(data.jsonData);
+            this.data.title = data.title;
+            this.data.jsonData = data.jsonData;
+            this.openEditor = true;
+          }
+        })
+        .catch((error) => {
+          console.log("Error getting document:", error);
+        });
+    },
+    onInitialized(editor) {
+      console.log(editor);
+    },
   },
   watch: {
     "data.title": function() {
-      let cleanSlug = this.data.title.toLowerCase().replace(/\s+/gi, " ");
-      let tempSlug = cleanSlug.replace(/ /g, "-");
-      this.data.slug = tempSlug.replace(/ñ/gi, "n");
+      const cleanSlug = this.data.title.toLowerCase().replace(/\s+/gi, " ");
+      const tempSlug = cleanSlug.replace(/ /g, "-");
+
+      const removeAccents = (str) => {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      };
+
+      const slug = removeAccents(tempSlug);
+      this.data.slug = slug;
     },
+  },
+  computed: {
+    ...mapState(["searchPost"]),
+  },
+  created() {
+    if (this.$route.params.slug) {
+      this.search();
+    }
   },
 };
 </script>
@@ -384,8 +521,8 @@ export default {
   }
 
   button {
-    width: 120px;
-    padding: 12px;
+    width: 200px;
+    padding: 15px;
     margin-right: 15px;
     cursor: pointer;
     text-transform: uppercase;
@@ -412,24 +549,10 @@ export default {
   margin: 60px auto !important;
 }
 
-.add {
-  position: fixed;
-  right: 50px;
-  bottom: 50px;
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  border: 1px solid transparent;
-  color: #fff;
-  background: $main;
-  font-size: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  opacity: 0.8;
-  box-shadow: 5px 5px 10px $secondary;
-
-  &:hover{
-    opacity: 1;
-  }
+.back {
+  widows: 100%;
+  text-align: center;
+  margin: 40px auto;
+  line-height: 2em;
 }
 </style>

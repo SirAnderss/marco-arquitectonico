@@ -52,8 +52,8 @@ const routes = [
     }
   },
   {
-    path: '/dashboard/edit',
-    name: 'EditBlog',
+    path: '/dashboard/:slug',
+    name: 'Edit',
     component: () => import('../views/EditBlog.vue'),
     beforeEnter: (to, from, next) => {
       let user = firebase.auth().currentUser;
