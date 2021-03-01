@@ -4,12 +4,12 @@ import router from './router'
 import store from './store'
 import loadFirebase from '../firebase.config';
 import jsonToHtml from './jsonToHtml';
-import Editor from 'vue-editor-js';
+import Editor from 'vue-editor-js/src'
 // import VueGtag from "vue-gtag";
 
 Vue.mixin(jsonToHtml)
 const firebase = loadFirebase();
-Vue.prototype.$analytics = firebase.analytics();
+// Vue.prototype.$analytics = firebase.analytics();
 Vue.config.productionTip = false
 
 // Vue.use(VueGtag, {
