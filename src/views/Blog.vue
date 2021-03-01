@@ -6,13 +6,14 @@
 </template>
 
 <script>
-import HeroName from "@/components/HeroName.vue";
-import BlogClient from "@/components/BlogClient.vue";
+import { hydrateWhenVisible } from "vue-lazy-hydration";
+import firebase from "firebase/app";
+import "firebase/analytics";
 
 export default {
   components: {
-    HeroName,
-    BlogClient,
+    HeroName: hydrateWhenVisible(() => import("@/components/HeroName.vue")),
+    BlogClient: hydrateWhenVisible(() => import("@/components/BlogClient.vue")),
   },
   data() {
     return {
@@ -29,6 +30,19 @@ export default {
         "mantenimiento-sm.webp",
       ],
     };
+  },
+  mounted() {
+    this.logEvent();
+  },
+  methods: {
+    logEvent() {
+      try {
+        firebase.analytics().logEvent("blog_page_visited");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
+    },
   },
 };
 </script>

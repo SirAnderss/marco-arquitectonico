@@ -27,9 +27,7 @@
             <br />
           </p>
           <ul>
-            <li>
-              Fachadas en Ladrillo
-            </li>
+            <li>Fachadas en Ladrillo</li>
             <li>Reparación de Piezas Afectadas</li>
             <li>Pintura de Fachadas</li>
             <li>Limpieza de Vidrios</li>
@@ -69,9 +67,31 @@
             <br />
           </p>
           <ul>
-            <li>Terraza en Concreto</li>
-            <li>Cubiertas en Teja</li>
-            <li>Parqueaderos</li>
+            <li>Preserva y Mantiene Tú propiedad</li>
+            <li>
+              Terraza en Concreto Ladrillo
+              <ul>
+                <li>Reparación de Piezas Afectadas</li>
+                <li>Pintura de Fachadas</li>
+                <li>Limpieza de Vidrios</li>
+              </ul>
+            </li>
+            <li>
+              Cubiertas en Teja
+              <ul>
+                <li>Reparación de Piezas Afectadas</li>
+                <li>Pintura de Fachadas</li>
+                <li>Limpieza de Vidrios</li>
+              </ul>
+            </li>
+            <li>
+              Parqueaderos
+              <ul>
+                <li>Reparación de Piezas Afectadas</li>
+                <li>Pintura de Fachadas</li>
+                <li>Limpieza de Vidrios</li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
@@ -83,13 +103,13 @@
           <slide>
             <img
               src="@/assets/img/tanque-2.webp"
-          alt="Impermeabilizacion de tanques de agua potable"
+              alt="Impermeabilizacion de tanques de agua potable"
             />
           </slide>
           <slide>
             <img
               src="@/assets/img/tanque.webp"
-          alt="Impermeabilizacion de tanques de agua potable"
+              alt="Impermeabilizacion de tanques de agua potable"
             />
           </slide>
         </hooper>
@@ -103,13 +123,9 @@
             <br />
           </p>
           <ul>
-            <li>
-              Tanques de Agua Potable
-            </li>
+            <li>Tanques de Agua Potable</li>
             <li>Automatización de Equipos de Bombeo</li>
-            <li>
-              Redes Contra Incendio
-            </li>
+            <li>Redes Contra Incendio</li>
           </ul>
         </div>
       </div>
@@ -121,13 +137,13 @@
           <slide>
             <img
               src="@/assets/img/port-2.webp"
-          alt="Construcción de porterías de acceso"
+              alt="Construcción de porterías de acceso"
             />
           </slide>
           <slide>
             <img
               src="@/assets/img/port.webp"
-          alt="Construcción de porterías de acceso"
+              alt="Construcción de porterías de acceso"
             />
           </slide>
         </hooper>
@@ -140,16 +156,10 @@
             <br />
           </p>
           <ul>
-            <li>
-              Protege Tú Comunidad
-            </li>
+            <li>Protege Tú Comunidad</li>
             <li>Construcción de Obra Civil y Arquitectónica</li>
-            <li>
-              Control de Acceso
-            </li>
-            <li>
-              CCTV
-            </li>
+            <li>Control de Acceso</li>
+            <li>CCTV</li>
           </ul>
         </div>
       </div>
@@ -161,13 +171,13 @@
           <slide>
             <img
               src="@/assets/img/sendero.webp"
-          alt="Construcción de senderos peatonales"
+              alt="Construcción de senderos peatonales"
             />
           </slide>
           <slide>
             <img
               src="@/assets/img/peaton.webp"
-          alt="Construcción de senderos peatonales"
+              alt="Construcción de senderos peatonales"
             />
           </slide>
         </hooper>
@@ -181,18 +191,10 @@
             <br />
           </p>
           <ul>
-            <li>
-              Construcción de Senderos Peatonales
-            </li>
-            <li>
-              Impermeabilización de Jardineras
-            </li>
-            <li>
-              Construcción de Plazoletas
-            </li>
-            <li>
-              Impermeabilización de Parqueaderos
-            </li>
+            <li>Construcción de Senderos Peatonales</li>
+            <li>Impermeabilización de Jardineras</li>
+            <li>Construcción de Plazoletas</li>
+            <li>Impermeabilización de Parqueaderos</li>
           </ul>
         </div>
       </div>

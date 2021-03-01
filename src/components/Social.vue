@@ -1,24 +1,24 @@
 <template>
   <div class="social">
-    <div class="ph">
+    <div class="ph" @click="logEvent('phone')">
       <a href="tel:+573155597866"><i class="icon-phone-call"></i></a>
     </div>
-    <div class="fb">
+    <div class="fb" @click="logEvent('facebook')">
       <a href="https://www.facebook.com/markoarkitecto" target="_blank"
         ><i class="icon-facebook"></i
       ></a>
     </div>
-    <div class="tw">
+    <div class="tw" @click="logEvent('twitter')">
       <a href="https://twitter.com/@markoarkitecto" target="_blank"
         ><i class="icon-twitter"></i
       ></a>
     </div>
-    <div class="in">
+    <div class="in" @click="logEvent('instagram')">
       <a href="https://www.instagram.com/markoarkitecto/" target="_blank"
         ><i class="icon-instagram"></i
       ></a>
     </div>
-    <div class="hb">
+    <div class="hb" @click="logEvent('habitissimo')">
       <a
         href="https://empresas.habitissimo.com.co/pro/useche-diseno-y-construcciones-s-a-s"
         target="_blank"
@@ -27,6 +27,24 @@
     </div>
   </div>
 </template>
+
+<script>
+import firebase from "firebase/app";
+import "firebase/analytics";
+
+export default {
+  methods: {
+    logEvent(val) {
+      try {
+        firebase.analytics().logEvent(`link_${val}_open`);
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
+    },
+  },
+};
+</script>
 
 <style scoped lang="scss">
 @import "@/assets/scss/_variables.scss";
@@ -94,7 +112,6 @@
 
 @media screen and (max-width: $small) {
   .social {
-
     .fb,
     .tw,
     .in,

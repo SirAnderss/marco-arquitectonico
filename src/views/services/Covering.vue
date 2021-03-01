@@ -3,7 +3,7 @@
     <HeroName
       page="Impacto Visual que Deja Huella"
       :images="projects"
-      :smImages="smProjects"
+      :sm-images="smProjects"
     />
     <div class="covering">
       <img
@@ -55,28 +55,35 @@
 </template>
 
 <script>
-import HeroName from "@/components/HeroName.vue";
-import SubCovering from "@/components/SubCovering.vue";
+import { hydrateWhenVisible } from "vue-lazy-hydration";
+import firebase from "firebase/app";
+import "firebase/analytics";
 
 export default {
   components: {
-    HeroName,
-    SubCovering,
+    HeroName: hydrateWhenVisible(() => import("@/components/HeroName.vue")),
+    SubCovering: hydrateWhenVisible(() =>
+      import("@/components/SubCovering.vue")
+    ),
   },
   data() {
     return {
-      projects: [
-        "san-3.webp",
-        "antes-1.webp",
-        "antes-2.webp"
-      ],
-      smProjects: [
-        "sa-5.webp",
-        "sa-6.webp",
-        "mtto-1.webp",
-        "mtto-2.webp"
-      ],
+      projects: ["san-3.webp", "antes-1.webp", "antes-2.webp"],
+      smProjects: ["sa-5.webp", "sa-6.webp", "mtto-1.webp", "mtto-2.webp"],
     };
+  },
+  mounted() {
+    this.logEvent();
+  },
+  methods: {
+    logEvent() {
+      try {
+        firebase.analytics().logEvent("covering_page_visited");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
+    },
   },
 };
 </script>

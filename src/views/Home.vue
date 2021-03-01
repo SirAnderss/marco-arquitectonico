@@ -11,23 +11,32 @@
 </template>
 
 <script>
-import Hero from "@/components/Hero.vue";
-import Welcome from "@/components/Welcome.vue";
-import Services from "@/components/Services.vue";
-import Quotation from "@/components/Quotation.vue";
-import Clients from "@/components/Clients.vue";
-import Reviews from "@/components/Reviews.vue";
-import ContactUs from "@/components/ContactUs.vue";
+import { hydrateWhenVisible } from "vue-lazy-hydration";
+import firebase from "firebase/app";
+import "firebase/analytics";
 
 export default {
   components: {
-    Hero,
-    Welcome,
-    Services,
-    Quotation,
-    Clients,
-    Reviews,
-    ContactUs
+    Hero: hydrateWhenVisible(() => import("@/components/Hero.vue")),
+    Welcome: hydrateWhenVisible(() => import("@/components/Welcome.vue")),
+    Services: hydrateWhenVisible(() => import("@/components/Services.vue")),
+    Quotation: hydrateWhenVisible(() => import("@/components/Quotation.vue")),
+    Clients: hydrateWhenVisible(() => import("@/components/Clients.vue")),
+    Reviews: hydrateWhenVisible(() => import("@/components/Reviews.vue")),
+    ContactUs: hydrateWhenVisible(() => import("@/components/ContactUs.vue")),
+  },
+  mounted() {
+    this.logEvent();
+  },
+  methods: {
+    logEvent() {
+      try {
+        firebase.analytics().logEvent("home_page_visited");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
+    },
   },
 };
 </script>

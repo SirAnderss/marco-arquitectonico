@@ -10,6 +10,8 @@
 import HeroName from "@/components/HeroName.vue";
 import Quotation from "@/components/Quotation.vue";
 import ContactInfo from "@/components/ContactInfo.vue";
+import firebase from "firebase/app";
+import "firebase/analytics";
 
 export default {
   components: {
@@ -32,6 +34,19 @@ export default {
         "mantenimiento-sm.webp",
       ],
     };
+  },
+  mounted() {
+    this.logEvent();
+  },
+  methods: {
+    logEvent() {
+      try {
+        firebase.analytics().logEvent("contact_page_visited");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
+    },
   },
 };
 </script>

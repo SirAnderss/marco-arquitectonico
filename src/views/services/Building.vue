@@ -3,7 +3,7 @@
     <HeroName
       page="Hacemos Realidad Eso que Sueñas"
       :images="projects"
-      :smImages="smProjects"
+      :sm-images="smProjects"
     />
     <div class="building">
       <img src="@/assets/img/services/construccion.webp" alt="Construcción" />
@@ -37,19 +37,35 @@
 </template>
 
 <script>
-import HeroName from "@/components/HeroName.vue";
-import SubBuilding from "@/components/SubBuilding.vue";
+import { hydrateWhenVisible } from "vue-lazy-hydration";
+import firebase from "firebase/app";
+import "firebase/analytics";
 
 export default {
   components: {
-    HeroName,
-    SubBuilding,
+    HeroName: hydrateWhenVisible(() => import("@/components/HeroName.vue")),
+    SubBuilding: hydrateWhenVisible(() =>
+      import("@/components/SubBuilding.vue")
+    ),
   },
   data() {
     return {
       projects: ["hero-metalica.webp", "casa-sm.webp"],
       smProjects: ["hero-metalica.webp", "casa-sm.webp"],
     };
+  },
+  mounted() {
+    this.logEvent();
+  },
+  methods: {
+    logEvent() {
+      try {
+        firebase.analytics().logEvent("building_page_visited");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
+    },
   },
 };
 </script>

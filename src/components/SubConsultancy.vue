@@ -78,8 +78,8 @@
 </template>
 
 <script>
-import { Hooper, Slide } from "hooper";
-import "hooper/dist/hooper.css";
+import { Hooper, Slide } from 'hooper'
+import 'hooper/dist/hooper.css'
 export default {
   components: {
     Hooper,
@@ -97,11 +97,11 @@ export default {
         infiniteScroll: true,
         itemsToShow: 1,
       },
-    };
+    }
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/services.scss";
+@import '@/assets/scss/services.scss';
 </style>

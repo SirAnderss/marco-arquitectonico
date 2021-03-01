@@ -32,15 +32,9 @@
           </p>
           <ul>
             <li>Estructura Metálica</li>
-            <li>
-              Mezanine Metálico
-            </li>
-            <li>
-              Cubiertas Metálicas
-            </li>
-            <li>
-              Estructuras IPE y HAE
-            </li>
+            <li>Mezanine Metálico</li>
+            <li>Cubiertas Metálicas</li>
+            <li>Estructuras IPE y HAE</li>
           </ul>
         </div>
       </div>
@@ -68,15 +62,9 @@
           </p>
           <ul>
             <li>Panel Compuesto de Aluminio</li>
-            <li>
-              Panel Fenólico Fundermax
-            </li>
-            <li>
-              Panel de Fibrocemento
-            </li>
-            <li>
-              Paneles Metálicos y Microperforados
-            </li>
+            <li>Panel Fenólico Fundermax</li>
+            <li>Panel de Fibrocemento</li>
+            <li>Paneles Metálicos y Microperforados</li>
             <li>Persianas Metálicas</li>
           </ul>
         </div>
@@ -86,8 +74,8 @@
 </template>
 
 <script>
-import { Hooper, Slide } from "hooper";
-import "hooper/dist/hooper.css";
+import { Hooper, Slide } from 'hooper'
+import 'hooper/dist/hooper.css'
 export default {
   components: {
     Hooper,
@@ -105,11 +93,11 @@ export default {
         infiniteScroll: true,
         itemsToShow: 1,
       },
-    };
+    }
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/services.scss";
+@import '@/assets/scss/services.scss';
 </style>

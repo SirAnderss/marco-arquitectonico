@@ -11,7 +11,8 @@
 
 <script>
 import firebase from "firebase/app";
-import 'firebase/auth';
+import "firebase/auth";
+import toastr from "toastr";
 
 export default {
   name: "Login",
@@ -19,6 +20,19 @@ export default {
     return {
       user: "",
       password: "",
+      toastOptions: {
+        timeOut: 5000,
+        closeButton: true,
+        progressBar: true,
+        positionClass: "toast-bottom-right",
+        showDuration: 300,
+        hideDuration: 1000,
+        extendedTimeOut: 1000,
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut",
+      },
     };
   },
   methods: {
@@ -27,7 +41,20 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.user, this.password)
         .then((user) => this.$router.replace("/dashboard", user))
-        .catch(function(error) {
+        .catch((error) => {
+          toastr.error(error, "Usuario o contraseña incorrectos", {
+            timeOut: 5000,
+            closeButton: true,
+            progressBar: true,
+            positionClass: "toast-top-right",
+            showDuration: 300,
+            hideDuration: 1000,
+            extendedTimeOut: 1000,
+            showEasing: "swing",
+            hideEasing: "linear",
+            showMethod: "fadeIn",
+            hideMethod: "fadeOut",
+          });
           console.error(error.code);
           console.error(error.message);
         });

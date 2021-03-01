@@ -27,11 +27,17 @@
             </div>
           </slide>
         </hooper> -->
-        <i @click="closePromo" class="icon-cancel-circle close"></i>
+        <i class="icon-cancel-circle close" @click="closePromo"></i>
         <!-- <i @click.prevent="slidePrev" class="icon-circle-left prev"></i>
         <i @click.prevent="slideNext" class="icon-circle-right next"></i> -->
       </div>
-      <div class="marco" @click="showMarco">
+      <div
+        class="marco"
+        @click="
+          showMarco();
+          logBot();
+        "
+      >
         <img
           class="bot-face"
           src="@/assets/img/chat/chatbot.webp"
@@ -45,7 +51,10 @@
             class="phrase"
             @mouseover="showButtonPhrase"
             @mouseleave="hideButtonPhrase"
-            @click="showOptions"
+            @click="
+              showOptions();
+              logBot();
+            "
           >
             <div
               :class="{ show: close.phrase }"
@@ -73,7 +82,7 @@
             >
               <i class="icon-cancel-circle"></i>
             </div>
-            <span @click="showPromo">
+            <span @click="showPromo()">
               ¿Conoce nuestras promociones y ofertas?
             </span>
           </div>
@@ -99,10 +108,10 @@
             </span>
           </div>
           <div
-            @mouseover="showButtonOptions"
-            @mouseleave="hideButtonOptions"
             :class="{ show: botSteps.options }"
             class="bot-functions"
+            @mouseover="showButtonOptions"
+            @mouseleave="hideButtonOptions"
           >
             <div
               :class="{ show: close.options }"
@@ -112,21 +121,21 @@
               <i class="icon-cancel-circle"></i>
             </div>
             <span
-              @click="showOffer"
               class="options"
               :class="{ show: botSteps.select.offer }"
+              @click="showOffer()"
               >Quiero conocer sus promociones y ofertas.</span
             >
             <span
-              @click="showAttention"
               class="options"
               :class="{ show: botSteps.select.attention }"
+              @click="showAttention"
               >Quiero conocer sus horarios de atención.</span
             >
             <span
-              @click="showProfessional"
               class="options"
               :class="{ show: botSteps.select.professional }"
+              @click="showProfessional"
               >Quiero programar una visita profesional gratuita.</span
             >
             <span class="options" :class="{ show: botSteps.contact }"
@@ -140,10 +149,10 @@
             >
           </div>
           <div
-            @mouseover="showButtonAnswers"
-            @mouseleave="hideButtonAnswers"
             :class="{ show: botSteps.answers }"
             class="answers-functions"
+            @mouseover="showButtonAnswers"
+            @mouseleave="hideButtonAnswers"
           >
             <div
               :class="{ show: close.answers }"
@@ -154,7 +163,7 @@
             </div>
             <span class="answers" :class="{ show: botSteps.answer.offer }"
               >Puedes conocer nuestras promociones y ofertas dando click
-              <strong @click="showPromo">aquí</strong>.
+              <strong @click="showPromo()">aquí</strong>.
             </span>
             <span class="answers" :class="{ show: botSteps.answer.attention }"
               >Puede llamarnos al
@@ -162,7 +171,7 @@
               de atención de lunes a viernes de 8:00 AM a 6:00 PM y sábados de
               9:00 AM a 2:00 PM.</span
             >
-            <div v-if="day == 6">
+            <div v-if="day === 6">
               <div v-if="hour >= 9 && hour <= 14">
                 <span
                   class="answers"
@@ -195,7 +204,7 @@
                 >
               </div>
             </div>
-            <div v-if="day == 0">
+            <div v-if="day === 0">
               <span
                 class="answers"
                 :class="{
@@ -255,8 +264,8 @@
       </div>
       <div class="chat" :class="{ 'chat-text': chat }">
         <input
-          type="text"
           v-model="chatme"
+          type="text"
           class="chatme"
           placeholder="Contacta a un asesor"
           @keyup.enter="waMe"
@@ -269,6 +278,8 @@
 
 <script>
 // import { Hooper, Slide } from "hooper";
+import firebase from "firebase/app";
+import "firebase/analytics";
 import "hooper/dist/hooper.css";
 export default {
   name: "Bot",
@@ -296,7 +307,7 @@ export default {
       helpTime: 0,
       botLeave: 0,
       chat: false,
-      promo: false,
+      promo: true,
       timer: {
         start: 0,
         help: 0,
@@ -329,20 +340,70 @@ export default {
       },
     };
   },
+  watch: {
+    "timer.start"() {
+      if (this.timer.start === 60) {
+        this.botSteps.phrase = true;
+        this.botSteps.welcome = true;
+        this.botSteps.waiting = true;
+      } else if (this.timer.start === 120) {
+        this.botSteps.phrase = false;
+        this.botSteps.promo = true;
+        this.botSteps.quota = false;
+      } else if (this.timer.start === 180) {
+        this.botSteps.phrase = false;
+        this.botSteps.promo = false;
+        this.botSteps.quota = true;
+      } else if (this.timer.start === 200) {
+        this.botSteps.phrase = false;
+        this.botSteps.promo = false;
+        this.botSteps.quota = false;
+        clearInterval(this.startCounter);
+      }
+    },
+    "timer.exit"() {
+      if (this.timer.exit === 8) {
+        this.closeAll();
+        clearInterval(this.botLeave);
+      }
+    },
+    "timer.help"() {
+      if (this.timer.help === 8) {
+        this.botSteps.answer.help = true;
+        clearInterval(this.helpTime);
+      }
+    },
+  },
+  beforeDestroy() {
+    clearInterval(this.startCounter);
+    clearInterval(this.botLeave);
+    clearInterval(this.helpTime);
+  },
+  mounted() {
+    this.botStart();
+    this.getDateTime();
+  },
   methods: {
     getDateTime() {
-      let tempDate = new Date();
+      const tempDate = new Date();
       this.hour = tempDate.getHours();
       this.minutes = tempDate.getMinutes();
       this.day = tempDate.getDay();
     },
-    waMe() {
-      let url = "https://wa.me/573155597866?text=";
-      let text = this.chatme.replace(/ /g, "%20");
-      let link = url + text;
+    async waMe() {
+      const url = "https://wa.me/573155597866?text=";
+      const text = this.chatme.replace(/ /g, "%20");
+      const link = url + text;
 
       window.open(link, "_blank");
       this.chatme = "";
+
+      try {
+        firebase.analytics().logEvent("bot_whatsapp");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
     },
     botStart() {
       this.timer.start = 0;
@@ -362,7 +423,7 @@ export default {
         this.timer.exit++;
       }, 1000);
     },
-    showMarco() {
+    async showMarco() {
       this.botSteps.select.offer = true;
       this.botSteps.select.attention = true;
       this.botSteps.select.professional = true;
@@ -372,6 +433,13 @@ export default {
       this.botSteps.contact = false;
       this.chat = !this.chat;
       this.botSteps.options = !this.botSteps.options;
+
+      try {
+        firebase.analytics().logEvent("bot_open");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
     },
     showButtonPhrase() {
       this.close.phrase = true;
@@ -379,8 +447,14 @@ export default {
     hideButtonPhrase() {
       this.close.phrase = false;
     },
-    closeChatPhrase() {
+    async closeChatPhrase() {
       this.botSteps.phrase = false;
+      try {
+        firebase.analytics().logEvent("bot_open");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
     },
     showButtonPromo() {
       this.close.promo = true;
@@ -422,8 +496,15 @@ export default {
       this.botSteps.answer.exit = false;
       this.chat = false;
     },
-    showPromo() {
+    async showPromo() {
       this.promo = false;
+
+      try {
+        firebase.analytics().logEvent("bot_promo");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
     },
     showOptions() {
       this.botSteps.answers = false;
@@ -452,7 +533,7 @@ export default {
       this.botSteps.options = false;
       this.helpStart();
     },
-    showAttention() {
+    async showAttention() {
       this.botSteps.answers = true;
       this.botSteps.answer.offer = false;
       this.botSteps.answer.professional = false;
@@ -463,8 +544,15 @@ export default {
       this.botSteps.contact = false;
       this.botSteps.options = false;
       this.helpStart();
+
+      try {
+        firebase.analytics().logEvent("bot_attention");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
     },
-    showProfessional() {
+    async showProfessional() {
       this.botSteps.answers = true;
       this.botSteps.answer.attention = false;
       this.botSteps.answer.offer = false;
@@ -475,14 +563,21 @@ export default {
       this.botSteps.contact = false;
       this.botSteps.options = false;
       this.helpStart();
+
+      try {
+        firebase.analytics().logEvent("blog_page_visited");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
     },
     reOpen() {
       this.botSteps.answers = false;
       this.botSteps.options = true;
       if (
-        this.botSteps.select.offer == false &&
-        this.botSteps.select.attention == false &&
-        this.botSteps.select.professional == false
+        this.botSteps.select.offer === false &&
+        this.botSteps.select.attention === false &&
+        this.botSteps.select.professional === false
       ) {
         this.botSteps.contact = true;
         this.leaveBot();
@@ -526,50 +621,6 @@ export default {
     updateCarousel(payload) {
       this.myCarouselData = payload.currentSlide;
     },
-  },
-  watch: {
-    "timer.start": function() {
-      if (this.timer.start == 60) {
-        this.botSteps.phrase = true;
-        this.botSteps.welcome = true;
-        this.botSteps.waiting = true;
-      } else if (this.timer.start == 120) {
-        this.botSteps.phrase = false;
-        this.botSteps.promo = true;
-        this.botSteps.quota = false;
-      } else if (this.timer.start == 180) {
-        this.botSteps.phrase = false;
-        this.botSteps.promo = false;
-        this.botSteps.quota = true;
-      } else if (this.timer.start == 200) {
-        this.botSteps.phrase = false;
-        this.botSteps.promo = false;
-        this.botSteps.quota = false;
-        clearInterval(this.startCounter);
-      }
-    },
-    "timer.exit": function() {
-      if (this.timer.exit == 8) {
-        this.closeAll();
-        clearInterval(this.botLeave);
-      }
-    },
-    "timer.help": function() {
-      if (this.timer.help === 8) {
-        this.botSteps.answer.help = true;
-        clearInterval(this.helpTime);
-      }
-    },
-  },
-  beforeDestroy() {
-    clearInterval(this.startCounter);
-    clearInterval(this.botLeave);
-    clearInterval(this.helpTime);
-  },
-  mounted() {
-    this.promo = true;
-    this.botStart();
-    this.getDateTime();
   },
 };
 </script>

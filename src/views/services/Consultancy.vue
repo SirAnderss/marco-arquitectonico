@@ -3,7 +3,7 @@
     <HeroName
       page="La Magia del Diseño a su Alcance"
       :images="projects"
-      :smImages="smProjects"
+      :sm-images="smProjects"
     />
     <div class="consultancy">
       <img
@@ -42,13 +42,16 @@
 </template>
 
 <script>
-import HeroName from "@/components/HeroName.vue";
-import SubConsultancy from "@/components/SubConsultancy.vue";
+import { hydrateWhenVisible } from "vue-lazy-hydration";
+import firebase from "firebase/app";
+import "firebase/analytics";
 
 export default {
   components: {
-    HeroName,
-    SubConsultancy,
+    HeroName: hydrateWhenVisible(() => import("@/components/HeroName.vue")),
+    SubConsultancy: hydrateWhenVisible(() =>
+      import("@/components/SubConsultancy.vue")
+    ),
   },
   data() {
     return {
@@ -65,6 +68,19 @@ export default {
         // "mantenimiento-sm.webp",
       ],
     };
+  },
+  mounted() {
+    this.logEvent();
+  },
+  methods: {
+    logEvent() {
+      try {
+        firebase.analytics().logEvent("consultancy_page_visited");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
+    },
   },
 };
 </script>

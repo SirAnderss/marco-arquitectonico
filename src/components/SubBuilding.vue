@@ -50,9 +50,7 @@
             <br />
           </p>
           <ul>
-            <li>
-              Diseño y Distribucion Arquitectónica
-            </li>
+            <li>Diseño y Distribucion Arquitectónica</li>
             <li>Remodelacion y Adecuación</li>
             <li>Mobiliario de Oficina</li>
             <li>Obras Locativas</li>
@@ -86,9 +84,7 @@
             <br />
           </p>
           <ul>
-            <li>
-              Diseño y Distribución Arquitectónico
-            </li>
+            <li>Diseño y Distribución Arquitectónico</li>
             <li>Excavación y Cimentación</li>
             <li>Estructura Metálica y Concreto</li>
             <li>Cubiertas</li>
@@ -175,8 +171,8 @@
 </template>
 
 <script>
-import { Hooper, Slide } from "hooper";
-import "hooper/dist/hooper.css";
+import { Hooper, Slide } from 'hooper'
+import 'hooper/dist/hooper.css'
 export default {
   components: {
     Hooper,
@@ -194,11 +190,11 @@ export default {
         infiniteScroll: true,
         itemsToShow: 1,
       },
-    };
+    }
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/services.scss";
+@import '@/assets/scss/services.scss';
 </style>

@@ -10,7 +10,8 @@
 
 <script>
 import firebase from "firebase/app";
-import 'firebase/firestore';
+import "firebase/analytics";
+import "firebase/firestore";
 import Back from "@/components/Back.vue";
 export default {
   name: "Blogview",
@@ -39,14 +40,23 @@ export default {
           console.log("Error getting document:", error);
         });
     },
+    logEvent() {
+      try {
+        firebase.analytics().logEvent(`${this.slug}_page_visited`);
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
+    },
   },
   watch: {
-    post: function() {
+    post: function () {
       this.$refs.post.innerHTML = this.post;
     },
   },
   mounted() {
     this.getPost();
+    this.logEvent();
   },
 };
 </script>

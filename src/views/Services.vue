@@ -1,6 +1,6 @@
 <template>
   <div class="services">
-    <HeroName page="Servicios" :images="projects" :smImages="smProjects" />
+    <HeroName page="Servicios" :images="projects" :sm-images="smProjects" />
     <div class="consultancy">
       <h2>Proyectos de Consultoria</h2>
       <div>
@@ -78,11 +78,13 @@
 </template>
 
 <script>
-import HeroName from "@/components/HeroName.vue";
+import { hydrateWhenVisible } from "vue-lazy-hydration";
+import firebase from "firebase/app";
+import "firebase/analytics";
 
 export default {
   components: {
-    HeroName,
+    HeroName: hydrateWhenVisible(() => import("@/components/HeroName.vue")),
   },
   data() {
     return {
@@ -99,6 +101,19 @@ export default {
         "mantenimiento-sm.webp",
       ],
     };
+  },
+  mounted() {
+    this.logEvent();
+  },
+  methods: {
+    logEvent() {
+      try {
+        firebase.analytics().logEvent("services_page_visited");
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.error(e);
+      }
+    },
   },
 };
 </script>

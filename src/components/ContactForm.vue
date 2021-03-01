@@ -127,6 +127,9 @@
 import services from "@/assets/json/services.json";
 import emailjs from "emailjs-com";
 import toastr from "toastr";
+import firebase from "firebase/app";
+import "firebase/analytics";
+
 export default {
   name: "ContactForm",
   data() {
@@ -215,7 +218,7 @@ export default {
           "user_4yXxtxSLtB3vbzcGVljpi"
         )
         .then(
-          (result) => {
+          async (result) => {
             toastr.info(
               "Tu mensaje ha sido enviado, muy pronto un asesor te contactara",
               this.toastOptions
@@ -229,6 +232,13 @@ export default {
             this.service = 0;
             this.errors = false;
             console.info("SUCCESS!", result.status, result.text);
+
+            try {
+              firebase.analytics().logEvent("contact_form_send");
+            } catch (e) {
+              // eslint-disable-next-line no-console
+              console.error(e);
+            }
           },
           (error) => {
             toastr.error(
@@ -373,7 +383,7 @@ export default {
   }
 }
 
-.note{
+.note {
   font-size: 10px;
   font-style: italic;
 }
