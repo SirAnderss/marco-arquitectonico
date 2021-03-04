@@ -204,9 +204,8 @@ export default {
       .card {
         position: relative;
         width: 300px;
-        height: 65vh;
+        height: 450px;
         border-radius: 6px;
-        padding: 2rem;
         color: #aaa;
         box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.2),
           0 0 1rem rgba(0, 0, 0, 0.2);
@@ -214,7 +213,9 @@ export default {
         transition: all 0.3s ease-in-out;
 
         &__image-container {
-          margin: -2rem -2rem 1rem -4rem;
+          // margin: -2rem -2rem 1rem -4rem;
+          height: 20rem;
+          width: 100%;
         }
 
         &__line {
@@ -224,11 +225,17 @@ export default {
 
         &__image {
           opacity: 0;
+          width: 100%;
+          z-index: -1;
           animation: ImageFadeIn 0.8s 1.4s forwards;
         }
 
         &__content {
-          margin-top: 1rem;
+          display: flex;
+          height: 6rem;
+          align-items: center;
+          // margin-top: 1rem;
+          padding: 0 2rem;
           opacity: 0;
           animation: ContentFadeIn 0.8s 1.6s forwards;
           text-align: end;
@@ -241,7 +248,7 @@ export default {
         &__svg {
           position: absolute;
           left: 0;
-          top: 95px;
+          top: 135px;
         }
         &:hover {
           &:hover {
@@ -347,6 +354,23 @@ export default {
     font-weight: bold;
   }
 }
+
+@media screen and (max-width: $medium) {
+  .blogs {
+    .blog-list {
+      .card {
+        &__image-container {
+          height: 15rem;
+        }
+
+        &__content {
+          padding: 0 0.2rem;
+        }
+      }
+    }
+  }
+}
+
 .hide {
   display: none;
 }

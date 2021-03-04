@@ -29,9 +29,7 @@
             paragraph
             checklist
           />
-          <button @click="preview">
-            Vista previa
-          </button>
+          <button @click="preview">Vista previa</button>
           <button
             v-if="$route.name === 'Dashboard'"
             @click="save"
@@ -295,7 +293,7 @@ export default {
               });
           }
         })
-        .catch(function(error) {
+        .catch((error) => {
           toastr.error(
             "Hubo un problema de comunicación con el servidor, intente nuevamente}",
             "Error!",
@@ -463,7 +461,7 @@ export default {
     },
   },
   watch: {
-    "data.title": function() {
+    "data.title": function () {
       const cleanSlug = this.data.title.toLowerCase().replace(/\s+/gi, " ");
       const tempSlug = cleanSlug.replace(/ /g, "-");
 
